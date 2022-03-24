@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setControl() {
-        btnProduct = findViewById(R.id.receipt_btn);
+        btnProduct = findViewById(R.id.product_btn);
         btnWarehouse = findViewById(R.id.warehouse_btn);
         btnReceipt = findViewById(R.id.receipt_btn);
     }
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleBtnProductClick(View view) {
-        Intent intent = new Intent(this, WarehouseActivity.class);
+        Intent intent = new Intent(this, ProductActivity.class);
         startActivity(intent);
     }
 
