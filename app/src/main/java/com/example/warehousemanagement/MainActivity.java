@@ -17,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setControl();
         setEvent();
+
+        AppDatabase db = AppDatabase.getInstance(this);
+        this.deleteDatabase(db.getDatabaseName());
+        db.initializeDatabase();
     }
 
     private void setEvent() {
