@@ -24,6 +24,6 @@ public interface ProductDao {
     @Delete
     void deleteOne(ProductEntity product);
 
-    @Query("SELECT * FROM VATTU")
+    @Query("SELECT * FROM product")
     List<ProductEntity> getAll();
 }
