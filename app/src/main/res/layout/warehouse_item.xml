@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_azureich_white_radius_25"
+    style="@style/Theme.WarehouseManagement">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/ic_baseline_edit_64" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="34dp"
+                android:src="@drawable/warehouse_72" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -25,17 +29,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/warehouse_id"
+                    android:id="@+id/warehouseId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/roboto_bold"
+                    android:fontFamily="@font/roboto_medium"
                     android:text="K1"
                     android:textColor="@color/space_cadet"
                     android:textSize="24dp" />
 
                 <TextView
-                    android:id="@+id/warehouse_name"
+                    android:id="@+id/warehouseName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
@@ -44,7 +48,7 @@
                     android:textSize="20dp" />
 
                 <TextView
-                    android:id="@+id/warehouse_address"
+                    android:id="@+id/warehouseAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
