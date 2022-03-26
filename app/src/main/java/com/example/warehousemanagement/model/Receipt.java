@@ -4,17 +4,25 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Receipt {
-    int id;
-    LocalDate date;
-    ArrayList<ReceiptDetail> receiptDetails = new ArrayList<>();
+    private int id;
+    private LocalDate date;
+    private ArrayList<ReceiptDetail> receiptDetails = new ArrayList<>();
+    private String warehouseId;
 
     public Receipt() {
     }
 
-    public Receipt(int id, LocalDate date, ArrayList<ReceiptDetail> receiptDetails) {
+    public Receipt(int id, LocalDate date, String warehouseId, ArrayList<ReceiptDetail> receiptDetails) {
         this.id = id;
         this.date = date;
         this.receiptDetails = receiptDetails;
+        this.warehouseId = warehouseId;
+    }
+
+    public int countNumberOfProductTypes() {
+        int numberOfTypes = 0;
+
+        return numberOfTypes;
     }
 
     public ArrayList<ReceiptDetail> getReceiptDetails() {
@@ -39,5 +47,13 @@ public class Receipt {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public String getWarehouseId() {
+        return warehouseId;
+    }
+
+    public void setWarehouseId(String warehouseId) {
+        this.warehouseId = warehouseId;
     }
 }
