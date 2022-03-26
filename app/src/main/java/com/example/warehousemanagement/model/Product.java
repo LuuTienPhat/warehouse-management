@@ -1,7 +1,7 @@
 package com.example.warehousemanagement.model;
 
 public class Product {
-    String id, name, origin;
+    private String id, name, origin;
 
     public Product() {
     }

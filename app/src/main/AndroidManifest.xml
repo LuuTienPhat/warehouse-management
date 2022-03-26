@@ -10,10 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ReceiptActivity"
+            android:exported="false" />
+        <activity
             android:name=".WarehouseActivity"
             android:exported="false" />
         <activity
             android:name=".ProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WarehouseDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddWarehouseActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

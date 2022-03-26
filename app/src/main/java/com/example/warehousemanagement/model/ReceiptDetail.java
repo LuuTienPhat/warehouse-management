@@ -1,8 +1,8 @@
 package com.example.warehousemanagement.model;
 
 public class ReceiptDetail {
-    int receiptId, quantity;
-    String productId, unit;
+    private int receiptId, quantity;
+    private String productId, unit;
 
     public ReceiptDetail() {
     }
