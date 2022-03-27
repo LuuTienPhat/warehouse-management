@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.warehousemanagement.R;
-import com.example.warehousemanagement.entity.ProductEntity;
+import com.example.warehousemanagement.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductAdapter extends ArrayAdapter<ProductEntity> {
+public class ProductAdapter extends ArrayAdapter<Product> {
     Context context;
-    List<ProductEntity> products;
+    List<Product> products;
     int resource;
 
 
-    public ProductAdapter(@NonNull Context context, int resource, @NonNull List<ProductEntity> products) {
+    public ProductAdapter(@NonNull Context context, int resource, @NonNull List<Product> products) {
         super(context, resource, products);
         this.context = context;
         this.resource = resource;
@@ -32,7 +32,7 @@ public class ProductAdapter extends ArrayAdapter<ProductEntity> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        ProductEntity product = getItem(position);
+        Product product = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.product_item, parent, false);
         }
