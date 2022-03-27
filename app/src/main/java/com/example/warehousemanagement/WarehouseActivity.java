@@ -35,9 +35,9 @@ public class WarehouseActivity extends AppCompatActivity {
 
         tvTitle.setText("Kho");
 
-        AppDatabase db = AppDatabase.getInstance(this);
-        WarehouseDao warehouseDao = db.warehouseDao();
-        warehouses = warehouseDao.getAll();
+//        AppDatabase db = AppDatabase.getInstance(this);
+//        WarehouseDao warehouseDao = db.warehouseDao();
+//        warehouses = warehouseDao.getAll();
 
         WarehouseAdapter warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
         listview.setAdapter(warehouseAdapter);
