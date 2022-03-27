@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    style="@style/Theme.WarehouseManagement">
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +32,7 @@
             android:layout_width="369dp"
             android:layout_height="92dp"
             android:layout_marginBottom="30dp"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/bg_azureich_white_radius_25"
             android:fontFamily="@font/roboto_medium"
             android:text="KHO"
             android:textColor="@color/space_cadet"
@@ -43,7 +44,7 @@
             android:layout_width="369dp"
             android:layout_height="92dp"
             android:layout_marginBottom="30dp"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/bg_azureich_white_radius_25"
             android:fontFamily="@font/roboto_medium"
             android:text="VẬT TƯ"
             android:textColor="@color/space_cadet"
@@ -53,7 +54,7 @@
             android:id="@+id/receipt_btn"
             android:layout_width="369dp"
             android:layout_height="92dp"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/bg_azureich_white_radius_25"
             android:fontFamily="@font/roboto_medium"
             android:text="PHIẾU NHẬP"
             android:textColor="@color/space_cadet"

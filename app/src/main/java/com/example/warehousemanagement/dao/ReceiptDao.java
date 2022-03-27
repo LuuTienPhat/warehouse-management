@@ -1,16 +1,35 @@
 package com.example.warehousemanagement.dao;
 
-import androidx.room.Insert;
-import androidx.room.Query;
-
-import com.example.warehousemanagement.entity.ReceiptEntity;
+import com.example.warehousemanagement.model.Receipt;
 
 import java.util.List;
 
-public interface ReceiptDao {
-    @Insert
-    void insertOne(ReceiptEntity receiptEntity);
+public class ReceiptDao implements Dao<Receipt> {
+    @Override
+    public boolean insertOne(Receipt receipt) {
 
-    @Query("SELECT * FROM receipt")
-    List<ReceiptDao> getAll();
+        return false;
+    }
+
+    @Override
+    public boolean updateOne(Receipt receipt) {
+
+        return false;
+    }
+
+    @Override
+    public boolean deleteOne(Receipt receipt) {
+
+        return false;
+    }
+
+    @Override
+    public List<Receipt> getAll() {
+        return null;
+    }
+
+    @Override
+    public Receipt getOne(String id) {
+        return null;
+    }
 }
