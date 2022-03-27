@@ -1,26 +1,36 @@
 package com.example.warehousemanagement.dao;
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-import androidx.room.Update;
-
-import com.example.warehousemanagement.entity.WarehouseEntity;
+import com.example.warehousemanagement.model.Warehouse;
 
 import java.util.List;
 
-@Dao
-public interface WarehouseDao {
-    @Insert
-    void insertOne(WarehouseEntity warehouseEntity);
+public class WarehouseDao implements Dao<Warehouse> {
 
-    @Update
-    void updateOne(WarehouseEntity warehouse);
+    @Override
+    public boolean insertOne(Warehouse warehouse) {
 
-    @Delete
-    void deleteOne(WarehouseEntity warehouse);
+        return false;
+    }
 
-    @Query("SELECT * FROM warehouse")
-    List<WarehouseEntity> getAll();
+    @Override
+    public boolean updateOne(Warehouse warehouse) {
+
+        return false;
+    }
+
+    @Override
+    public boolean deleteOne(Warehouse warehouse) {
+
+        return false;
+    }
+
+    @Override
+    public List<Warehouse> getAll() {
+        return null;
+    }
+
+    @Override
+    public Warehouse getOne(String id) {
+        return null;
+    }
 }
