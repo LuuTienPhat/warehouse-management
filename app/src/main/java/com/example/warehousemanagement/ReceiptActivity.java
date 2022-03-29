@@ -1,5 +1,7 @@
 package com.example.warehousemanagement;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -7,15 +9,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.warehousemanagement.adapter.ProductAdapter;
-import com.example.warehousemanagement.dao.ProductDao;
-import com.example.warehousemanagement.model.Product;
-
-import java.util.List;
-
-public class ProductActivity extends AppCompatActivity {
+public class ReceiptActivity extends AppCompatActivity {
     ImageButton btnMinimize, btnAdd;
     ListView listView;
     SearchView searchView;
@@ -25,16 +19,6 @@ public class ProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
-        setControl();
-        setEvent();
-
-        title.setText("Vật tư");
-
-        ProductDao productDao = new ProductDao(this);
-        List<Product> products = productDao.getAll();
-
-        ProductAdapter productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
     }
 
     private void setEvent() {

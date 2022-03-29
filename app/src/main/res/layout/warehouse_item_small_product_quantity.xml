@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/bg_azureich_white_radius_25"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tvWarehouseId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_black"
+        android:paddingHorizontal="40dp"
+        android:text="K1"
+        android:textColor="@color/space_cadet"
+        android:textSize="40dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/tvWarehouseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Kho Bình Chánh"
+            android:textColor="@color/space_cadet"
+            android:textSize="24dp"
+            android:textAlignment="textStart"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start">
+
+            <TextView
+                android:id="@+id/tvProductQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="5 000"
+                android:textColor="@color/space_cadet"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tvProductUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:text="(viên)"
+                android:textColor="@color/space_cadet"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
