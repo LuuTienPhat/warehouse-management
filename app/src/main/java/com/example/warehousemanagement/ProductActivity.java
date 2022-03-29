@@ -6,13 +6,12 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.adapter.ProductAdapter;
 import com.example.warehousemanagement.dao.ProductDao;
-import com.example.warehousemanagement.entity.ProductEntity;
+import com.example.warehousemanagement.model.Product;
 
 import java.util.List;
 
@@ -21,7 +20,6 @@ public class ProductActivity extends AppCompatActivity {
     ListView listView;
     SearchView searchView;
     TextView title;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +30,8 @@ public class ProductActivity extends AppCompatActivity {
 
         title.setText("Vật tư");
 
-        AppDatabase db = AppDatabase.getInstance(this);
-        ProductDao productDao = db.productDao();
-        List<ProductEntity> products = productDao.getAll();
+        ProductDao productDao = new ProductDao(this);
+        List<Product> products = productDao.getAll();
 
         ProductAdapter productAdapter = new ProductAdapter(this, R.layout.product_item, products);
         listView.setAdapter(productAdapter);
