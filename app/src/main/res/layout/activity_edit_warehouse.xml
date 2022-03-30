@@ -44,7 +44,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/txtId"
+            android:id="@+id/etId"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/bg_text_box_round_corner"
@@ -75,7 +75,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/txtName"
+            android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/bg_text_box_round_corner"
@@ -106,7 +106,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/txtAddress"
+            android:id="@+id/etAddress"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/bg_text_box_round_corner"
