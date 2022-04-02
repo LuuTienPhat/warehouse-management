@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface Dao<T> {
 
+    void fillData();
+
     boolean insertOne(T t);
 
     boolean updateOne(T t);
