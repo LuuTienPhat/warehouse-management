@@ -13,6 +13,41 @@ import com.example.warehousemanagement.model.Warehouse;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private Context context;
+    private static DatabaseHelper Instance = null;
+
+    private DatabaseHelper(Context context) {
+        super(context, DB_NAME, null, 1);
+        this.context = context;
+    }
+
+    public static synchronized DatabaseHelper getInstance(Context context) {
+        if (Instance == null) {
+            Instance = new DatabaseHelper(context.getApplicationContext());
+        }
+        return Instance;
+    }
+
+    public ProductDao getProductDao() {
+        ProductDao productDao = new ProductDao(Instance);
+        return productDao;
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_TABLE_PRODUCT_QUERY);
+        db.execSQL(CREATE_TABLE_WAREHOUSE_QUERY);
+        db.execSQL(CREATE_TABLE_RECEIPT_QUERY);
+        db.execSQL(CREATE_TABLE_RECEIPT_DETAIL_QUERY);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.w(DatabaseHelper.class.getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + ", which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS " + DB_NAME);
+        onCreate(db);
+    }
 
     public static final String DB_NAME = "warehouse.db";
 
@@ -62,44 +97,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             TABLE_RECEIPT_DETAIL_RECEIPT_ID + ", " +
             TABLE_RECEIPT_DETAIL_PRODUCT_ID +
             "))";
-
-    public DatabaseHelper(@Nullable Context context) {
-        super(context, DB_NAME, null, 1);
-        this.context = context;
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-//        db.beginTransaction();
-//
-//        try {
-        db.execSQL(CREATE_TABLE_PRODUCT_QUERY);
-        db.execSQL(CREATE_TABLE_WAREHOUSE_QUERY);
-        db.execSQL(CREATE_TABLE_RECEIPT_QUERY);
-        db.execSQL(CREATE_TABLE_RECEIPT_DETAIL_QUERY);
-
-
-
-//        Warehouse w1 = new Warehouse("K1", "Bình Chánh", "Bình Chánh");
-//        Warehouse w2 = new Warehouse("K2", "Tân Phú", "Tân Phú");
-//        Warehouse w3 = new Warehouse("K3", "Thủ Đức", "Thủ Đức");
-
-
-//            db.setTransactionSuccessful();
-//        } catch (Exception ex) {
-//            Log.e("TABLE CREATING ERROR", ex.getMessage());
-//        } finally {
-//            db.endTransaction();
-//            db.close();
-//        }
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(DatabaseHelper.class.getName(),
-                "Upgrading database from version " + oldVersion + " to "
-                        + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + DB_NAME);
-        onCreate(db);
-    }
 }
