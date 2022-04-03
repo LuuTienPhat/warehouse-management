@@ -5,11 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
 import com.example.warehousemanagement.dao.ProductDao;
-import com.example.warehousemanagement.model.Product;
-import com.example.warehousemanagement.model.Warehouse;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private Context context;
@@ -91,8 +87,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_RECEIPT_DETAIL_QUERY = "CREATE TABLE " + TABLE_RECEIPT_DETAIL + " (" +
             TABLE_RECEIPT_DETAIL_RECEIPT_ID + " INT REFERENCES " + TABLE_RECEIPT + " (" + TABLE_RECEIPT_ID + "), " +
             TABLE_RECEIPT_DETAIL_PRODUCT_ID + " VARCHAR (10) REFERENCES " + TABLE_PRODUCT + " (" + TABLE_PRODUCT_ID + "), " +
-            TABLE_RECEIPT_DETAIL_QUANTITY + " VARCHAR (50), " +
-            TABLE_RECEIPT_DETAIL_UNIT + " INT, " +
+            TABLE_RECEIPT_DETAIL_UNIT + " VARCHAR (50), " +
+            TABLE_RECEIPT_DETAIL_QUANTITY + " INT, " +
             "PRIMARY KEY (" +
             TABLE_RECEIPT_DETAIL_RECEIPT_ID + ", " +
             TABLE_RECEIPT_DETAIL_PRODUCT_ID +
