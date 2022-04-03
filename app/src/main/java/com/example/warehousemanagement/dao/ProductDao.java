@@ -1,7 +1,6 @@
 package com.example.warehousemanagement.dao;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,10 +13,13 @@ import java.util.List;
 
 public class ProductDao implements Dao<Product> {
     private SQLiteDatabase db;
-    private SQLiteOpenHelper dbHelper;
+    private final SQLiteOpenHelper dbHelper;
 
-    public ProductDao(Context context) {
-        dbHelper = new DatabaseHelper(context);
+    public ProductDao(DatabaseHelper dbHelper) {
+        this.dbHelper = dbHelper;
+    }
+
+    public void fillData() {
         Product p1 = new Product("GO", "Gạch ống", "Đồng Nai");
         Product p2 = new Product("GT", "Gạch thẻ", "Long An");
         Product p3 = new Product("SA", "Sắt tròn", "Sắt tròn");
@@ -29,13 +31,6 @@ public class ProductDao implements Dao<Product> {
         insertOne(p3);
         insertOne(p4);
         insertOne(p5);
-
-//        ProductDao productDao = new ProductDao(this.context);
-//        productDao.insertOne(p1);
-//        productDao.insertOne(p2);
-//        productDao.insertOne(p3);
-//        productDao.insertOne(p4);
-//        productDao.insertOne(p5);
     }
 
     @Override
