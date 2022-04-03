@@ -2,17 +2,18 @@ package com.example.warehousemanagement.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Receipt {
     private int id;
     private LocalDate date;
-    private ArrayList<ReceiptDetail> receiptDetails = new ArrayList<>();
+    private List<ReceiptDetail> receiptDetails = new ArrayList<>();
     private String warehouseId;
 
     public Receipt() {
     }
 
-    public Receipt(int id, LocalDate date, String warehouseId, ArrayList<ReceiptDetail> receiptDetails) {
+    public Receipt(int id, LocalDate date, String warehouseId, List<ReceiptDetail> receiptDetails) {
         this.id = id;
         this.date = date;
         this.receiptDetails = receiptDetails;
@@ -25,11 +26,11 @@ public class Receipt {
         return numberOfTypes;
     }
 
-    public ArrayList<ReceiptDetail> getReceiptDetails() {
+    public List<ReceiptDetail> getReceiptDetails() {
         return receiptDetails;
     }
 
-    public void setReceiptDetails(ArrayList<ReceiptDetail> receiptDetails) {
+    public void setReceiptDetails(List<ReceiptDetail> receiptDetails) {
         this.receiptDetails = receiptDetails;
     }
 
