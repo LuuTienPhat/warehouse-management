@@ -1,14 +1,20 @@
 package com.example.warehousemanagement;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.example.warehousemanagement.dao.ProductDao;
+import com.example.warehousemanagement.dao.ReceiptDao;
+import com.example.warehousemanagement.dao.ReceiptDetailDao;
+import com.example.warehousemanagement.dao.WarehouseDao;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnWarehouse, btnProduct, btnReceipt;
+    ConstraintLayout btnWarehouse, btnProduct, btnReceipt;
+    DatabaseHelper databaseHelper = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +23,18 @@ public class MainActivity extends AppCompatActivity {
         setControl();
         setEvent();
 
-//        AppDatabase db = AppDatabase.getInstance(this);
-//        this.deleteDatabase(db.getDatabaseName());
-//        db.initializeDatabase();
+        databaseHelper = DatabaseHelper.getInstance(this);
+        ProductDao productDao = new ProductDao(databaseHelper);
+        productDao.fillData();
 
+        WarehouseDao warehouseDao = new WarehouseDao(databaseHelper);
+        warehouseDao.fillData();
 
+        ReceiptDao receiptDao = new ReceiptDao(databaseHelper);
+        receiptDao.fillData();
+
+        ReceiptDetailDao receiptDetailDao = new ReceiptDetailDao(databaseHelper);
+        receiptDetailDao.fillData();
     }
 
     private void setEvent() {
@@ -48,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setControl() {
-        btnProduct = findViewById(R.id.product_btn);
-        btnWarehouse = findViewById(R.id.warehouse_btn);
-        btnReceipt = findViewById(R.id.receipt_btn);
+        btnProduct = findViewById(R.id.btnProduct);
+        btnWarehouse = findViewById(R.id.btnWarehouse);
+        btnReceipt = findViewById(R.id.btnReceipt);
     }
 
     public void handleBtnWarehouseClick(View view) {
@@ -64,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleBtnReceiptClick(View view) {
-        Intent intent = new Intent(this, WarehouseActivity.class);
+        Intent intent = new Intent(this, ReceiptActivity.class);
         startActivity(intent);
     }
 }
