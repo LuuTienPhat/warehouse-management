@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:background="@drawable/bg_azureich_white_radius_25"
@@ -7,19 +8,26 @@
 
     <TextView
         android:id="@+id/tvWarehouseId"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_black"
-        android:paddingHorizontal="40dp"
         android:text="K1"
+        android:textAlignment="center"
         android:textColor="@color/space_cadet"
-        android:textSize="40dp" />
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/constraintLayout1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="start">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvWarehouseId"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tvWarehouseName"
@@ -28,23 +36,36 @@
             android:fontFamily="@font/roboto_bold"
             android:text="Kho Bình Chánh"
             android:textColor="@color/space_cadet"
-            android:textSize="24dp"
-            android:textAlignment="textStart"/>
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="start">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWarehouseName">
 
             <TextView
                 android:id="@+id/tvProductQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/roboto_regular"
                 android:text="5 000"
                 android:textColor="@color/space_cadet"
-                android:textSize="20dp" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvProductUnit"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvProductUnit"
@@ -53,9 +74,13 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="(viên)"
                 android:textColor="@color/space_cadet"
-                android:textSize="18dp" />
-        </LinearLayout>
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvProductQuantity"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

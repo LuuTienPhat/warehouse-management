@@ -119,32 +119,22 @@
             android:textColor="@color/space_cadet" />
     </LinearLayout>
 
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:gravity="center">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout4">
 
-        <Button
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/bg_btn_confirm_dark"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Lưu"
-            android:textAllCaps="false"
-            android:textColor="@color/cultured"
-            android:textSize="20dp" />
+        <include
+            layout="@layout/constraint_save_cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_btn_confirm_light"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Hủy"
-            android:textAllCaps="false"
-            android:textColor="@color/steel_blue"
-            android:textSize="20dp" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>s
+
 </LinearLayout>
