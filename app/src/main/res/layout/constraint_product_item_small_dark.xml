@@ -4,28 +4,26 @@
     style="@style/Theme.WarehouseManagement"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:background="@drawable/bg_azureich_white_radius_25">
+    android:background="@drawable/bg_steel_blue_radius_25">
 
     <TextView
         android:id="@+id/tvProductId"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_black"
-        android:paddingHorizontal="40dp"
         android:text="GO"
         android:textAlignment="center"
-        android:textColor="@color/space_cadet"
-        android:textSize="30dp"
+        android:textColor="@color/cultured"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvProductId"
@@ -33,22 +31,31 @@
 
         <TextView
             android:id="@+id/tvProductName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/roboto_bold"
             android:text="Gạch ống"
-            android:textColor="@color/space_cadet"
-            android:textSize="20dp" />
+            android:textColor="@color/cultured"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvProductOrigin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvProductOrigin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
             android:text="Bình Dương"
-            android:textColor="@color/space_cadet"
-            android:textSize="14dp" />
-    </LinearLayout>
+            android:textColor="@color/cultured"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

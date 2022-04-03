@@ -8,7 +8,7 @@ import android.util.Log;
 import com.example.warehousemanagement.dao.ProductDao;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private Context context;
+    private final Context context;
     private static DatabaseHelper Instance = null;
 
     private DatabaseHelper(Context context) {
