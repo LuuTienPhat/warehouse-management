@@ -1,25 +1,37 @@
 package com.example.warehousemanagement;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.adapter.ProductAdapter;
 import com.example.warehousemanagement.dao.ProductDao;
 import com.example.warehousemanagement.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProductActivity extends AppCompatActivity {
-    ImageButton btnMinimize, btnAdd;
+public class ProductActivity extends AppCompatActivity implements BaseActivity {
+    ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
     ListView listView;
     SearchView searchView;
-    TextView title;
+    TextView tvTitle;
+    ProductDao productDao = null;
+    ProductAdapter productAdapter = null;
+    List<Product> products = new ArrayList<>();
+    int dividerHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +40,29 @@ public class ProductActivity extends AppCompatActivity {
         setControl();
         setEvent();
 
-        title.setText("Vật tư");
+        tvTitle.setText("Vật tư");
+        productDao = new ProductDao(DatabaseHelper.getInstance(this));
+        products = productDao.getAll();
 
-        ProductDao productDao = new ProductDao(this);
-        List<Product> products = productDao.getAll();
-
-        ProductAdapter productAdapter = new ProductAdapter(this, R.layout.product_item, products);
+        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
         listView.setAdapter(productAdapter);
+        dividerHeight = listView.getDividerHeight();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        int LAUNCH_SECOND_ACTIVITY = 1;
+        if (requestCode == LAUNCH_SECOND_ACTIVITY) {
+            if (resultCode == Activity.RESULT_OK) {
+                String result = data.getStringExtra("result");
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                // Write your code if there's no result
+            }
+        }
+    } //onActivityResult
 
     private void setEvent() {
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -44,17 +71,101 @@ public class ProductActivity extends AppCompatActivity {
                 handleBtnAddClick(view);
             }
         });
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleBtnRefreshClick(view);
+            }
+        });
+        btnSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleBtnSortClick(view);
+            }
+        });
+        btnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleBtnFilterClick(view);
+            }
+        });
+        btnMinimize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleBtnMinimizeClick(view);
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Product product = (Product) adapterView.getItemAtPosition(position);
+            }
+        });
     }
 
     private void setControl() {
         btnAdd = findViewById(R.id.btnAdd);
+        btnRefresh = findViewById(R.id.btnRefresh);
+        btnFilter = findViewById(R.id.btnFilter);
+        btnSort = findViewById(R.id.btnSort);
         btnMinimize = findViewById(R.id.btnMinimize);
         listView = findViewById(R.id.listView);
         searchView = findViewById(R.id.searchView);
-        title = findViewById(R.id.tvTitle);
+        tvTitle = findViewById(R.id.tvTitle);
     }
 
-    private void handleBtnAddClick(View view) {
+    // You can do the assignment inside onAttach or onCreate, i.e, before the activity is displayed
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // There are no request codes
+                        Intent data = result.getData();
+                    }
+                }
+            });
 
+    public void openSomeActivityForResult() {
+        Intent intent = new Intent(this, AddProductActivity.class);
+        someActivityResultLauncher.launch(intent);
+    }
+
+    @Override
+    public void handleBtnAddClick(View view) {
+        int LAUNCH_ADD_PRODUCT_ACTIVITY = 1;
+        Intent intent = new Intent(this, AddProductActivity.class);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    public void handleBtnRefreshClick(View view) {
+        products = productDao.getAll();
+
+        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        listView.setAdapter(productAdapter);
+        listView.setDividerHeight(dividerHeight);
+    }
+
+    @Override
+    public void handleBtnSortClick(View view) {
+
+    }
+
+    @Override
+    public void handleBtnFilterClick(View view) {
+
+    }
+
+    @Override
+    public void handleBtnMinimizeClick(View view) {
+        products = productDao.getAll();
+
+        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item_small, products);
+        listView.setAdapter(productAdapter);
+        listView.setDividerHeight(10);
+        productAdapter.notifyDataSetChanged();
     }
 }
