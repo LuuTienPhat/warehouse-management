@@ -11,21 +11,20 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.warehousemanagement.dao.WarehouseDao;
-import com.example.warehousemanagement.entity.WarehouseEntity;
+import com.example.warehousemanagement.model.Warehouse;
 
 public class AddWarehouseActivity extends AppCompatActivity {
     EditText tvName, tvId, tvAddress;
     ImageButton btnEdit, btnDelete;
     Button btnSave, btnCancel;
-    WarehouseEntity warehouse = null;
+    Warehouse warehouse = null;
     LinearLayout lyOption, lyUtils;
     TextView tvTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_warehouse);
+        setContentView(R.layout.warehouse_add_activity);
         setControl();
         setEvent();
 
@@ -33,10 +32,10 @@ public class AddWarehouseActivity extends AppCompatActivity {
         String warehouseName = this.getIntent().getStringExtra("warehouseName");
         String warehouseAddress = this.getIntent().getStringExtra("warehouseAddress");
 
-        this.warehouse = new WarehouseEntity(warehouseId, warehouseName, warehouseAddress);
-        tvId.setText(warehouse.getId());
-        tvName.setText(warehouse.getName());
-        tvAddress.setText(warehouse.getAddress());
+//        this.warehouse = new WarehouseEntity(warehouseId, warehouseName, warehouseAddress);
+//        tvId.setText(warehouse.getId());
+//        tvName.setText(warehouse.getName());
+//        tvAddress.setText(warehouse.getAddress());
     }
 
     private void setEvent() {

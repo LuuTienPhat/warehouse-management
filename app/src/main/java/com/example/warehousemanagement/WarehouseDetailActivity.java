@@ -9,20 +9,17 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.activity.OnBackPressedDispatcher;
-import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.dao.WarehouseDao;
-import com.example.warehousemanagement.entity.WarehouseEntity;
+import com.example.warehousemanagement.model.Warehouse;
 
 public class WarehouseDetailActivity extends AppCompatActivity {
     EditText etName, etId, etAddress;
     ImageButton btnEdit, btnDelete;
     Button btnSave, btnCancel;
-    WarehouseEntity warehouse = null;
+    Warehouse warehouse = null;
     LinearLayout lyOption, lyUtils;
     TextView tvTitle;
 
@@ -32,7 +29,7 @@ public class WarehouseDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_warehouse_detail);
+        setContentView(R.layout.warehouse_detail_activity);
         setControl();
         setEvent();
 
@@ -46,7 +43,7 @@ public class WarehouseDetailActivity extends AppCompatActivity {
 //        String warehouseName = this.getIntent().getStringExtra("warehouseName");
 //        String warehouseAddress = this.getIntent().getStringExtra("warehouseAddress");
 //
-//        this.warehouse = new WarehouseEntity(warehouseId, warehouseName, warehouseAddress);
+//        this.warehouse = new Warehouse(warehouseId, warehouseName, warehouseAddress);
 //        etId.setText(warehouse.getId());
 //        etName.setText(warehouse.getName());
 //        etAddress.setText(warehouse.getAddress());
@@ -120,12 +117,12 @@ public class WarehouseDetailActivity extends AppCompatActivity {
         //validation
 
 //        if (this.state == 1) {
-//            WarehouseEntity newWarehouse = new WarehouseEntity(id, name, address);
+//            Warehouse newWarehouse = new Warehouse(id, name, address);
 //            AppDatabase db = AppDatabase.getInstance(this);
 //            WarehouseDao warehouseDao = db.warehouseDao();
 //            warehouseDao.updateOne(newWarehouse);
 //        } else if (this.state == 2) {
-//            WarehouseEntity newWarehouse = new WarehouseEntity(id, name, address);
+//            Warehouse newWarehouse = new Warehouse(id, name, address);
 //            AppDatabase db = AppDatabase.getInstance(this);
 //            WarehouseDao warehouseDao = db.warehouseDao();
 //            warehouseDao.insertOne(newWarehouse);
