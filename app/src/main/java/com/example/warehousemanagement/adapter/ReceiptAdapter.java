@@ -11,10 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.warehousemanagement.R;
-import com.example.warehousemanagement.entity.ProductEntity;
-import com.example.warehousemanagement.entity.ReceiptEntity;
 import com.example.warehousemanagement.model.Receipt;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ReceiptAdapter extends ArrayAdapter<Receipt> {
@@ -42,10 +41,10 @@ public class ReceiptAdapter extends ArrayAdapter<Receipt> {
         TextView tvWarehouseId = convertView.findViewById(R.id.tvWarehouseId);
         TextView tvNumberOfProducts = convertView.findViewById(R.id.tvNumberOfProducts);
 
-        tvReceiptId.setText(receipt.getId());
-        tvReceiptDate.setText(receipt.getDate().toString());
-        tvWarehouseId.setText(receipt.getWarehouseId());
-        tvNumberOfProducts.setText(receipt.countNumberOfProductTypes() + " loại vật tư");
+        tvReceiptId.setText(Integer.toString(receipt.getId()));
+        tvReceiptDate.setText(receipt.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        tvWarehouseId.setText("(" + receipt.getWarehouseId() + ")");
+        tvNumberOfProducts.setText(receipt.getReceiptDetails().size() + " loại vật tư");
 
         return convertView;
     }
