@@ -11,40 +11,70 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.warehousemanagement.R;
-import com.example.warehousemanagement.entity.WarehouseEntity;
+import com.example.warehousemanagement.model.Warehouse;
 
 import java.util.List;
 
-public class WarehouseAdapter extends ArrayAdapter<WarehouseEntity> {
+public class WarehouseAdapter extends ArrayAdapter<Warehouse> {
 
     Context context;
-    List<WarehouseEntity> warehouses;
+    List<Warehouse> warehouses;
     int resource;
 
-    public WarehouseAdapter(@NonNull Context context, int resource, @NonNull List<WarehouseEntity> warehouses) {
+    public WarehouseAdapter(@NonNull Context context, int resource, @NonNull List<Warehouse> warehouses) {
         super(context, resource, warehouses);
         this.context = context;
         this.resource = resource;
         this.warehouses = warehouses;
     }
 
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        WarehouseEntity warehouse = getItem(position);
-
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.warehouse_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(resource, parent, false);
         }
 
-        TextView tvWarehouseId = convertView.findViewById(R.id.warehouseId);
-        TextView tvWarehouseName = convertView.findViewById(R.id.warehouseName);
-        TextView tvWarehouseAddress = convertView.findViewById(R.id.warehouseAddress);
+        Warehouse warehouse = getItem(position);
+
+        if (resource == R.layout.warehouse_spinner) {
+            TextView tvWarehouseName = convertView.findViewById(R.id.tvWarehouseName);
+
+            if (warehouse != null) {
+                if (position == 0)
+                    tvWarehouseName.setTextColor(context.getColor(R.color.steel_blue));
+                else tvWarehouseName.setTextColor(context.getColor(R.color.space_cadet));
+
+                tvWarehouseName.setText(warehouse.getName());
+
+            }
+
+        } else {
+            TextView tvWarehouseId = convertView.findViewById(R.id.tvWarehouseId);
+            TextView tvWarehouseName = convertView.findViewById(R.id.tvWarehouseName);
+            TextView tvWarehouseAddress = convertView.findViewById(R.id.tvWarehouseAddress);
+
+            tvWarehouseId.setText(warehouse.getId());
+            tvWarehouseName.setText(warehouse.getName());
+            tvWarehouseAddress.setText(warehouse.getAddress());
+        }
+
+        return convertView;
+    }
+
+    @Override
+    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Warehouse warehouse = getItem(position);
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.warehouse_item_spinner, parent, false);
+        }
+
+        TextView tvWarehouseId = convertView.findViewById(R.id.tvWarehouseId);
+        TextView tvWarehouseName = convertView.findViewById(R.id.tvWarehouseName);
 
         tvWarehouseId.setText(warehouse.getId());
         tvWarehouseName.setText(warehouse.getName());
-        tvWarehouseAddress.setText(warehouse.getAddress());
 
         return convertView;
     }
