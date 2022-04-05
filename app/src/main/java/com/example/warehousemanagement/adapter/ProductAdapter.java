@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import com.example.warehousemanagement.R;
 import com.example.warehousemanagement.model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends ArrayAdapter<Product> {
@@ -34,16 +33,18 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Product product = getItem(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.product_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(resource, parent, false);
         }
 
         TextView tvProductId = convertView.findViewById(R.id.tvProductId);
         TextView tvProductName = convertView.findViewById(R.id.tvProductName);
         TextView tvProductOrigin = convertView.findViewById(R.id.tvProductOrigin);
+//        TextView tvProductUnit = convertView.findViewById(R.id.tvProductUnit);
 
         tvProductId.setText(product.getId());
         tvProductName.setText(product.getName());
         tvProductOrigin.setText(product.getOrigin());
+//        tvProductUnit.setText("ĐVT");
 
         return convertView;
     }

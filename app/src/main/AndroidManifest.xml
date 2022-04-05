@@ -14,7 +14,13 @@
             android:name=".ReceiptActivity"
             android:exported="false" />
         <activity
-            android:name=".AddReceiptActivity"
+            android:name=".EditReceiptDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReceiptViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.receipt.AddReceiptActivity"
             android:exported="false" />
         <activity
             android:name=".WarehouseActivity"

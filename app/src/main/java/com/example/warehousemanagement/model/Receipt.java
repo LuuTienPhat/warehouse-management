@@ -1,10 +1,11 @@
 package com.example.warehousemanagement.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Receipt {
+public class Receipt implements Serializable {
     private int id;
     private LocalDate date;
     private List<ReceiptDetail> receiptDetails = new ArrayList<>();

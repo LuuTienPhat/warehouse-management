@@ -1,6 +1,8 @@
 package com.example.warehousemanagement.model;
 
-public class ReceiptDetail {
+import java.io.Serializable;
+
+public class ReceiptDetail implements Serializable {
     private int receiptId, quantity;
     private String productId, unit;
 

@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="80dp"
     android:background="@drawable/bg_azureich_white_radius_25">
 
     <TextView
         android:id="@+id/tvNo"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_black"
         android:text="1"
@@ -36,7 +36,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="GO"
             android:textColor="@color/space_cadet"
-            android:textSize="18sp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@id/tvProductName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,33 +46,33 @@
             android:id="@+id/tvProductName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_black"
+            android:fontFamily="@font/roboto_regular"
             android:text="Gạch ống"
-            android:textColor="@color/space_cadet"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@id/tvProductOrigin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProductId" />
-
-        <TextView
-            android:id="@+id/tvProductOrigin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_light"
-            android:text="Bình Dương"
             android:textColor="@color/space_cadet"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProductName" />
+            app:layout_constraintTop_toBottomOf="@id/tvProductId" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvProductOrigin"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/roboto_light"-->
+<!--            android:text="Bình Dương"-->
+<!--            android:textColor="@color/space_cadet"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvProductName" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/constraintLayout1"
@@ -84,10 +84,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="@font/roboto_bold"
             android:text="5 000"
             android:textColor="@color/space_cadet"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tvProductUnit"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="(viên)"
             android:textColor="@color/space_cadet"
-            android:textSize="18sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tvProductQuantity"

@@ -1,6 +1,8 @@
 package com.example.warehousemanagement.model;
 
-public class Warehouse {
+import java.io.Serializable;
+
+public class Warehouse implements Serializable {
     private String id, name, address;
 
     public Warehouse() {
