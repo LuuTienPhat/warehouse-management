@@ -83,7 +83,6 @@
                 android:id="@+id/tv1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="start"
                 android:text="Số lượng"
@@ -100,6 +99,7 @@
                 android:id="@+id/etQuantity"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_text_box_round_corner"
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
@@ -109,10 +109,25 @@
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textColorHint="@color/steel_blue"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvQuantityWarning"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv1" />
+
+            <TextView
+                android:id="@+id/tvQuantityWarning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingHorizontal="5dp"
+                android:text="Nhập lại"
+                android:textAlignment="textEnd"
+                android:textColor="@color/space_cadet"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etQuantity" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,7 +145,6 @@
                 android:id="@+id/tv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="start"
                 android:text="Đơn vị tính"
@@ -151,15 +165,31 @@
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Đơn vị tính"
+                android:layout_marginVertical="10dp"
                 android:inputType="text"
                 android:paddingHorizontal="20dp"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textColorHint="@color/steel_blue"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvUnitWarning"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv2" />
+
+            <TextView
+                android:id="@+id/tvUnitWarning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingHorizontal="5dp"
+                android:text="Nhập lại"
+                android:textAlignment="textEnd"
+                android:textColor="@color/space_cadet"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etUnit" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include
