@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingHorizontal="21dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +21,7 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
@@ -32,41 +33,72 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Chỉnh sửa"
+                android:text="Tạo phiếu nhập"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btnDelete"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_delete_32"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvTitle"
-                app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <include
-            android:id="@id/constraintLayout2"
-            layout="@layout/constraint_product_item_small_dark"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginBottom="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toTopOf="@id/constraintLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout1" />
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout1"
+            app:layout_constraintVertical_bias="0.0">
 
+            <TextView
+                android:id="@+id/tvWarehouseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="start"
+                android:text="Kho"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/spinnerWarehouse"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinnerWarehouse"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="10dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toTopOf="@id/tvWarehouseWarning"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWarehouseName" />
+
+            <TextView
+                android:id="@+id/tvWarehouseWarning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingHorizontal="5dp"
+                android:text="Nhập lại"
+                android:textAlignment="textEnd"
+                android:textColor="@color/space_cadet"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinnerWarehouse" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
@@ -80,42 +112,43 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
-                android:id="@+id/tv1"
+                android:id="@+id/tvReceiptId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="start"
-                android:text="Số lượng"
+                android:text="Số phiếu"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/etQuantity"
+                app:layout_constraintBottom_toTopOf="@+id/etReceiptId"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/etQuantity"
+                android:id="@+id/etReceiptId"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_text_box_round_corner"
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
-                android:hint="Số lượng"
-                android:inputType="number"
+                android:hint="Mã vật tư"
+                android:inputType="text"
                 android:paddingHorizontal="20dp"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textColorHint="@color/steel_blue"
-                app:layout_constraintBottom_toTopOf="@id/tvQuantityWarning"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/tvReceiptIdWarning"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv1" />
+                app:layout_constraintTop_toBottomOf="@id/tvReceiptId" />
 
             <TextView
-                android:id="@+id/tvQuantityWarning"
+                android:id="@+id/tvReceiptIdWarning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
@@ -127,57 +160,59 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etQuantity" />
+                app:layout_constraintTop_toBottomOf="@id/etReceiptId" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
-            app:layout_constraintBottom_toTopOf="@id/constraintLayout5"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/constraintLayout3"
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
-                android:id="@+id/tv2"
+                android:id="@+id/tvReceiptDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="start"
-                android:text="Đơn vị tính"
+                android:text="Ngày tạo"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/etUnit"
+                app:layout_constraintBottom_toTopOf="@id/etReceiptDate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/etUnit"
+            <Button
+                android:id="@+id/etReceiptDate"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/bg_text_box_round_corner"
-                android:ems="10"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Đơn vị tính"
                 android:layout_marginVertical="10dp"
-                android:inputType="text"
+                android:background="@drawable/bg_text_box_round_corner"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Ngày lập"
                 android:paddingHorizontal="20dp"
+                android:text="19/02/2021"
                 android:textAlignment="textStart"
+                android:textAllCaps="false"
                 android:textColor="@color/space_cadet"
                 android:textColorHint="@color/steel_blue"
-                app:layout_constraintBottom_toTopOf="@id/tvUnitWarning"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/tvReceiptDateWarning"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv2" />
+                app:layout_constraintTop_toBottomOf="@id/tvReceiptDate" />
 
             <TextView
-                android:id="@+id/tvUnitWarning"
+                android:id="@+id/tvReceiptDateWarning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
@@ -189,18 +224,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etUnit" />
+                app:layout_constraintTop_toBottomOf="@id/etReceiptDate" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include
-            android:id="@+id/constraintLayout5"
-            layout="@layout/constraint_save_cancel"
+            android:id="@+id/navigation_bar"
+            layout="@layout/constraint_cancel_previous_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout4" />
+            android:layout_marginBottom="50dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

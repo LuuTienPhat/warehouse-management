@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.warehousemanagement.dao.WarehouseDao;
 import com.example.warehousemanagement.model.Warehouse;
 
-public class WarehouseDetailActivity extends AppCompatActivity {
-    EditText etName, etId, etAddress;
+public class ProductDetailActivity extends AppCompatActivity {
+    EditText etName, etId, etOrigin;
     ImageButton btnEdit, btnDelete;
     Button btnSave, btnCancel;
     Warehouse warehouse = null;
@@ -100,7 +100,7 @@ public class WarehouseDetailActivity extends AppCompatActivity {
         btnEdit = findViewById(R.id.btnEdit);
         btnDelete = findViewById(R.id.btnDelete);
 
-        etAddress = findViewById(R.id.etAddress);
+        etOrigin = findViewById(R.id.etAddress);
         etName = findViewById(R.id.etName);
         etId = findViewById(R.id.etId);
 
@@ -112,7 +112,7 @@ public class WarehouseDetailActivity extends AppCompatActivity {
     private void handleBtnSaveClick(View view) {
         String id = etId.getText().toString().trim();
         String name = etName.getText().toString().trim();
-        String address = etAddress.getText().toString().trim();
+        String address = etOrigin.getText().toString().trim();
 
         //validation
 
@@ -158,8 +158,8 @@ public class WarehouseDetailActivity extends AppCompatActivity {
             etId.setFocusableInTouchMode(false);
             etName.setFocusable(false);
             etName.setFocusableInTouchMode(false);
-            etAddress.setFocusable(false);
-            etAddress.setFocusableInTouchMode(false);
+            etOrigin.setFocusable(false);
+            etOrigin.setFocusableInTouchMode(false);
 
             lyOption.setVisibility(View.GONE);
         } else if (this.state == 1) {
@@ -170,8 +170,8 @@ public class WarehouseDetailActivity extends AppCompatActivity {
             etId.setFocusableInTouchMode(true);
             etName.setFocusable(true);
             etName.setFocusableInTouchMode(true);
-            etAddress.setFocusable(true);
-            etAddress.setFocusableInTouchMode(true);
+            etOrigin.setFocusable(true);
+            etOrigin.setFocusableInTouchMode(true);
 
             lyOption.setVisibility(View.VISIBLE);
         } else if (this.state == 2) {
@@ -182,8 +182,8 @@ public class WarehouseDetailActivity extends AppCompatActivity {
             etId.setFocusableInTouchMode(true);
             etName.setFocusable(true);
             etName.setFocusableInTouchMode(true);
-            etAddress.setFocusable(true);
-            etAddress.setFocusableInTouchMode(true);
+            etOrigin.setFocusable(true);
+            etOrigin.setFocusableInTouchMode(true);
 
             lyOption.setVisibility(View.VISIBLE);
         }

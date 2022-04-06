@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Theme.WarehouseManagement"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingHorizontal="21dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,11 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="60dp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
@@ -32,15 +34,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Chỉnh sửa"
+                android:text="Title"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
-                android:textSize="30sp"
+                android:textSize="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btnDelete"
+                app:layout_constraintEnd_toStartOf="@id/btnEdit"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/ic_edit_32"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+                app:layout_constraintStart_toEndOf="@id/tvTitle"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
@@ -50,23 +63,56 @@
                 android:background="@drawable/ic_delete_32"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvTitle"
+                app:layout_constraintStart_toEndOf="@id/btnEdit"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <include
-            android:id="@id/constraintLayout2"
-            layout="@layout/constraint_product_item_small_dark"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginBottom="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toTopOf="@id/constraintLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout1" />
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout1"
+            app:layout_constraintVertical_bias="0.0">
 
+            <TextView
+                android:id="@+id/tvProductId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="start"
+                android:text="Mã vật tư"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/etId"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_text_box_round_corner"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Mã vật tư"
+                android:inputType="text"
+                android:paddingHorizontal="20dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textColorHint="@color/steel_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvProductId" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
@@ -80,61 +126,46 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
-                android:id="@+id/tv1"
+                android:id="@+id/tvProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="start"
-                android:text="Số lượng"
+                android:text="Tên vật tư"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/etQuantity"
+                app:layout_constraintBottom_toTopOf="@+id/etName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/etQuantity"
+                android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_text_box_round_corner"
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
-                android:hint="Số lượng"
-                android:inputType="number"
-                android:paddingHorizontal="20dp"
+                android:hint="Tên vật tư"
+                android:inputType="text"
+                android:paddingStart="20dp"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textColorHint="@color/steel_blue"
-                app:layout_constraintBottom_toTopOf="@id/tvQuantityWarning"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv1" />
-
-            <TextView
-                android:id="@+id/tvQuantityWarning"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:paddingHorizontal="5dp"
-                android:text="Nhập lại"
-                android:textAlignment="textEnd"
-                android:textColor="@color/space_cadet"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etQuantity" />
+                app:layout_constraintTop_toBottomOf="@id/tvProductName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="100dp"
             app:layout_constraintBottom_toTopOf="@id/constraintLayout5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -142,65 +173,58 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
-                android:id="@+id/tv2"
+                android:id="@+id/tvProductOrigin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="start"
-                android:text="Đơn vị tính"
+                android:text="Xuất xứ"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/etUnit"
+                app:layout_constraintBottom_toTopOf="@+id/etOrigin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/etUnit"
+                android:id="@+id/etOrigin"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/bg_text_box_round_corner"
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
-                android:hint="Đơn vị tính"
-                android:layout_marginVertical="10dp"
+                android:hint="Xuất xứ"
                 android:inputType="text"
-                android:paddingHorizontal="20dp"
+                android:paddingStart="20dp"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textColorHint="@color/steel_blue"
-                app:layout_constraintBottom_toTopOf="@id/tvUnitWarning"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv2" />
-
-            <TextView
-                android:id="@+id/tvUnitWarning"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:paddingHorizontal="5dp"
-                android:text="Nhập lại"
-                android:textAlignment="textEnd"
-                android:textColor="@color/space_cadet"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etUnit" />
+                app:layout_constraintTop_toBottomOf="@id/tvProductOrigin" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <include
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout5"
-            layout="@layout/constraint_save_cancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout4" />
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout4">
+
+            <include
+                layout="@layout/constraint_save_cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
