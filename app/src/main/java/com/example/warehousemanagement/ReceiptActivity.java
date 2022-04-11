@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.warehousemanagement.activities.receipt.AddReceiptActivity;
 import com.example.warehousemanagement.adapter.ReceiptAdapter;
 import com.example.warehousemanagement.adapter.WarehouseAdapter;
 import com.example.warehousemanagement.dao.ReceiptDao;
