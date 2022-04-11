@@ -48,4 +48,8 @@ public class ReceiptAdapter extends ArrayAdapter<Receipt> {
 
         return convertView;
     }
+
+    public List<Receipt> getData(){
+        return  receipts;
+    }
 }
