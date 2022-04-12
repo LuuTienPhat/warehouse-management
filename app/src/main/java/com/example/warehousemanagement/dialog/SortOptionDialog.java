@@ -17,13 +17,16 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class SortOptionDialog extends BottomSheetDialogFragment {
     private SortOptionDialogListener listener;
-    private String sortOptionFor="";
+    private String sortOptionFor = "";
+
     public SortOptionDialog() {
     }
+
     public SortOptionDialog(String sortOptionFor) {
         this.sortOptionFor = sortOptionFor;
     }
-    public void closeDialog(){
+
+    public void closeDialog() {
         this.dismiss();
     }
 
@@ -31,7 +34,7 @@ public class SortOptionDialog extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view1 = null;
-        if(sortOptionFor.equalsIgnoreCase("receipt")){
+        if (sortOptionFor.equalsIgnoreCase("receipt")) {
             view1 = inflater.inflate(R.layout.dialog_sort_by_option_for_receipt, container, false);
 
             Button btnXacNhan = (Button) view1.findViewById(R.id.btnXacNhan);
@@ -81,7 +84,7 @@ public class SortOptionDialog extends BottomSheetDialogFragment {
             });
         }
 
-        if(sortOptionFor.equalsIgnoreCase("product")){
+        if (sortOptionFor.equalsIgnoreCase("product")) {
             view1 = inflater.inflate(R.layout.dialog_sort_by_option_for_product, container, false);
 
             Button btnXacNhan = (Button) view1.findViewById(R.id.btnXacNhan);
@@ -131,7 +134,7 @@ public class SortOptionDialog extends BottomSheetDialogFragment {
             });
         }
 
-        if(sortOptionFor.equalsIgnoreCase("warehouse")){
+        if (sortOptionFor.equalsIgnoreCase("warehouse")) {
             view1 = inflater.inflate(R.layout.dialog_sort_by_option_for_warehouse, container, false);
 
             Button btnXacNhan = (Button) view1.findViewById(R.id.btnXacNhan);
