@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="215dp"
-    android:background="@drawable/bg_space_cadet_radius_15"
+    android:background="@drawable/bg_space_cadet_top_radius_15"
     android:padding="20dp">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
-        android:text="Cảnh báo"
+        android:text="Thông báo"
         android:textColor="@color/cultured"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/tvContent"
@@ -25,9 +25,10 @@
     <TextView
         android:id="@+id/tvContent"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="70dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_regular"
+        android:textSize="16sp"
         android:text="Nội dung này sẽ bị xóa vĩnh viễn, và không thể phục hồi được nữa. Các nội dung liên kết với nó cũng sẽ mất theo. Bạn có đồng ý?"
         android:textColor="@color/azureish_white"
         app:layout_constraintBottom_toTopOf="@id/lyOption"
@@ -46,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvContent">
 
         <Button
-            android:id="@+id/btnYes"
+            android:id="@+id/btnOK"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginEnd="50dp"
@@ -58,12 +59,12 @@
             android:textColor="@color/cultured"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnNo"
+            app:layout_constraintEnd_toStartOf="@+id/btnCancel"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btnNo"
+            android:id="@+id/btnCancel"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:background="@drawable/bg_btn_confirm_light"
@@ -75,7 +76,7 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnYes"
+            app:layout_constraintStart_toEndOf="@id/btnOK"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
