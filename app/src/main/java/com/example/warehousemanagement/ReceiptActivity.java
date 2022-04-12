@@ -1,24 +1,18 @@
 package com.example.warehousemanagement;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.warehousemanagement.activities.receipt.AddReceiptActivity;
 import com.example.warehousemanagement.adapter.ReceiptAdapter;
 import com.example.warehousemanagement.adapter.WarehouseAdapter;
 import com.example.warehousemanagement.dao.ReceiptDao;
@@ -50,7 +44,8 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
     int dividerHeight;
 
     public static String sortOption = "";
-    public String sortOption2 ="";
+    public String sortOption2 = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +61,6 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
         receiptAdapter = new ReceiptAdapter(this, R.layout.constraint_receipt_item, receipts);
         listView.setAdapter(receiptAdapter);
         dividerHeight = listView.getDividerHeight();
-
-//        spinner.setAdapter(receiptAdapter);
     }
 
     private void setEvent() {
@@ -126,14 +119,12 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
 
     @Override
     public void handleBtnAddClick(View view) {
-        Intent intent = new Intent(this, ReceiptActivity.class);
+        Intent intent = new Intent(this, AddReceiptActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void handleBtnRefreshClick(View view) {
-        receipts = receiptDao.getAll();
-
         receiptAdapter = new ReceiptAdapter(this, R.layout.constraint_receipt_item, receipts);
         listView.setAdapter(receiptAdapter);
         receiptAdapter.notifyDataSetChanged();
@@ -186,7 +177,8 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
         sortOption2 = "";
         openDialog();
     }
-    public void openDialog(){
+
+    public void openDialog() {
         SortOptionDialog sortOptionDialog = new SortOptionDialog("receipt");
         sortOptionDialog.show(getSupportFragmentManager(), "sortOptionDialog");
     }
@@ -206,7 +198,7 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
     @Override
     public void setSortOption(String sortOption) {
         sortOption2 = sortOption;
-        System.out.println(sortOption2+"///////////////////////////////////////////////////////");
+        System.out.println(sortOption2 + "///////////////////////////////////////////////////////");
         sortData();
     }
 }
