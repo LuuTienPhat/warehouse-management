@@ -78,4 +78,8 @@ public class WarehouseAdapter extends ArrayAdapter<Warehouse> {
 
         return convertView;
     }
+    public List<Warehouse> getData(){
+        return warehouses;
+    }
+
 }

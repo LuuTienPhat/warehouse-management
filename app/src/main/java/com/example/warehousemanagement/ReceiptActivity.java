@@ -139,22 +139,20 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
         receiptAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void handleBtnSortClick(View view) {
-    openDialog();
+    public void sortData(){
         List<Receipt> receiptsToSort = new ArrayList<>();
         receiptsToSort = receiptAdapter.getData();
-//        displayDialog();
-        System.out.println(sortOption);
-        if (!sortOption.isEmpty()) {
+        System.out.println("begin sort;"+sortOption2);
+        if (!sortOption2.isEmpty()) {
+            System.out.println("begin sort;"+sortOption2);
             Collections.sort(receiptsToSort, new Comparator<Receipt>() {
                 @Override
                 public int compare(Receipt rc1, Receipt rc2) {
                     // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
                     int lessThan = -99;
                     int greaterThan = -99;
-                    String thuTuSapXep = sortOption.split(";")[0];
-                    String sapXepTheo = sortOption.split(";")[1];
+                    String thuTuSapXep = sortOption2.split(";")[0];
+                    String sapXepTheo = sortOption2.split(";")[1];
                     System.out.println(thuTuSapXep + ";" + sapXepTheo);
 
                     if (thuTuSapXep.equalsIgnoreCase("tang_dan")) {
@@ -181,101 +179,18 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
         }
         receiptAdapter = new ReceiptAdapter(this, R.layout.constraint_receipt_item, receiptsToSort);
         listView.setAdapter(receiptAdapter);
+        System.out.println("notify change");
         receiptAdapter.notifyDataSetChanged();
     }
-    public void openDialog(){
-        SortOptionDialog sortOptionDialog = new SortOptionDialog();
-        sortOptionDialog.show(getSupportFragmentManager(), "sortOptionDialog");
+
+    @Override
+    public void handleBtnSortClick(View view) {
+        sortOption2 = "";
+        openDialog();
     }
-//    @Override
-//    public void setSortOption(String sortOption) {
-//        sortOption2 = sortOption;
-//
-//        System.out.println(sortOption2+"///////////////////////////////////////////////////////");
-//    }
-    public void displayDialog() {
-        // custom dialog
-        Dialog dialog = new Dialog(ReceiptActivity.this);
-        dialog.setContentView(R.layout.dialog_sort_by_option);
-        dialog.setTitle("Lựa chọn sắp xếp");
-
-// set the custom dialog components - text, image and button
-
-         Button btnXacNhan = (Button) dialog.findViewById(R.id.btnXacNhan);
-         Button btnHuy = (Button) dialog.findViewById(R.id.btnHuy);
-
-        btnHuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sortOption = "";
-                dialog.hide();
-            }
-        });
-
-        btnXacNhan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                RadioButton rBTangDan = (RadioButton) dialog.findViewById(R.id.radioBtnTangDan);
-                RadioButton rBGiamDan = (RadioButton) dialog.findViewById(R.id.radioBtnGiamDan);
-
-                RadioButton rBTheoMa = (RadioButton) dialog.findViewById(R.id.radioBtnTheoMa);
-                RadioButton rBTheoNgay = (RadioButton) dialog.findViewById(R.id.radioBtnTheoNgay);
-                RadioButton rBTheoSoLuongVatTu = (RadioButton) dialog.findViewById(R.id.radioBtnTheoSoLuong);
-
-                String thuTuSapXep = "";
-                String sapXepTheo = "";
-
-                if (rBTheoMa.isSelected()) {
-                    sapXepTheo = "theo_ma";
-                } else if (rBTheoNgay.isSelected()) {
-                    sapXepTheo = "theo_ngay";
-                } else if (rBTheoSoLuongVatTu.isSelected()) {
-                    sapXepTheo = "theo_so_luong";
-                }
-
-                if (rBTangDan.isSelected()) {
-                    thuTuSapXep = "tang_dan";
-                } else if (rBGiamDan.isSelected()) {
-                    thuTuSapXep = "giam_dan";
-                }
-                sortOption = thuTuSapXep + ";" + sapXepTheo;
-                System.out.println(sortOption+"-----------------------------------------------");
-                dialog.hide();
-            }
-        });
-
-        System.out.println("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-
-        dialog.show();
-
-//        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                // code for matching password
-//
-//                String thuTuSapXep = "";
-//                String sapXepTheo = "";
-//
-//                if(rBTheoMa.isSelected()){
-//                    sapXepTheo = "theo_ma";
-//                }else if(rBTheoNgay.isSelected()){
-//                    sapXepTheo = "theo_ngay";
-//                }else if(rBTheoSoLuongVatTu.isSelected()){
-//                    sapXepTheo = "theo_so_luong";
-//                }
-//
-//                if(rBTangDan.isSelected()){
-//                    thuTuSapXep = "tang_dan";
-//                }else if(rBGiamDan.isSelected()){
-//                    thuTuSapXep = "giam_dan";
-//                }
-//
-//                sortOption = thuTuSapXep+";"+sapXepTheo;
-//            }
-//        });
-//        AlertDialog dialog = alert.create();
-//        dialog.show();
+    public void openDialog(){
+        SortOptionDialog sortOptionDialog = new SortOptionDialog("receipt");
+        sortOptionDialog.show(getSupportFragmentManager(), "sortOptionDialog");
     }
 
     @Override
@@ -296,5 +211,6 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
     public void setSortOption(String sortOption) {
         sortOption2 = sortOption;
         System.out.println(sortOption2+"///////////////////////////////////////////////////////");
+        sortData();
     }
 }

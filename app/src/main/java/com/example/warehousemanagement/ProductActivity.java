@@ -17,13 +17,18 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.adapter.ProductAdapter;
+import com.example.warehousemanagement.adapter.ReceiptAdapter;
 import com.example.warehousemanagement.dao.ProductDao;
+import com.example.warehousemanagement.dialog.SortOptionDialog;
 import com.example.warehousemanagement.model.Product;
+import com.example.warehousemanagement.model.Receipt;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-public class ProductActivity extends AppCompatActivity implements BaseActivity {
+public class ProductActivity extends AppCompatActivity implements BaseActivity, SortOptionDialog.SortOptionDialogListener {
     ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
     ListView listView;
     SearchView searchView;
@@ -32,7 +37,7 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity {
     ProductAdapter productAdapter = null;
     List<Product> products = new ArrayList<>();
     int dividerHeight;
-
+    public String sortOption2="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,7 +156,8 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity {
 
     @Override
     public void handleBtnSortClick(View view) {
-
+        sortOption2 = "";
+        openDialog();
     }
 
     @Override
@@ -168,4 +174,60 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity {
         listView.setDividerHeight(10);
         productAdapter.notifyDataSetChanged();
     }
+
+    public void sortData(){
+        List<Product> productsToSort = new ArrayList<>();
+        productsToSort = productAdapter.getData();
+        System.out.println("begin sort;"+sortOption2);
+        if (!sortOption2.isEmpty()) {
+            System.out.println("begin sort;"+sortOption2);
+            Collections.sort(productsToSort, new Comparator<Product>() {
+                @Override
+                public int compare(Product pd1, Product pd2) {
+                    // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                    int lessThan = -99;
+                    int greaterThan = -99;
+                    String thuTuSapXep = sortOption2.split(";")[0];
+                    String sapXepTheo = sortOption2.split(";")[1];
+                    System.out.println(thuTuSapXep + ";" + sapXepTheo);
+
+                    if (thuTuSapXep.equalsIgnoreCase("tang_dan")) {
+                        lessThan = -1;
+                        greaterThan = 1;
+                    } else if (thuTuSapXep.equalsIgnoreCase("giam_dan")) {
+                        lessThan = 1;
+                        greaterThan = -1;
+                    }
+
+                    if (sapXepTheo.equalsIgnoreCase("theo_ma")) {
+                        // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                        // so sanh string dungf compare to, < tra ve <0, lon hon tra ve > 0
+                        return (pd1.getId().compareTo(pd2.getId())<0) ? lessThan : (pd1.getId().compareTo(pd2.getId())>0) ? greaterThan : 0;
+                    } else if (sapXepTheo.equalsIgnoreCase("theo_ten")) {
+                        // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                        return (pd1.getName().compareTo(pd2.getName())<0) ? lessThan : (pd1.getName().compareTo(pd2.getName())>0) ? greaterThan : 0;
+                    }else if (sapXepTheo.equalsIgnoreCase("theo_xuat_xu")) {
+                        // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                        return (pd1.getOrigin().compareTo(pd2.getOrigin())<0) ? lessThan : (pd1.getOrigin().compareTo(pd2.getOrigin())>0) ? greaterThan : 0;
+                    }
+                    return 0;
+                }
+            });
+        }
+        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, productsToSort);
+        listView.setAdapter(productAdapter);
+        System.out.println("notify change");
+        productAdapter.notifyDataSetChanged();
+    }
+    public void openDialog(){
+        SortOptionDialog sortOptionDialog = new SortOptionDialog("product");
+        sortOptionDialog.show(getSupportFragmentManager(), "sortOptionDialog");
+    }
+
+    @Override
+    public void setSortOption(String sortOption) {
+        sortOption2 = sortOption;
+        sortData();
+    }
 }
+
