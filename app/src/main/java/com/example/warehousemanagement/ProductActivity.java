@@ -167,8 +167,6 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
 
     @Override
     public void handleBtnMinimizeClick(View view) {
-        products = productDao.getAll();
-
         productAdapter = new ProductAdapter(this, R.layout.constraint_product_item_small, products);
         listView.setAdapter(productAdapter);
         listView.setDividerHeight(10);
@@ -176,12 +174,10 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
     }
 
     public void sortData(){
-        List<Product> productsToSort = new ArrayList<>();
-        productsToSort = productAdapter.getData();
         System.out.println("begin sort;"+sortOption2);
         if (!sortOption2.isEmpty()) {
             System.out.println("begin sort;"+sortOption2);
-            Collections.sort(productsToSort, new Comparator<Product>() {
+            Collections.sort(products, new Comparator<Product>() {
                 @Override
                 public int compare(Product pd1, Product pd2) {
                     // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
@@ -214,7 +210,7 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
                 }
             });
         }
-        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, productsToSort);
+        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
         listView.setAdapter(productAdapter);
         System.out.println("notify change");
         productAdapter.notifyDataSetChanged();

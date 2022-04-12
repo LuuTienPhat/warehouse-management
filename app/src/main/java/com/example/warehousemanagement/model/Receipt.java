@@ -39,7 +39,9 @@ public class Receipt implements Serializable {
         }
         return totalQuan;
     }
-
+    public int countReceptDetailsProductType(){
+        return this.getReceiptDetails().size();
+    }
     public void setReceiptDetails(List<ReceiptDetail> receiptDetails) {
         this.receiptDetails = receiptDetails;
     }

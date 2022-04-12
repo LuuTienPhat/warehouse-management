@@ -133,7 +133,7 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
 
     @Override
     public void handleBtnMinimizeClick(View view) {
-        warehouses = warehouseDao.getAll();
+//        warehouses = warehouseDao.getAll();
 
         warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item_small, warehouses);
         listView.setAdapter(warehouseAdapter);
@@ -146,12 +146,10 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
         sortData();
     }
     public void sortData(){
-        List<Warehouse> warehousesToSort = new ArrayList<>();
-        warehousesToSort = warehouseAdapter.getData();
         System.out.println("begin sort;"+sortOption2);
         if (!sortOption2.isEmpty()) {
             System.out.println("begin sort;"+sortOption2);
-            Collections.sort(warehousesToSort, new Comparator<Warehouse>() {
+            Collections.sort(warehouses, new Comparator<Warehouse>() {
                 @Override
                 public int compare(Warehouse pd1, Warehouse pd2) {
                     // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
@@ -184,7 +182,7 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
                 }
             });
         }
-        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehousesToSort);
+        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
         listView.setAdapter(warehouseAdapter);
         System.out.println("notify change");
         warehouseAdapter.notifyDataSetChanged();
