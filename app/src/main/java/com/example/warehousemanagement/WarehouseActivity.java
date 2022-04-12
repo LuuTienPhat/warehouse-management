@@ -143,14 +143,11 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
         sortOption2 = sortOption;
         sortData();
     }
-
-    public void sortData() {
-        List<Warehouse> warehousesToSort = new ArrayList<>();
-        warehousesToSort = warehouseAdapter.getData();
-        System.out.println("begin sort;" + sortOption2);
+    public void sortData(){
+        System.out.println("begin sort;"+sortOption2);
         if (!sortOption2.isEmpty()) {
-            System.out.println("begin sort;" + sortOption2);
-            Collections.sort(warehousesToSort, new Comparator<Warehouse>() {
+            System.out.println("begin sort;"+sortOption2);
+            Collections.sort(warehouses, new Comparator<Warehouse>() {
                 @Override
                 public int compare(Warehouse pd1, Warehouse pd2) {
                     // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
@@ -183,7 +180,7 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
                 }
             });
         }
-        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehousesToSort);
+        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
         listView.setAdapter(warehouseAdapter);
         System.out.println("notify change");
         warehouseAdapter.notifyDataSetChanged();

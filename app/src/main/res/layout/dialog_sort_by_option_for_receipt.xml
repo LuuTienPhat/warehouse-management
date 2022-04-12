@@ -85,7 +85,7 @@
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Số lượng vật tư trong phiếu"
+                android:text="Số loại vật tư trong phiếu"
                 android:textSize="20dp"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="12dp"
