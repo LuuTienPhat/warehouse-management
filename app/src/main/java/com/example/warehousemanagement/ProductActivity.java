@@ -167,8 +167,6 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
 
     @Override
     public void handleBtnMinimizeClick(View view) {
-        products = productDao.getAll();
-
         productAdapter = new ProductAdapter(this, R.layout.constraint_product_item_small, products);
         listView.setAdapter(productAdapter);
         listView.setDividerHeight(10);
