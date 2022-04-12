@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:text="Thứ tự"
             android:textSize="24dp"
-            android:padding="10dp"
+            android:textStyle="bold"
             android:layout_marginBottom="20dp"
             />
 
@@ -26,20 +26,24 @@
             android:orientation="horizontal">
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <RadioButton
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="20dp"
+                    android:paddingVertical="12dp"
                     android:checked="true"
+                    android:layout_weight="1"
                     android:textSize="20dp"
                     android:background="@drawable/border_bottom"
                     android:text="Tăng dần"
                     android:id="@+id/radioBtnTangDan"/>
                 <RadioButton
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="20dp"
+                    android:layout_weight="1"
+
+                    android:paddingVertical="12dp"
                     android:textSize="20dp"
                     android:background="@drawable/border_bottom"
                     android:text="Giảm dần"
@@ -51,6 +55,7 @@
             android:layout_height="wrap_content"
             android:text="Sắp xếp theo?"
             android:textSize="24dp"
+            android:textStyle="bold"
             android:layout_marginVertical="20dp"
             />
         <RadioGroup
@@ -59,10 +64,10 @@
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mã"
+                android:text="Mã vật tư"
                 android:textSize="20dp"
-                android:textAlignment="center"
-                android:paddingVertical="20dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
                 android:background="@drawable/border_bottom"
                 android:checked="true"
                 android:id="@+id/radioBtnTheoMa"
@@ -70,22 +75,22 @@
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ngày"
+                android:text="Tên vật tư"
                 android:textSize="20dp"
-                android:textAlignment="center"
-                android:paddingVertical="20dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
                 android:background="@drawable/border_bottom"
-                android:id="@+id/radioBtnTheoNgay"
+                android:id="@+id/radioBtnTheoTen"
                 />
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Số lượng vật tư"
+                android:text="Nguồn gốc xuất xứ"
                 android:textSize="20dp"
-                android:textAlignment="center"
-                android:paddingVertical="20dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
                 android:background="@drawable/border_bottom"
-                android:id="@+id/radioBtnTheoSoLuong"
+                android:id="@+id/radioBtnTheoXuatXu"
 
                 />
         </RadioGroup>
