@@ -1,18 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-Ch    <style name="Theme.WarehouseManagement" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.WarehouseManagement" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-<!--        <item name="colorPrimary">@color/purple_500</item>-->
-<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-<!--        <item name="colorOnPrimary">@color/white</item>-->
+        <!--        <item name="colorPrimary">@color/purple_500</item>-->
+        <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+        <!--        <item name="colorOnPrimary">@color/white</item>-->
 
-<!--        colorPrimary – The color of the app bar.-->
-<!--        colorPrimaryDark – The color of the status bar and contextual app bars; this is normally a dark version of colorPrimary.-->
-<!--        colorAccent – The color of UI controls such as check boxes, radio buttons, and edit text boxes.-->
-<!--        windowBackground – The color of the screen background.-->
-<!--        textColorPrimary – The color of UI text in the app bar.-->
-<!--        statusBarColor – The color of the status bar.-->
-<!--        navigationBarColor – The color of the navigation bar.-->
+        <!--        colorPrimary – The color of the app bar.-->
+        <!--        colorPrimaryDark – The color of the status bar and contextual app bars; this is normally a dark version of colorPrimary.-->
+        <!--        colorAccent – The color of UI controls such as check boxes, radio buttons, and edit text boxes.-->
+        <!--        windowBackground – The color of the screen background.-->
+        <!--        textColorPrimary – The color of UI text in the app bar.-->
+        <!--        statusBarColor – The color of the status bar.-->
+        <!--        navigationBarColor – The color of the navigation bar.-->
 
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -26,5 +26,15 @@ Ch    <style name="Theme.WarehouseManagement" parent="Theme.AppCompat.Light.NoAc
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+
+    <style name="BaseBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_radius_top_15</item>
     </style>
 </resources>
