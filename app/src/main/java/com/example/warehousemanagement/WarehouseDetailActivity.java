@@ -34,7 +34,7 @@ public class WarehouseDetailActivity extends AppCompatActivity {
         setEvent();
 
         this.state = 0;
-        changeState();
+        //changeState();
 
 //        db = AppDatabase.getInstance(this);
 //        warehouseDao = db.warehouseDao();
