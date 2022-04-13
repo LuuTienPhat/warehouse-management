@@ -1,146 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Theme.WarehouseManagement"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:paddingHorizontal="21dp">
 
     <LinearLayout
+        android:id="@+id/constraintLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="21dp">
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_vertical|start"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/constraintLayout1"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="30dp"
-            android:gravity="center_vertical|start"
-            android:orientation="horizontal">
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Chỉnh sửa"
+            android:textAlignment="textStart"
+            android:textColor="@color/space_cadet"
+            android:textSize="30sp" />
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Chỉnh sửa"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textSize="30sp" />
-
-            <ImageButton
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_delete_32" />
-
-        </LinearLayout>
-
-
-        <include
-            android:id="@id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginBottom="60dp" />
-
-
-        <LinearLayout
-            android:id="@+id/constraintLayout3"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="start"
-                android:text="Số lượng"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/etQuantity"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginVertical="10dp"
-                android:background="@drawable/bg_text_box_round_corner"
-                android:ems="10"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Số lượng"
-                android:inputType="number"
-                android:paddingHorizontal="20dp"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textColorHint="@color/steel_blue" />
-
-            <TextView
-                android:id="@+id/tvQuantityWarning"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:paddingHorizontal="5dp"
-                android:text="Nhập lại"
-                android:textAlignment="textEnd"
-                android:textColor="@color/space_cadet"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/constraintLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="start"
-                android:text="Đơn vị tính"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/etUnit"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginVertical="10dp"
-                android:background="@drawable/bg_text_box_round_corner"
-                android:ems="10"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Đơn vị tính"
-                android:inputType="text"
-                android:paddingHorizontal="20dp"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textColorHint="@color/steel_blue" />
-
-            <TextView
-                android:id="@+id/tvUnitWarning"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:paddingHorizontal="5dp"
-                android:text="Nhập lại"
-                android:textAlignment="textEnd"
-                android:textColor="@color/space_cadet"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <include
-            android:id="@+id/constraintLayout5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:background="@drawable/ic_delete_32" />
 
     </LinearLayout>
-</ScrollView>
+
+
+    <include
+        android:id="@id/constraintLayout2"
+        layout="@layout/product_item_small_dark"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="60dp" />
+
+
+    <LinearLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="start"
+            android:text="Số lượng"
+            android:textAlignment="textStart"
+            android:textColor="@color/space_cadet"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/bg_text_box_round_corner"
+            android:ems="10"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Số lượng"
+            android:inputType="number"
+            android:paddingHorizontal="20dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/space_cadet"
+            android:textColorHint="@color/steel_blue" />
+
+        <TextView
+            android:id="@+id/tvQuantityWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:paddingHorizontal="5dp"
+            android:text="Nhập lại"
+            android:textAlignment="textEnd"
+            android:textColor="@color/space_cadet"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="start"
+            android:text="Đơn vị tính"
+            android:textAlignment="textStart"
+            android:textColor="@color/space_cadet"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etUnit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/bg_text_box_round_corner"
+            android:ems="10"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Đơn vị tính"
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/space_cadet"
+            android:textColorHint="@color/steel_blue" />
+
+        <TextView
+            android:id="@+id/tvUnitWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:paddingHorizontal="5dp"
+            android:text="Nhập lại"
+            android:textAlignment="textEnd"
+            android:textColor="@color/space_cadet"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/constraintLayout5"
+        layout="@layout/receipt_detail_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
