@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.warehousemanagement.activities.receipt.AddReceiptActivity;
 import com.example.warehousemanagement.adapter.ReceiptAdapter;
 import com.example.warehousemanagement.adapter.WarehouseAdapter;
 import com.example.warehousemanagement.dao.ReceiptDao;
@@ -58,7 +57,7 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
         receiptDao = new ReceiptDao(DatabaseHelper.getInstance(this));
         receipts = receiptDao.getAll();
 
-        receiptAdapter = new ReceiptAdapter(this, R.layout.constraint_receipt_item, receipts);
+        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receipts);
         listView.setAdapter(receiptAdapter);
         dividerHeight = listView.getDividerHeight();
     }
@@ -125,16 +124,18 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
 
     @Override
     public void handleBtnRefreshClick(View view) {
-        receiptAdapter = new ReceiptAdapter(this, R.layout.constraint_receipt_item, receipts);
+        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receipts);
         listView.setAdapter(receiptAdapter);
         receiptAdapter.notifyDataSetChanged();
     }
 
-    public void sortData(){
-        System.out.println("begin sort;"+sortOption2);
+    public void sortData() {
+        List<Receipt> receiptsToSort = new ArrayList<>();
+        receiptsToSort = receiptAdapter.getData();
+        System.out.println("begin sort;" + sortOption2);
         if (!sortOption2.isEmpty()) {
-            System.out.println("begin sort;"+sortOption2);
-            Collections.sort(receipts, new Comparator<Receipt>() {
+            System.out.println("begin sort;" + sortOption2);
+            Collections.sort(receiptsToSort, new Comparator<Receipt>() {
                 @Override
                 public int compare(Receipt rc1, Receipt rc2) {
                     // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
@@ -160,13 +161,13 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
                         return rc1.getDate().isBefore(rc2.getDate()) ? lessThan : rc1.getDate().isAfter(rc2.getDate()) ? greaterThan : 0;
                     } else if (sapXepTheo.equalsIgnoreCase("theo_so_luong")) {
                         // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                        return rc1.countReceptDetailsProductType() < rc2.countReceptDetailsProductType() ? lessThan : rc1.countReceptDetailsProductType() > rc2.countReceptDetailsProductType() ? greaterThan : 0;
+                        return rc1.countReceptDetailsQuantity() < rc2.countReceptDetailsQuantity() ? lessThan : rc1.countReceptDetailsQuantity() > rc2.countReceptDetailsQuantity() ? greaterThan : 0;
                     }
                     return 0;
                 }
             });
         }
-        receiptAdapter = new ReceiptAdapter(this, R.layout.constraint_receipt_item, receipts);
+        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receiptsToSort);
         listView.setAdapter(receiptAdapter);
         System.out.println("notify change");
         receiptAdapter.notifyDataSetChanged();
@@ -190,7 +191,7 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
 
     @Override
     public void handleBtnMinimizeClick(View view) {
-        receiptAdapter = new ReceiptAdapter(this, R.layout.constraint_receipt_item_small, receipts);
+        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item_small, receipts);
         listView.setAdapter(receiptAdapter);
         receiptAdapter.notifyDataSetChanged();
     }
