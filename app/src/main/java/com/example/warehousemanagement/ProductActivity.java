@@ -41,8 +41,8 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
     public String sortOption2="";
 
     public static int LAUNCH_ADD_PRODUCT_ACTIVITY = 1;
-    public static int LAUNCH_EDIT_PRODUCT_ACTIVITY = 2;
-    public static int LAUNCH_DEL_PRODUCT_ACTIVITY = 3;
+    public static int LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY = 2;
+//    public static int LAUNCH_DEL_PRODUCT_ACTIVITY = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,9 +140,9 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
     //hàm trong set event khi click vào item treên list view
     public void handleListViewItemClick(View view, Product product) {
         Intent intent = new Intent(this, AddProductActivity.class);
-        intent.putExtra("requestCode", LAUNCH_EDIT_PRODUCT_ACTIVITY);
+        intent.putExtra("requestCode", LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY);
         intent.putExtra("product", product);
-        startActivityForResult(intent, LAUNCH_EDIT_PRODUCT_ACTIVITY);
+        startActivityForResult(intent, LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY);
     }
 
     @Override
@@ -239,30 +239,31 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 // Write your code if there's no result
+                Toast.makeText(this, "Đã hủy", Toast.LENGTH_LONG).show();
             }
         }
-        if (requestCode == LAUNCH_EDIT_PRODUCT_ACTIVITY) {
+        if (requestCode == LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY) {
             if(resultCode == Activity.RESULT_OK){
                 String result = data.getStringExtra("result");
                 System.out.println(result);
-
                 Product product = (Product) data.getSerializableExtra("product");
-                this.editProduct(product);
 
+                //nếu ở activity con chọn xóa
+                boolean deleteMode = data.getBooleanExtra("deleteMode", false);
+
+                if(deleteMode){
+                    this.deleteProduct(product);
+                    return;
+                }
+                // nếu không ph xóa thì gọi hàm sửa
+                this.editProduct(product);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 // Write your code if there's no result
                 Toast.makeText(this, "Đã hủy", Toast.LENGTH_LONG).show();
             }
         }
-        if (requestCode == LAUNCH_DEL_PRODUCT_ACTIVITY) {
-            if(resultCode == Activity.RESULT_OK){
-                String result=data.getStringExtra("result");
-            }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                // Write your code if there's no result
-            }
-        }
+
     } //onActivityResult
 
     public void addProduct(Product product){
@@ -278,6 +279,16 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
     public void editProduct(Product product){
         if(productDao.updateOne(product)){
             Toast.makeText(this, "Sửa vật tư thành công", Toast.LENGTH_LONG).show();
+        }
+        products = productDao.getAll();
+        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        listView.setAdapter(productAdapter);
+        listView.setDividerHeight(dividerHeight);
+    }
+
+    public void deleteProduct(Product product){
+        if(productDao.deleteOne(product)){
+            Toast.makeText(this, "Xóa vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
         productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
