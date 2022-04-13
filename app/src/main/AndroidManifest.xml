@@ -15,7 +15,7 @@
             android:name=".ReceiptActivity"
             android:exported="false" />
         <activity
-            android:name=".ReceiptActivity2"
+            android:name=".AddReceiptActivity"
             android:exported="false" />
         <activity
             android:name=".EditReceiptDetailActivity"
