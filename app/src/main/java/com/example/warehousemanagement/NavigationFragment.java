@@ -1,13 +1,10 @@
 package com.example.warehousemanagement;
 
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.fragment.app.Fragment;
@@ -27,7 +24,7 @@ public class NavigationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View inflateView = inflater.inflate(R.layout.constraint_cancel_previous_next, container, false);
+        View inflateView = inflater.inflate(R.layout.pending_delete_constraint_cancel_previous_next, container, false);
         btnCancel = inflateView.findViewById(R.id.btnCancel);
         btnPrevious = inflateView.findViewById(R.id.btnPrevious);
         btnForward = inflateView.findViewById(R.id.btnForward);

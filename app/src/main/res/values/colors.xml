@@ -12,4 +12,8 @@
     <color name="azureish_white">#DBE2EF</color>
     <color name="steel_blue">#3F72AF</color>
     <color name="space_cadet">#112D4E</color>
+    <color name="alert_red">#C6222F</color>
+    <color name="disabled">#C5C4C4</color>
+    <color name="text_gray">#686868</color>
+    <color name="warning">#DFAB10</color>
 </resources>

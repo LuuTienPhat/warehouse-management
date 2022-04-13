@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -38,6 +39,11 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
     List<Product> products = new ArrayList<>();
     int dividerHeight;
     public String sortOption2="";
+
+    public static int LAUNCH_ADD_PRODUCT_ACTIVITY = 1;
+    public static int LAUNCH_EDIT_PRODUCT_ACTIVITY = 2;
+    public static int LAUNCH_DEL_PRODUCT_ACTIVITY = 3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,21 +59,6 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
         listView.setAdapter(productAdapter);
         dividerHeight = listView.getDividerHeight();
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        int LAUNCH_SECOND_ACTIVITY = 1;
-        if (requestCode == LAUNCH_SECOND_ACTIVITY) {
-            if (resultCode == Activity.RESULT_OK) {
-                String result = data.getStringExtra("result");
-            }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                // Write your code if there's no result
-            }
-        }
-    } //onActivityResult
 
     private void setEvent() {
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +96,8 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Product product = (Product) adapterView.getItemAtPosition(position);
+                //khi ấn vào mở form chỉnh sửa = startActivityForResult
+                handleListViewItemClick(view, product);
             }
         });
     }
@@ -140,9 +133,16 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
 
     @Override
     public void handleBtnAddClick(View view) {
-        int LAUNCH_ADD_PRODUCT_ACTIVITY = 1;
         Intent intent = new Intent(this, AddProductActivity.class);
-        startActivityForResult(intent, 1);
+        intent.putExtra("requestCode", LAUNCH_ADD_PRODUCT_ACTIVITY);
+        startActivityForResult(intent, LAUNCH_ADD_PRODUCT_ACTIVITY);
+    }
+    //hàm trong set event khi click vào item treên list view
+    public void handleListViewItemClick(View view, Product product) {
+        Intent intent = new Intent(this, AddProductActivity.class);
+        intent.putExtra("requestCode", LAUNCH_EDIT_PRODUCT_ACTIVITY);
+        intent.putExtra("product", product);
+        startActivityForResult(intent, LAUNCH_EDIT_PRODUCT_ACTIVITY);
     }
 
     @Override
@@ -224,6 +224,65 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
     public void setSortOption(String sortOption) {
         sortOption2 = sortOption;
         sortData();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LAUNCH_ADD_PRODUCT_ACTIVITY) {
+            if(resultCode == Activity.RESULT_OK){
+                String result = data.getStringExtra("result");
+                System.out.println(result);
+
+                Product product = (Product) data.getSerializableExtra("product");
+                this.addProduct(product);
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                // Write your code if there's no result
+            }
+        }
+        if (requestCode == LAUNCH_EDIT_PRODUCT_ACTIVITY) {
+            if(resultCode == Activity.RESULT_OK){
+                String result = data.getStringExtra("result");
+                System.out.println(result);
+
+                Product product = (Product) data.getSerializableExtra("product");
+                this.editProduct(product);
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                // Write your code if there's no result
+                Toast.makeText(this, "Đã hủy", Toast.LENGTH_LONG).show();
+            }
+        }
+        if (requestCode == LAUNCH_DEL_PRODUCT_ACTIVITY) {
+            if(resultCode == Activity.RESULT_OK){
+                String result=data.getStringExtra("result");
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                // Write your code if there's no result
+            }
+        }
+    } //onActivityResult
+
+    public void addProduct(Product product){
+        if(productDao.insertOne(product)){
+            Toast.makeText(this, "Thêm vật tư thành công", Toast.LENGTH_LONG).show();
+        }
+        products = productDao.getAll();
+        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        listView.setAdapter(productAdapter);
+        listView.setDividerHeight(dividerHeight);
+    }
+
+    public void editProduct(Product product){
+        if(productDao.updateOne(product)){
+            Toast.makeText(this, "Sửa vật tư thành công", Toast.LENGTH_LONG).show();
+        }
+        products = productDao.getAll();
+        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        listView.setAdapter(productAdapter);
+        listView.setDividerHeight(dividerHeight);
     }
 }
 
