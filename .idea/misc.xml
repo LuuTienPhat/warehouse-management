@@ -22,15 +22,27 @@
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_warehouse_detail.xml" value="0.67" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/warehouse_activity.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/warehouse_item.xml" value="0.67" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/drawable-v24/bg_text_box_round_corner.xml" value="0.1115" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/drawable/bg_azureich_white_radius_15.xml" value="0.1" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/drawable/bg_text_box_disabled_round_corner.xml" value="0.1115" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/drawable/border_bottom.xml" value="0.146" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/activity_view.xml" value="0.22" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/constraint_cancel_previous_next.xml" value="0.1" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/constraint_utils.xml" value="0.25" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/dialog_notification.xml" value="0.17074275362318841" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/dialog_sort_by_option.xml" value="0.17074275362318841" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/dialog_sort_by_option_for_product.xml" value="0.18" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/dialog_sort_by_option_for_receipt.xml" value="0.1" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/dialog_sort_by_option_for_warehouse.xml" value="0.1" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/group_button_save_cancel.xml" value="0.1675929884566054" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/group_button_utils.xml" value="0.1675929884566054" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/navigation_cancel_previous_next.xml" value="0.1675929884566054" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/product_add_activity.xml" value="0.31088082901554404" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/product_add_activity_linear.xml" value="0.25" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/receipt_add.xml" value="0.18206521739130435" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/receipt_add_activity.xml" value="0.22" />
+        <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/receipt_detail_add_product_activity.xml" value="0.125" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/warehouse_item.xml" value="0.1578125" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/layout/warehouse_item_small_product_quantity.xml" value="0.1578125" />
       </map>

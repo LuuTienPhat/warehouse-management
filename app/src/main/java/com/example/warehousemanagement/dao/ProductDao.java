@@ -143,4 +143,21 @@ public class ProductDao implements Dao<Product> {
         }
         return product;
     }
+
+    // mới thêm, chưa chuyển vào dao vì RecepitDAO phải override
+    public boolean checkIdExists(String id) {
+        Product product = null;
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(DatabaseHelper.TABLE_PRODUCT, null, DatabaseHelper.TABLE_PRODUCT_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            String productId = cursor.getString(0);
+            String name = cursor.getString(1);
+            String origin = cursor.getString(2);
+
+            product = new Product(productId, name, origin);
+        }
+        // nếu product khác null chứng tỏ đã tồn tại
+        return product!=null;
+    }
 }

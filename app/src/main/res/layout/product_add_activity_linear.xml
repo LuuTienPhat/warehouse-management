@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Theme.WarehouseManagement"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--layout_gravity: so voi bo, gravity: cho may dua con-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Title"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/space_cadet"
+                    android:textSize="30dp" />
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    >
+                    <ImageButton
+                        android:id="@+id/btnEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="36dp"
+                        android:background="@drawable/ic_edit_32"
+                        android:backgroundTint="@color/warning"/>
+
+                    <ImageButton
+                        android:id="@+id/btnDelete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_delete_32"
+                        android:backgroundTint="@color/alert_red"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvProductId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="start"
+                    android:text="Mã vật tư"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/space_cadet"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editTextProductId"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_text_box_round_corner"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Nhập mã vật tư.."
+                    android:inputType="text"
+                    android:paddingHorizontal="20sp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/space_cadet"
+                    android:textColorHint="@color/steel_blue" />
+
+                <TextView
+                    android:id="@+id/tvProductIdAlert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingHorizontal="5dp"
+                    android:text="Nhập lại"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/alert_red"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="start"
+                    android:text="Tên vật tư"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/space_cadet"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editTextProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_text_box_round_corner"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Nhập tên vật tư.."
+                    android:inputType="text"
+                    android:paddingHorizontal="20sp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/space_cadet"
+                    android:textColorHint="@color/steel_blue" />
+
+                <TextView
+                    android:id="@+id/tvProductNameAlert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingHorizontal="5dp"
+                    android:text="Nhập lại"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/alert_red"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvProductOrigin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="start"
+                    android:text="Xuất xứ"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/space_cadet"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/editTextProductOrigin"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_text_box_round_corner"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Nhập xuất xứ.."
+                    android:inputType="text"
+                    android:paddingHorizontal="20sp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/space_cadet"
+                    android:textColorHint="@color/steel_blue" />
+
+                <TextView
+                    android:id="@+id/tvProductOriginAlert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingHorizontal="5dp"
+                    android:text="Nhập lại"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/alert_red"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_weight="1">
+
+            </Space>
+
+            <include layout="@layout/group_button_save_cancel" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
