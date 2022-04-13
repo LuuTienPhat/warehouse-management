@@ -2,6 +2,7 @@ package com.example.warehousemanagement;
 
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,7 +19,7 @@ public class ReceiptViewActivity extends AppCompatActivity {
     TextView tvTitle, tvNumberOfProducts;
     EditText etWarehouseId, etWarehouseName, etReceiptId, etReceiptDate;
     ListView listView;
-    ConstraintLayout receipt_detail_view;
+    LinearLayout receipt_detail_view;
 
     ReceiptDetailAdapter receiptDetailAdapter;
     Receipt receipt;
@@ -45,8 +46,8 @@ public class ReceiptViewActivity extends AppCompatActivity {
         tvNumberOfProducts.setText(Integer.toString(receipt.getReceiptDetails().size()));
         receiptDetailAdapter = new ReceiptDetailAdapter(this, R.layout.receipt_detail_item, receipt.getReceiptDetails());
         listView.setAdapter(receiptDetailAdapter);
-        int height = 80 * 3;
-        receipt_detail_view.setMinHeight(height);
+//        int height = 80 * 3;
+//        receipt_detail_view.setMinHeight(height);
     }
 
     private void setEvent() {
