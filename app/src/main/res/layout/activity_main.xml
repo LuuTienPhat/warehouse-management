@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Theme.WarehouseManagement"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingHorizontal="21dp"
     tools:context=".MainActivity">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"></Space>
 
     <TextView
         android:id="@+id/tvTitle"
@@ -19,141 +22,112 @@
         android:text="Quản lý Kho"
         android:textAlignment="center"
         android:textColor="@color/space_cadet"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="40sp" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"></Space>
+
+    <LinearLayout
         android:id="@+id/constraintLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/tvCredit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/btnWarehouse"
             android:layout_width="match_parent"
             android:layout_height="92dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/bg_azureich_white_radius_25"
-            app:layout_constraintBottom_toTopOf="@id/btnProduct"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="21dp">
 
             <ImageView
                 android:id="@+id/image1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:src="@drawable/ic_warehouse_72"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvWarehouse"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:src="@drawable/ic_warehouse_72" />
 
             <TextView
                 android:id="@+id/tvWarehouse"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/roboto_medium"
                 android:text="KHO"
                 android:textAlignment="center"
                 android:textColor="@color/space_cadet"
-                android:textSize="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image1"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="30dp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/btnProduct"
             android:layout_width="match_parent"
             android:layout_height="92dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/bg_azureich_white_radius_25"
-            app:layout_constraintBottom_toTopOf="@id/btnReceipt"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnWarehouse">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="21dp">
 
             <ImageView
                 android:id="@+id/image2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:src="@drawable/ic_product_72"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvProduct"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:src="@drawable/ic_product_72" />
 
             <TextView
                 android:id="@+id/tvProduct"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/roboto_medium"
                 android:text="VẬT TƯ"
                 android:textAlignment="center"
                 android:textColor="@color/space_cadet"
-                android:textSize="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image2"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="30dp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/btnReceipt"
             android:layout_width="match_parent"
             android:layout_height="92dp"
             android:background="@drawable/bg_azureich_white_radius_25"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnProduct">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="21dp">
 
             <ImageView
                 android:id="@+id/image3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:src="@drawable/ic_receipt_72"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvReceipt"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:src="@drawable/ic_receipt_72" />
 
             <TextView
                 android:id="@+id/tvReceipt"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:fontFamily="@font/roboto_medium"
                 android:text="phiếu nhập"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/space_cadet"
-                android:textSize="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image3"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:textSize="30dp" />
+        </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"></Space>
 
     <TextView
         android:id="@+id/tvCredit"
@@ -165,11 +139,11 @@
         android:text="Team11"
         android:textAlignment="center"
         android:textColor="@color/space_cadet"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout1"
-        tools:ignore="HardcodedText" />
+        android:textSize="16dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"></Space>
+
+</LinearLayout>
