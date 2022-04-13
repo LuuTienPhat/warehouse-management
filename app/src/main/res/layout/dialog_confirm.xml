@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="215dp"
     android:background="@drawable/bg_space_cadet_top_radius_15"
+    android:orientation="vertical"
     android:padding="20dp">
 
     <TextView
@@ -15,36 +13,25 @@
         android:fontFamily="@font/roboto_bold"
         android:text="Thông báo"
         android:textColor="@color/cultured"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvContent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/tvContent"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="0dp"
         android:layout_marginTop="12dp"
+        android:layout_weight="1"
         android:fontFamily="@font/roboto_regular"
-        android:textSize="16sp"
         android:text="Nội dung này sẽ bị xóa vĩnh viễn, và không thể phục hồi được nữa. Các nội dung liên kết với nó cũng sẽ mất theo. Bạn có đồng ý?"
         android:textColor="@color/azureish_white"
-        app:layout_constraintBottom_toTopOf="@id/lyOption"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        android:textSize="16sp" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/lyOption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContent">
+        android:gravity="center_horizontal">
 
         <Button
             android:id="@+id/btnOK"
@@ -54,14 +41,9 @@
             android:background="@drawable/bg_space_cadet_radius_15"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
-            android:paddingVertical="10dp"
             android:text="Có"
             android:textColor="@color/cultured"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnCancel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnCancel"
@@ -70,15 +52,10 @@
             android:background="@drawable/bg_btn_confirm_light"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center"
-            android:paddingVertical="10dp"
             android:text="Hủy"
             android:textColor="@color/space_cadet"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btnOK"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="18sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

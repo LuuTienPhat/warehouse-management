@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:background="@drawable/bg_azureich_white_radius_25">
+    android:background="@drawable/bg_azureich_white_radius_25"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/tvNo"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|start"
         android:fontFamily="@font/roboto_black"
+        android:gravity="center_horizontal"
         android:text="1"
-        android:textAlignment="center"
         android:textColor="@color/space_cadet"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/constraintLayout1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp" />
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintLayout1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/constraintLayout2"
-        app:layout_constraintStart_toEndOf="@id/tvNo"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvProductId"
@@ -36,11 +32,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="GO"
             android:textColor="@color/space_cadet"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@id/tvProductName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tvProductName"
@@ -49,35 +41,17 @@
             android:fontFamily="@font/roboto_regular"
             android:text="Gạch ống"
             android:textColor="@color/space_cadet"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProductId" />
+            android:textSize="18sp" />
+    </LinearLayout>
 
-<!--        <TextView-->
-<!--            android:id="@+id/tvProductOrigin"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:fontFamily="@font/roboto_light"-->
-<!--            android:text="Bình Dương"-->
-<!--            android:textColor="@color/space_cadet"-->
-<!--            android:textSize="18sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tvProductName" />-->
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/constraintLayout1"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="10dp">
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tvProductQuantity"
@@ -87,11 +61,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="5 000"
             android:textColor="@color/space_cadet"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tvProductUnit"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/tvProductUnit"
@@ -100,11 +70,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="(viên)"
             android:textColor="@color/space_cadet"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvProductQuantity"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textSize="20sp" />
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
