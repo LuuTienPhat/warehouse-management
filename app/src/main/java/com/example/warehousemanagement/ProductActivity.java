@@ -18,18 +18,16 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.adapter.ProductAdapter;
-import com.example.warehousemanagement.adapter.ReceiptAdapter;
 import com.example.warehousemanagement.dao.ProductDao;
 import com.example.warehousemanagement.dialog.SortOptionDialog;
 import com.example.warehousemanagement.model.Product;
-import com.example.warehousemanagement.model.Receipt;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ProductActivity extends AppCompatActivity implements BaseActivity, SortOptionDialog.SortOptionDialogListener {
+public class ProductActivity extends AppCompatActivity implements IViewActivity, SortOptionDialog.SortOptionDialogListener {
     ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
     ListView listView;
     SearchView searchView;

@@ -2,7 +2,7 @@ package com.example.warehousemanagement;
 
 import android.view.View;
 
-public interface BaseActivity {
+public interface IViewActivity {
     void handleBtnAddClick(View view);
 
     void handleBtnRefreshClick(View view);

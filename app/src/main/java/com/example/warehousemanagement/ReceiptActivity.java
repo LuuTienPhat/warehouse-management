@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ReceiptActivity extends AppCompatActivity implements BaseActivity, SortOptionDialog.SortOptionDialogListener{
+public class ReceiptActivity extends AppCompatActivity implements IViewActivity, SortOptionDialog.SortOptionDialogListener {
     ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
     ListView listView;
     SearchView searchView;
