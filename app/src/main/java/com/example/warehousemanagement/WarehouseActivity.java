@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class WarehouseActivity extends AppCompatActivity implements BaseActivity, SortOptionDialog.SortOptionDialogListener {
+public class WarehouseActivity extends AppCompatActivity implements IViewActivity, SortOptionDialog.SortOptionDialogListener {
     ImageButton btnAdd, btnMinimize, btnSort, btnFilter, btnRefresh;
     SearchView searchView;
     TextView tvTitle;

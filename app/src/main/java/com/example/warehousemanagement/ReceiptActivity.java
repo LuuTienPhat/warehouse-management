@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ReceiptActivity extends AppCompatActivity implements BaseActivity, SortOptionDialog.SortOptionDialogListener{
+public class ReceiptActivity extends AppCompatActivity implements IViewActivity, SortOptionDialog.SortOptionDialogListener {
     ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
     ListView listView;
     SearchView searchView;
@@ -161,7 +161,7 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
                         return rc1.getDate().isBefore(rc2.getDate()) ? lessThan : rc1.getDate().isAfter(rc2.getDate()) ? greaterThan : 0;
                     } else if (sapXepTheo.equalsIgnoreCase("theo_so_luong")) {
                         // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                        return rc1.countReceptDetailsQuantity() < rc2.countReceptDetailsQuantity() ? lessThan : rc1.countReceptDetailsQuantity() > rc2.countReceptDetailsQuantity() ? greaterThan : 0;
+                        return rc1.countReceiptDetailsQuantity() < rc2.countReceiptDetailsQuantity() ? lessThan : rc1.countReceiptDetailsQuantity() > rc2.countReceiptDetailsQuantity() ? greaterThan : 0;
                     }
                     return 0;
                 }

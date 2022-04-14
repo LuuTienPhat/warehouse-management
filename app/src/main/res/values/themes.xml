@@ -35,6 +35,6 @@
     </style>
 
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/bg_radius_top_15</item>
+        <item name="android:background">@drawable/bg_radius_top_25</item>
     </style>
 </resources>
