@@ -1,5 +1,6 @@
 package com.example.warehousemanagement;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,10 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.adapter.WarehouseAdapter;
@@ -31,6 +36,7 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
     List<Warehouse> warehouses = new ArrayList<>();
     int dividerHeight;
     public String sortOption2 = "";
+    private ActivityResultLauncher<Intent> activityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,17 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
         warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
         listView.setAdapter(warehouseAdapter);
         dividerHeight = listView.getDividerHeight();
+
+        activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            btnRefresh.performClick();
+                        }
+                    }
+                });
     }
 
     private void setControl() {
@@ -100,21 +117,21 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
                 intent.putExtra("warehouseId", warehouse.getId());
                 intent.putExtra("warehouseName", warehouse.getName());
                 intent.putExtra("warehouseAddress", warehouse.getAddress());
-                startActivity(intent);
+                activityResultLauncher.launch(intent);
             }
         });
     }
 
     @Override
     public void handleBtnAddClick(View view) {
-
+        Intent intent = new Intent(this, AddWarehouseActivity.class);
+        activityResultLauncher.launch(intent);
     }
 
     @Override
     public void handleBtnRefreshClick(View view) {
         warehouses = warehouseDao.getAll();
-
-        WarehouseAdapter warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
+        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
         listView.setAdapter(warehouseAdapter);
         listView.setDividerHeight(dividerHeight);
     }
