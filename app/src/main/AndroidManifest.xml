@@ -28,7 +28,10 @@
             android:exported="false" />
         <activity
             android:name=".WarehouseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="" />
         <activity
             android:name=".ProductActivity"
             android:exported="false" />
@@ -40,10 +43,12 @@
             android:exported="false" />
         <activity
             android:name=".WarehouseDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".AddWarehouseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

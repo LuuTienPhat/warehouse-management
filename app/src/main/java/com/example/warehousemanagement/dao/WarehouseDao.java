@@ -32,9 +32,7 @@ public class WarehouseDao implements Dao<Warehouse> {
 
     @Override
     public boolean insertOne(Warehouse warehouse) {
-        boolean result = true;
         db = dbHelper.getWritableDatabase();
-
         db.beginTransaction();
         try {
             ContentValues cv = new ContentValues();
@@ -45,59 +43,55 @@ public class WarehouseDao implements Dao<Warehouse> {
             db.insert(DatabaseHelper.TABLE_WAREHOUSE, null, cv);
             db.setTransactionSuccessful();
         } catch (Exception ex) {
-            result = false;
             ex.printStackTrace();
+            return false;
         } finally {
             db.endTransaction();
+            db.close();
         }
-        db.close();
 
-        return result;
+        return true;
     }
 
     @Override
     public boolean updateOne(Warehouse warehouse) {
-        boolean result = true;
         db = dbHelper.getWritableDatabase();
-
         db.beginTransaction();
         try {
             ContentValues cv = new ContentValues();
-            cv.put(DatabaseHelper.TABLE_WAREHOUSE_ID, warehouse.getId());
+//            cv.put(DatabaseHelper.TABLE_WAREHOUSE_ID, warehouse.getId());
             cv.put(DatabaseHelper.TABLE_WAREHOUSE_NAME, warehouse.getName());
             cv.put(DatabaseHelper.TABLE_WAREHOUSE_ADDRESS, warehouse.getAddress());
 
             db.update(DatabaseHelper.TABLE_WAREHOUSE, cv, DatabaseHelper.TABLE_WAREHOUSE_ID + " = ?", new String[]{String.valueOf(warehouse.getId())});
             db.setTransactionSuccessful();
         } catch (Exception ex) {
-            result = false;
             ex.printStackTrace();
+            return false;
         } finally {
             db.endTransaction();
+            db.close();
         }
-        db.close();
 
-        return result;
+        return true;
     }
 
     @Override
     public boolean deleteOne(Warehouse warehouse) {
-        boolean result = true;
         db = dbHelper.getWritableDatabase();
-
         db.beginTransaction();
         try {
             db.delete(DatabaseHelper.TABLE_WAREHOUSE, DatabaseHelper.TABLE_WAREHOUSE_ID + " = ?", new String[]{String.valueOf(warehouse.getId())});
             db.setTransactionSuccessful();
         } catch (Exception ex) {
-            result = false;
             ex.printStackTrace();
+            return false;
         } finally {
             db.endTransaction();
+            db.close();
         }
-        db.close();
 
-        return result;
+        return true;
     }
 
     @Override
@@ -108,16 +102,13 @@ public class WarehouseDao implements Dao<Warehouse> {
         String queryString = "SELECT * FROM " + DatabaseHelper.TABLE_WAREHOUSE;
 
         Cursor cursor = db.rawQuery(queryString, null);
-        if (cursor.moveToFirst()) {
-            do {
-                String id = cursor.getString(0);
-                String name = cursor.getString(1);
-                String address = cursor.getString(2);
+        while (cursor.moveToNext()) {
+            String id = cursor.getString(0);
+            String name = cursor.getString(1);
+            String address = cursor.getString(2);
 
-                Warehouse warehouse = new Warehouse(id, name, address);
-                warehouses.add(warehouse);
-
-            } while (cursor.moveToNext());
+            Warehouse warehouse = new Warehouse(id, name, address);
+            warehouses.add(warehouse);
         }
 
         cursor.close();
@@ -138,6 +129,9 @@ public class WarehouseDao implements Dao<Warehouse> {
 
             warehouse = new Warehouse(warehouseId, name, address);
         }
+
+        cursor.close();
+        db.close();
         return warehouse;
     }
 }

@@ -1,5 +1,7 @@
 package com.example.warehousemanagement;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,11 +10,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.MainThread;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.dao.WarehouseDao;
+import com.example.warehousemanagement.dialog.CustomDialog;
 import com.example.warehousemanagement.model.Warehouse;
 
 public class WarehouseDetailActivity extends AppCompatActivity {
@@ -22,7 +27,6 @@ public class WarehouseDetailActivity extends AppCompatActivity {
     Warehouse warehouse = null;
     LinearLayout lyOption, lyUtils;
     TextView tvTitle;
-
     WarehouseDao warehouseDao;
     int state;
 
@@ -36,17 +40,16 @@ public class WarehouseDetailActivity extends AppCompatActivity {
         this.state = 0;
         //changeState();
 
-//        db = AppDatabase.getInstance(this);
-//        warehouseDao = db.warehouseDao();
-//
-//        String warehouseId = this.getIntent().getStringExtra("warehouseId");
-//        String warehouseName = this.getIntent().getStringExtra("warehouseName");
-//        String warehouseAddress = this.getIntent().getStringExtra("warehouseAddress");
-//
-//        this.warehouse = new Warehouse(warehouseId, warehouseName, warehouseAddress);
-//        etId.setText(warehouse.getId());
-//        etName.setText(warehouse.getName());
-//        etAddress.setText(warehouse.getAddress());
+        warehouseDao = new WarehouseDao(DatabaseHelper.getInstance(this));
+
+        String warehouseId = this.getIntent().getStringExtra("warehouseId");
+        String warehouseName = this.getIntent().getStringExtra("warehouseName");
+        String warehouseAddress = this.getIntent().getStringExtra("warehouseAddress");
+
+        this.warehouse = new Warehouse(warehouseId, warehouseName, warehouseAddress);
+        etId.setText(warehouse.getId());
+        etName.setText(warehouse.getName());
+        etAddress.setText(warehouse.getAddress());
     }
 
     @Override
@@ -79,13 +82,6 @@ public class WarehouseDetailActivity extends AppCompatActivity {
             }
         });
 
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleBtnEditClick(view);
-            }
-        });
-
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,37 +106,60 @@ public class WarehouseDetailActivity extends AppCompatActivity {
     }
 
     private void handleBtnSaveClick(View view) {
-        String id = etId.getText().toString().trim();
         String name = etName.getText().toString().trim();
         String address = etAddress.getText().toString().trim();
 
-        //validation
+        // validate inputs
+        int errors = 0;
+        if (name.isEmpty()) {
+            etName.setError("Vui lòng nhập tên kho!");
+            errors++;
+        }
+        if (address.isEmpty()) {
+            etAddress.setError("Vui lòng nhập địa chỉ!");
+            errors++;
+        }
+        if (errors != 0) {
+            return;
+        }
 
-//        if (this.state == 1) {
-//            Warehouse newWarehouse = new Warehouse(id, name, address);
-//            AppDatabase db = AppDatabase.getInstance(this);
-//            WarehouseDao warehouseDao = db.warehouseDao();
-//            warehouseDao.updateOne(newWarehouse);
-//        } else if (this.state == 2) {
-//            Warehouse newWarehouse = new Warehouse(id, name, address);
-//            AppDatabase db = AppDatabase.getInstance(this);
-//            WarehouseDao warehouseDao = db.warehouseDao();
-//            warehouseDao.insertOne(newWarehouse);
-//        }
-    }
-
-    private void handleBtnCancelClick(View view) {
-        if (this.state == 1) {
-            this.state = 0;
-            changeState();
-        } else if (this.state == 2) {
-            Intent intent = new Intent(this, WarehouseActivity.class);
-            startActivity(intent);
+        // update data
+        warehouse.setName(name);
+        warehouse.setAddress(address);
+        if (warehouseDao.updateOne(warehouse)) {
+            Toast.makeText(this, "Lưu thay đổi thành công", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void handleBtnCancelClick(View view) {
+        setResult(Activity.RESULT_OK);
+        finish();
+    }
+
     private void handleBtnDeleteClick(View view) {
-//        warehouseDao.deleteOne(warehouse);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Xóa kho");
+        builder.setMessage("Bạn có chắc muốn xóa kho này không?");
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (warehouseDao.deleteOne(warehouse)) {
+                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
+                    setResult(Activity.RESULT_OK);
+                    finish();
+                } else {
+                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        builder.create().show();
     }
 
     private void handleBtnEditClick(View view) {

@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="30dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -51,9 +51,8 @@
             android:background="@drawable/bg_text_box_round_corner"
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Mã kho"
             android:inputType="text"
-            android:paddingStart="20dp"
+            android:paddingHorizontal="20dp"
             android:textAlignment="textStart"
             android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue" />
@@ -84,8 +83,7 @@
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
             android:inputType="textPersonName"
-            android:paddingStart="20dp"
-            android:text="Kho Bình Chánh"
+            android:paddingHorizontal="20dp"
             android:textAlignment="textStart"
             android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue"/>
@@ -116,29 +114,13 @@
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
             android:inputType="textPersonName"
-            android:paddingStart="20dp"
-            android:text="95 Việt Phú, Bình Chánh, TPHCM"
+            android:paddingHorizontal="20dp"
             android:textAlignment="textStart"
             android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue"/>
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout4">
-
-        <include
-            layout="@layout/group_button_save_cancel"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <include
+        layout="@layout/group_button_save_cancel" />
 
 </LinearLayout>
