@@ -27,6 +27,8 @@ public class CustomDialog extends BottomSheetDialogFragment {
         void sendDialogResult(Result result);
     }
 
+    View convertView = null;
+
     private Listener listener;
     private Type type;
     private String title, content;
@@ -50,8 +52,6 @@ public class CustomDialog extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View convertView = null;
         if (type == Type.NOTIFICATION) {
             convertView = inflater.inflate(R.layout.dialog_notification, null);
 
@@ -91,7 +91,11 @@ public class CustomDialog extends BottomSheetDialogFragment {
                 }
             });
         }
-
         return convertView;
+    }
+
+    @Override
+    public int getTheme() {
+        return R.style.BottomSheetDialogTheme;
     }
 }
