@@ -31,17 +31,19 @@ public class Receipt implements Serializable {
         return receiptDetails;
     }
 
-    public int countReceptDetailsQuantity(){
-        int totalQuan=0;
-        for (ReceiptDetail rd:
-             this.getReceiptDetails()) {
+    public int countReceiptDetailsQuantity() {
+        int totalQuan = 0;
+        for (ReceiptDetail rd :
+                this.getReceiptDetails()) {
             totalQuan = totalQuan + rd.getQuantity();
         }
         return totalQuan;
     }
-    public int countReceptDetailsProductType(){
+
+    public int countReceiptDetailsProductType() {
         return this.getReceiptDetails().size();
     }
+
     public void setReceiptDetails(List<ReceiptDetail> receiptDetails) {
         this.receiptDetails = receiptDetails;
     }
