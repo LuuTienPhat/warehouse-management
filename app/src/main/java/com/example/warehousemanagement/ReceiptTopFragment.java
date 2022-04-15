@@ -16,7 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.warehousemanagement.adapter.WarehouseAdapter;
+import com.example.warehousemanagement.adapter.WarehouseSpinnerAdapter;
 import com.example.warehousemanagement.dao.ReceiptDao;
 import com.example.warehousemanagement.dao.WarehouseDao;
 import com.example.warehousemanagement.model.Receipt;
@@ -32,7 +32,7 @@ public class ReceiptTopFragment extends Fragment {
     EditText etReceiptId;
     Button etReceiptDate;
     Spinner spinnerWarehouse;
-    WarehouseAdapter warehouseAdapter;
+    WarehouseSpinnerAdapter warehouseSpinnerAdapter;
     WarehouseDao warehouseDao = null;
     List<Warehouse> warehouses = new ArrayList<>();
     Warehouse selectedWarehouse = null;
@@ -70,8 +70,8 @@ public class ReceiptTopFragment extends Fragment {
         warehouses = warehouseDao.getAll();
         warehouses.add(0, new Warehouse("", "Chọn kho", ""));
 
-        warehouseAdapter = new WarehouseAdapter(convertView.getContext(), R.layout.warehouse_spinner, warehouses);
-        spinnerWarehouse.setAdapter(warehouseAdapter);
+        warehouseSpinnerAdapter = new WarehouseSpinnerAdapter(convertView.getContext(), R.layout.warehouse_spinner, warehouses);
+        spinnerWarehouse.setAdapter(warehouseSpinnerAdapter);
 
         initDatePicker();
 
