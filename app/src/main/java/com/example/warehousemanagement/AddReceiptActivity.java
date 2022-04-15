@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.warehousemanagement.dao.ReceiptDao;
+import com.example.warehousemanagement.dao.ReceiptDetailDao;
 import com.example.warehousemanagement.dialog.CustomDialog;
 import com.example.warehousemanagement.model.Receipt;
 import com.example.warehousemanagement.model.ReceiptDetail;
@@ -83,6 +85,15 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
                     switchFragment(2);
                 } else if (displayingFragment == receiptDetailViewFragment) {
                     switchFragment(3);
+                } else if (displayingFragment == receiptViewFragment) {
+                    ReceiptDao receiptDao = new ReceiptDao(DatabaseHelper.getInstance(AddReceiptActivity.this));
+                    receiptDao.insertOne(newReceipt);
+
+                    ReceiptDetailDao receiptDetailDao = new ReceiptDetailDao(DatabaseHelper.getInstance(AddReceiptActivity.this));
+                    for (ReceiptDetail receiptDetail : newReceipt.getReceiptDetails()) {
+                        receiptDetailDao.insertOne(receiptDetail);
+                    }
+                    finish();
                 }
             }
         });
@@ -123,12 +134,12 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 0) {
-            if (resultCode == 3) {
+        if (requestCode == 1) {
+            if (resultCode == 2) {
                 //Receipt receipt = (Receipt) getIntent().getSerializableExtra("receipt");
                 ReceiptDetail receivedReceiptDetail = (ReceiptDetail) data.getSerializableExtra("receiptDetail");
                 addReceiptDetail(receivedReceiptDetail);
-            } else if (requestCode == RESULT_CANCELED) {
+            } else if (resultCode == 3) {
                 ReceiptDetail receivedReceiptDetail = (ReceiptDetail) data.getSerializableExtra("receiptDetail");
                 deleteReceiptDetail(receivedReceiptDetail);
             }
