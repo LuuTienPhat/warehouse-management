@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Thứ tự"
+        android:textColor="@color/steel_blue"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioBtnTangDan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/radio_button_color"
+            android:checked="true"
+            android:padding="10dp"
+            android:shadowRadius="0"
+            android:text="Tăng dần"
+            android:textColor="@color/space_cadet"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioBtnGiamDan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/radio_button_color"
+            android:padding="10dp"
+            android:text="Giảm dần"
+            android:textColor="@color/space_cadet"
+            android:textSize="18sp" />
+    </RadioGroup>
+
+</LinearLayout>
