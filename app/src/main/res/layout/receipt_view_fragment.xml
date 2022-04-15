@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:id="@+id/inputGroup1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="21dp"
             android:layout_weight="1"
@@ -50,9 +50,9 @@
 
         <LinearLayout
             android:id="@+id/inputGroup2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <TextView

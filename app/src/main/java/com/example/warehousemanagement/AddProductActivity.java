@@ -27,7 +27,6 @@ public class AddProductActivity extends AppCompatActivity implements Edit_Delete
     LinearLayout lyOption, lyUtils;
     TextView tvTitle, tvProductIdAlert, tvProductNameAlert, tvProductOriginAlert;
 
-
     //xét xem là thêm hay sửa
     public int editMode = -99;
 

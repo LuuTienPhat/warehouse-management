@@ -124,6 +124,11 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
 
     @Override
     public void handleBtnRefreshClick(View view) {
+        refresh();
+    }
+
+    private void refresh() {
+        receipts = receiptDao.getAll();
         receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receipts);
         listView.setAdapter(receiptAdapter);
         receiptAdapter.notifyDataSetChanged();
@@ -201,5 +206,11 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
         sortOption2 = sortOption;
         System.out.println(sortOption2 + "///////////////////////////////////////////////////////");
         sortData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refresh();
     }
 }
