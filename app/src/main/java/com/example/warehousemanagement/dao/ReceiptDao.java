@@ -52,14 +52,14 @@ public class ReceiptDao implements Dao<Receipt> {
 
             db.insert(DatabaseHelper.TABLE_RECEIPT, null, cv);
 
-            ReceiptDetailDao receiptDetailDao = new ReceiptDetailDao((DatabaseHelper) this.dbHelper);
-
-            if (receipt.getReceiptDetails() != null) {
-                for (ReceiptDetail r : receipt.getReceiptDetails()
-                ) {
-                    receiptDetailDao.insertOne(r);
-                }
-            }
+//            ReceiptDetailDao receiptDetailDao = new ReceiptDetailDao((DatabaseHelper) this.dbHelper);
+//
+//            if (receipt.getReceiptDetails() != null) {
+//                for (ReceiptDetail r : receipt.getReceiptDetails()
+//                ) {
+//                    receiptDetailDao.insertOne(r);
+//                }
+//            }
 
             db.setTransactionSuccessful();
         } catch (Exception ex) {
