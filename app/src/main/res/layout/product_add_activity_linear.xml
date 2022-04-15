@@ -201,7 +201,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="1" />
 
-            <include layout="@layout/group_button_save_cancel" />
+            <include layout="@layout/group_button_ok_cancel" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

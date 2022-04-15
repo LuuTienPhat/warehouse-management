@@ -165,6 +165,6 @@
 
 
     <include
-        layout="@layout/group_button_save_cancel" />
+        layout="@layout/group_button_ok_cancel" />
 
 </LinearLayout>

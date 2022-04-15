@@ -3,17 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
-    android:orientation="horizontal"
-    android:paddingVertical="10dp">
+    android:orientation="horizontal">
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnOK"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
-        android:background="@drawable/bg_steel_blue_radius_15"
+        android:background="@drawable/bg_space_cadet_radius_15"
         android:fontFamily="@font/roboto_medium"
-        android:text="Lưu"
+        android:text="OK"
         android:textAllCaps="false"
         android:textColor="@color/cultured"
         android:textSize="20sp" />
@@ -26,7 +25,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="Hủy"
         android:textAllCaps="false"
-        android:textColor="@color/steel_blue"
+        android:textColor="@color/space_cadet"
         android:textSize="20sp" />
 
 </LinearLayout>

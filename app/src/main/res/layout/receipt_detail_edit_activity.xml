@@ -135,7 +135,7 @@
 
     <include
         android:id="@+id/constraintLayout5"
-        layout="@layout/group_button_save_cancel"
+        layout="@layout/group_button_ok_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
