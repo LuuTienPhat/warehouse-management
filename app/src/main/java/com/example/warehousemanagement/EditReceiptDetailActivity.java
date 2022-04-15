@@ -86,7 +86,7 @@ public class EditReceiptDetailActivity extends AppCompatActivity implements Cust
         btnDelete = findViewById(R.id.btnDelete);
         etQuantity = findViewById(R.id.etQuantity);
         etUnit = findViewById(R.id.etUnit);
-        btnSave = findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnOK);
         btnCancel = findViewById(R.id.btnCancel);
         tvProductId = findViewById(R.id.tvProductId);
         tvProductName = findViewById(R.id.tvProductName);

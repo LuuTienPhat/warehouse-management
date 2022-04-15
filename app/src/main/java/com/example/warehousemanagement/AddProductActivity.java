@@ -110,7 +110,7 @@ public class AddProductActivity extends AppCompatActivity implements Edit_Delete
         etId = findViewById(R.id.editTextProductId);
 
         lyOption = findViewById(R.id.lyOption);
-        btnSave = findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnOK);
         btnCancel = findViewById(R.id.btnCancel);
 
         tvTitle = findViewById(R.id.tvTitle);

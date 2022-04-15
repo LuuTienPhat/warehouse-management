@@ -17,7 +17,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.dao.WarehouseDao;
-import com.example.warehousemanagement.dialog.CustomDialog;
 import com.example.warehousemanagement.model.Warehouse;
 
 public class WarehouseDetailActivity extends AppCompatActivity {
@@ -101,7 +100,7 @@ public class WarehouseDetailActivity extends AppCompatActivity {
         etId = findViewById(R.id.etId);
 
         lyOption = findViewById(R.id.lyOption);
-        btnSave = findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnOK);
         btnCancel = findViewById(R.id.btnCancel);
     }
 
