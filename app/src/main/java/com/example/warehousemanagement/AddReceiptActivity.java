@@ -64,7 +64,7 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
             @Override
             public void onClick(View view) {
                 String dialogContent = "Bạn có muốn thoát không";
-                CustomDialog customDialog = new CustomDialog(CustomDialog.Type.CONFIRM, "Thông báo", dialogContent);
+                CustomDialog customDialog = new CustomDialog(CustomDialog.Type.CONFIRM, "Thông báo", dialogContent, "exit");
                 customDialog.show(getSupportFragmentManager(), "");
             }
         });
@@ -180,9 +180,14 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
     }
 
     @Override
-    public void sendDialogResult(CustomDialog.Result result) {
+    public void sendDialogResult(CustomDialog.Result result, String request) {
         if (result == CustomDialog.Result.OK) {
-            finish();
+            if (request.equals("exit")) {
+                finish();
+            } else if (request.equals("deleteAll")) {
+                newReceipt.getReceiptDetails().clear();
+                receiptDetailViewFragment.updateListView();
+            }
         }
     }
 
