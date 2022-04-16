@@ -144,6 +144,11 @@ public class ProductDao implements Dao<Product> {
         return product;
     }
 
+    @Override
+    public List<Product> search(String keyword) {
+        return null;
+    }
+
     // mới thêm, chưa chuyển vào dao vì RecepitDAO phải override
     public boolean checkIdExists(String id) {
         Product product = null;

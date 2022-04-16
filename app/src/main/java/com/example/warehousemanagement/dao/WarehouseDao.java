@@ -134,4 +134,9 @@ public class WarehouseDao implements Dao<Warehouse> {
         db.close();
         return warehouse;
     }
+
+    @Override
+    public List<Warehouse> search(String keyword) {
+        return null;
+    }
 }

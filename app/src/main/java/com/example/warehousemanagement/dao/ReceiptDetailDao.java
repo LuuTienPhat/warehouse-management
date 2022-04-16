@@ -122,4 +122,10 @@ public class ReceiptDetailDao implements Dao<ReceiptDetail> {
     public ReceiptDetail getOne(String warehouseId) {
         return null;
     }
+
+    @Override
+    public List<ReceiptDetail> search(String keyword) {
+        return null;
+    }
+
 }
