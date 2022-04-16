@@ -22,7 +22,7 @@ import com.example.warehousemanagement.model.Product;
 import com.example.warehousemanagement.model.Receipt;
 import com.example.warehousemanagement.model.ReceiptDetail;
 
-public class ReceiptDetailViewFragment extends Fragment implements CustomDialog.Listener {
+public class ReceiptDetailViewFragment extends Fragment {
     ImageButton btnAdd, btnDeleteAll;
     ListView listView;
     TextView tvNumberOfProducts;
@@ -60,16 +60,8 @@ public class ReceiptDetailViewFragment extends Fragment implements CustomDialog.
     }
 
     private void handleBtnDeleteAllClick(View view) {
-        CustomDialog customDialog = new CustomDialog(CustomDialog.Type.NOTIFICATION, "Cảnh báo", "Tất cả dữ liệu vừa thêm sẽ bị xóa. Bạn có chắc không?");
+        CustomDialog customDialog = new CustomDialog(CustomDialog.Type.CONFIRM, "Cảnh báo", "Tất cả dữ liệu vừa thêm sẽ bị xóa. Bạn có chắc không?", "deleteAll");
         customDialog.show(requireActivity().getSupportFragmentManager(), "");
-    }
-
-    @Override
-    public void sendDialogResult(CustomDialog.Result result) {
-        if (result == CustomDialog.Result.OK) {
-            addReceiptActivity.getNewReceipt().getReceiptDetails().clear();
-            updateListView();
-        }
     }
 
     public void updateListView() {
