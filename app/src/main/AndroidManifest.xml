@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".SplashScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReceiptActivity"
             android:exported="false" />
         <activity
@@ -32,9 +35,9 @@
         <activity
             android:name=".WarehouseActivity"
             android:exported="false"
+            android:label=""
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light"
-            android:label="" />
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".ProductActivity"
             android:exported="false" />
