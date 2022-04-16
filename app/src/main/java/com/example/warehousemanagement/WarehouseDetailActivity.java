@@ -54,16 +54,8 @@ public class WarehouseDetailActivity extends AppCompatActivity {
     @Override
     @MainThread
     public void onBackPressed() {
-        if (this.state == 0) {
-            Intent intent = new Intent(this, WarehouseActivity.class);
-            startActivity(intent);
-        } else if (this.state == 1) {
-            this.state = 0;
-            changeState();
-        } else if (this.state == 2) {
-            this.state = 0;
-            changeState();
-        }
+        setResult(Activity.RESULT_OK);
+        finish();
     }
 
     private void setEvent() {
