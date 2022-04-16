@@ -96,7 +96,7 @@ public class EditReceiptDetailActivity extends AppCompatActivity implements Cust
     }
 
     private void handleBtnDeleteClick(View view) {
-        CustomDialog customDialog = new CustomDialog(CustomDialog.Type.CONFIRM, "Xác nhận", "Bạn muốn xóa vật tư này chứ");
+        CustomDialog customDialog = new CustomDialog(CustomDialog.Type.CONFIRM, "Xác nhận", "Bạn muốn xóa vật tư này chứ", "");
         customDialog.show(getSupportFragmentManager(), "");
     }
 
@@ -153,7 +153,7 @@ public class EditReceiptDetailActivity extends AppCompatActivity implements Cust
     }
 
     @Override
-    public void sendDialogResult(CustomDialog.Result result) {
+    public void sendDialogResult(CustomDialog.Result result, String request) {
         if (result == CustomDialog.Result.OK) {
             ReceiptDetail receiptDetail = new ReceiptDetail();
             receiptDetail.setProductId(product.getId());

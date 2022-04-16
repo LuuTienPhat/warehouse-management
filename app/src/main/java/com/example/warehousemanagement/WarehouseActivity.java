@@ -166,10 +166,11 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
         sortOption2 = sortOption;
         sortData();
     }
-    public void sortData(){
-        System.out.println("begin sort;"+sortOption2);
+
+    public void sortData() {
+        System.out.println("begin sort;" + sortOption2);
         if (!sortOption2.isEmpty()) {
-            System.out.println("begin sort;"+sortOption2);
+            System.out.println("begin sort;" + sortOption2);
             Collections.sort(warehouses, new Comparator<Warehouse>() {
                 @Override
                 public int compare(Warehouse pd1, Warehouse pd2) {

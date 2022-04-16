@@ -36,6 +36,39 @@ public class ReceiptDao implements Dao<Receipt> {
         boolean i2 = insertOne(receipt3);
         boolean i3 = insertOne(receipt4);
         boolean i4 = insertOne(receipt5);
+
+//        try {
+//            db = dbHelper.getWritableDatabase();
+//            db.execSQL("CREATE VIRTUAL TABLE fts_table_receipt USING fts3 ( col_1, col_2, col_3 )");
+//            db.close();
+//        } catch (Exception ex) {
+//
+//        }
+//
+//
+//        insertVirtualTable(receipt1);
+//        insertVirtualTable(receipt2);
+//        insertVirtualTable(receipt3);
+//        insertVirtualTable(receipt4);
+//        insertVirtualTable(receipt5);
+    }
+
+    private void insertVirtualTable(Receipt receipt) {
+        boolean result = true;
+        db = dbHelper.getWritableDatabase();
+
+        db.beginTransaction();
+        try {
+            db.execSQL("INSERT INTO fts_table_receipt VALUES ('" + receipt.getId() + "', '" + receipt.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + "', '" + receipt.getWarehouseId() + "')");
+
+            db.setTransactionSuccessful();
+        } catch (Exception ex) {
+            result = false;
+            ex.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+        db.close();
     }
 
     @Override
@@ -134,5 +167,42 @@ public class ReceiptDao implements Dao<Receipt> {
             receipt = new Receipt(receiptId, localDate, warehouseId, receiptDetails);
         }
         return receipt;
+    }
+
+    @Override
+    public List<Receipt> search(String keyword) {
+        List<Receipt> receipts = new ArrayList<>();
+        db = dbHelper.getReadableDatabase();
+
+        keyword = "%" + keyword + "%";
+//        String[] selectionArgs = {keyword};
+//        Cursor cursor = db.rawQuery("SELECT * FROM fts_table_receipt WHERE fts_table_receipt MATCH ?", selectionArgs);
+
+        String query = "SELECT * FROM " + DatabaseHelper.TABLE_RECEIPT + " WHERE "
+                + DatabaseHelper.TABLE_RECEIPT_ID + " LIKE '" + keyword + "' OR "
+                + DatabaseHelper.TABLE_RECEIPT_DATE + " LIKE '" + keyword + "' OR "
+                + DatabaseHelper.TABLE_RECEIPT_WAREHOUSE_ID + " LIKE '" + keyword + "'";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int receiptId = cursor.getInt(0);
+                String date = cursor.getString(1);
+                String warehouseId = cursor.getString(2);
+
+                LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+                ReceiptDetailDao receiptDetailDao = new ReceiptDetailDao((DatabaseHelper) dbHelper);
+                List<ReceiptDetail> receiptDetails = receiptDetailDao.getAll(receiptId);
+
+                Receipt receipt = new Receipt(receiptId, localDate, warehouseId, receiptDetails);
+                receipts.add(receipt);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return receipts;
     }
 }
