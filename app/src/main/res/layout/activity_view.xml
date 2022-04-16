@@ -19,16 +19,11 @@
         android:textColor="@color/space_cadet"
         android:textSize="30sp" />
 
-    <SearchView
-        android:id="@+id/searchView"
+    <include
+        layout="@layout/search_view"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/bg_search_round_corner"
-        android:iconifiedByDefault="false"
-        android:queryHint="Tìm kiếm"
-        android:searchIcon="@drawable/ic_baseline_search_cultured_24"
-        android:textAlignment="textStart" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp" />
 
 
     <include
