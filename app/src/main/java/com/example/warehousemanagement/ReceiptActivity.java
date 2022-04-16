@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -60,6 +61,9 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
         receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receipts);
         listView.setAdapter(receiptAdapter);
         dividerHeight = listView.getDividerHeight();
+
+        initSearchView();
+
     }
 
     private void setEvent() {
@@ -103,6 +107,41 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
                 startActivity(intent);
             }
         });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                List<Receipt> filteredList = new ArrayList<>();
+                if (!s.trim().isEmpty()) {
+                    filteredList = receiptDao.search(s);
+                } else {
+                    filteredList = receipts;
+                }
+
+                updateListView(R.layout.receipt_item, filteredList);
+                return false;
+            }
+        });
+    }
+
+    private void updateListView(int listViewItemLayout, List<Receipt> receiptList) {
+        receiptAdapter = new ReceiptAdapter(ReceiptActivity.this, R.layout.receipt_item, receiptList);
+        listView.setAdapter(receiptAdapter);
+    }
+
+    private void initSearchView() {
+        int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
+        View searchPlate = findViewById(searchPlateId);
+        searchPlate.setBackgroundResource(0);
+
+        ((EditText)((SearchView)findViewById(R.id.searchView)).findViewById(((SearchView)findViewById(R.id.searchView)).getContext().getResources().getIdentifier("android:id/search_src_text", null, null))).setTextColor(getColor(R.color.cultured));
+//        textView.setTextColor(getColor(R.color.cultured));
+//        textView.setHintTextColor(getColor(R.color.azureish_white));
     }
 
     private void setControl() {
