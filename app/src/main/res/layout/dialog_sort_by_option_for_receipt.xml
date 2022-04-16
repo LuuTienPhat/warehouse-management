@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
-        android:text="Sắp xếp theo?"
+        android:text="Sắp xếp theo"
         android:textColor="@color/steel_blue"
         android:textSize="24sp"
         android:textStyle="bold" />

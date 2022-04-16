@@ -42,7 +42,7 @@
             android:name=".ProductDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".AddProductActivity"
+            android:name=".HandleProductActivity"
             android:exported="false" />
         <activity
             android:name=".WarehouseDetailActivity"
