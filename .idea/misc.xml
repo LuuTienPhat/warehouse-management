@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/drawable/bg_azureich_white_radius_15.xml" value="0.213" />
+        <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/drawable/border_bottom.xml" value="0.121" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/activity_edit_warehouse.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/activity_product_detail.xml" value="0.25" />

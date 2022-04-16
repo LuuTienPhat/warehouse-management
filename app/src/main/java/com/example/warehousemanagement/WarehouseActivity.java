@@ -37,6 +37,7 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
     int dividerHeight;
     public String sortOption2 = "";
     private ActivityResultLauncher<Intent> activityResultLauncher;
+    private boolean maximized = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,10 +150,15 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
 
     @Override
     public void handleBtnMinimizeClick(View view) {
-        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item_small, warehouses);
+        maximized = !maximized;
+        if (maximized) {
+            warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
+            btnMinimize.setBackgroundResource(R.drawable.ic_eye_32);
+        } else {
+            warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item_small, warehouses);
+            btnMinimize.setBackgroundResource(R.drawable.ic_baseline_visibility_off_24);
+        }
         listView.setAdapter(warehouseAdapter);
-        listView.setDividerHeight(10);
-        warehouseAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -197,9 +203,6 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
                 }
             });
         }
-        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
-        listView.setAdapter(warehouseAdapter);
-        System.out.println("notify change");
         warehouseAdapter.notifyDataSetChanged();
     }
 
