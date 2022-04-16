@@ -109,14 +109,14 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
 
     @Override
     public void handleBtnAddClick(View view) {
-        Intent intent = new Intent(this, AddProductActivity.class);
+        Intent intent = new Intent(this, HandleProductActivity.class);
         intent.putExtra("requestCode", LAUNCH_ADD_PRODUCT_ACTIVITY);
         startActivityForResult(intent, LAUNCH_ADD_PRODUCT_ACTIVITY);
     }
 
     //hàm trong set event khi click vào item treên list view
     public void handleListViewItemClick(View view, Product product) {
-        Intent intent = new Intent(this, AddProductActivity.class);
+        Intent intent = new Intent(this, HandleProductActivity.class);
         intent.putExtra("requestCode", LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY);
         intent.putExtra("product", product);
         startActivityForResult(intent, LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY);
@@ -217,7 +217,7 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 // Write your code if there's no result
-                Toast.makeText(this, "Đã hủy", Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "Đã hủy", Toast.LENGTH_LONG).show();
             }
         }
         if (requestCode == LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY) {
@@ -238,7 +238,7 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 // Write your code if there's no result
-                Toast.makeText(this, "Đã hủy", Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "Đã hủy", Toast.LENGTH_LONG).show();
             }
         }
 
