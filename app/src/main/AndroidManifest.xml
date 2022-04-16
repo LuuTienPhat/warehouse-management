@@ -34,10 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".WarehouseActivity"
-            android:exported="false"
-            android:label=""
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:exported="false" />
         <activity
             android:name=".ProductActivity"
             android:exported="false" />
