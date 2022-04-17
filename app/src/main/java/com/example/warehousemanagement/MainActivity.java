@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.warehousemanagement.dao.ProductDao;
 import com.example.warehousemanagement.dao.ReceiptDao;
