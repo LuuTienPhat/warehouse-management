@@ -36,8 +36,9 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
 
     public static int LAUNCH_ADD_PRODUCT_ACTIVITY = 1;
     public static int LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY = 2;
-//    public static int LAUNCH_DEL_PRODUCT_ACTIVITY = 3;
-
+    //    public static int LAUNCH_DEL_PRODUCT_ACTIVITY = 3;
+    private int listViewItemLayout = R.layout.product_item;
+    public boolean maximized = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,7 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
         productDao = new ProductDao(DatabaseHelper.getInstance(this));
         products = productDao.getAll();
 
-        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
         listView.setAdapter(productAdapter);
         dividerHeight = listView.getDividerHeight();
     }
@@ -126,7 +127,7 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
     public void handleBtnRefreshClick(View view) {
         products = productDao.getAll();
 
-        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
         listView.setAdapter(productAdapter);
         listView.setDividerHeight(dividerHeight);
     }
@@ -142,14 +143,19 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
 
     }
 
+
     @Override
     public void handleBtnMinimizeClick(View view) {
-        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item_small, products);
-        listView.setAdapter(productAdapter);
-        listView.setDividerHeight(10);
-        productAdapter.notifyDataSetChanged();
+        maximized = !maximized;
+        if (maximized) {
+            listViewItemLayout = R.layout.product_item;
+            btnMinimize.setBackgroundResource(R.drawable.ic_minimize_32);
+        } else {
+            listViewItemLayout = R.layout.product_item_small;
+            btnMinimize.setBackgroundResource(R.drawable.ic_maximize_32);
+        }
+        updateListView(products);
     }
-
     public void sortData() {
         System.out.println("begin sort;" + sortOption2);
         if (!sortOption2.isEmpty()) {
@@ -187,7 +193,7 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
                 }
             });
         }
-        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
         listView.setAdapter(productAdapter);
         System.out.println("notify change");
         productAdapter.notifyDataSetChanged();
@@ -249,7 +255,7 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             Toast.makeText(this, "Thêm vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
-        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
         listView.setAdapter(productAdapter);
         listView.setDividerHeight(dividerHeight);
     }
@@ -259,7 +265,7 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             Toast.makeText(this, "Sửa vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
-        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
         listView.setAdapter(productAdapter);
         listView.setDividerHeight(dividerHeight);
     }
@@ -269,14 +275,21 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             Toast.makeText(this, "Xóa vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
-        productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
+        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
         listView.setAdapter(productAdapter);
         listView.setDividerHeight(dividerHeight);
     }
 
     @Override
     public void sendSearchResult(List filteredList) {
-        
+        products = filteredList;
+        updateListView(filteredList);
+    }
+
+    public void updateListView(List list) {
+        productAdapter = new ProductAdapter(ProductActivity.this, listViewItemLayout, list);
+        listView.setAdapter(productAdapter);
+        productAdapter.notifyDataSetChanged();
     }
 }
 

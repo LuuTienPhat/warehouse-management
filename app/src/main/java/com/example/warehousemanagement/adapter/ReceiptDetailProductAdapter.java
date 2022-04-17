@@ -1,6 +1,5 @@
 package com.example.warehousemanagement.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +68,7 @@ public class ReceiptDetailProductAdapter extends ArrayAdapter<Product> {
         Product product = getItem(position);
 
         if (listViewItemType == 0) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.constraint_product_item_small, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.product_item_small, parent, false);
 
             TextView tvProductId = convertView.findViewById(R.id.tvProductId);
             TextView tvProductName = convertView.findViewById(R.id.tvProductName);

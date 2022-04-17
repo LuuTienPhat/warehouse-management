@@ -38,7 +38,7 @@ public class ProductViewActivity extends AppCompatActivity {
         productDao = new ProductDao(DatabaseHelper.getInstance(this));
         products = productDao.getAll();
 
-        receiptDetailProductAdapter = new ReceiptDetailProductAdapter(this, R.layout.constraint_product_item_small,
+        receiptDetailProductAdapter = new ReceiptDetailProductAdapter(this, R.layout.product_item_small,
                 products, receipt.getReceiptDetails());
         listView.setAdapter(receiptDetailProductAdapter);
     }
