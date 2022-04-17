@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Theme.WarehouseManagement"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +9,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_steel_blue_radius_25"
+        android:background="@drawable/bg_space_cadet_radius_15"
         android:iconifiedByDefault="false"
         android:queryHint="Tìm kiếm"
         android:searchIcon="@drawable/ic_baseline_search_cultured_24"
