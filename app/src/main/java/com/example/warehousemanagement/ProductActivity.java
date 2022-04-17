@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ProductActivity extends AppCompatActivity implements IViewActivity, SortOptionDialog.SortOptionDialogListener {
+public class ProductActivity extends AppCompatActivity implements IViewActivity, SearchViewFragment.ISendSearchResult, SortOptionDialog.SortOptionDialogListener {
     ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
     ListView listView;
     SearchView searchView;
@@ -272,6 +272,11 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
         productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
         listView.setAdapter(productAdapter);
         listView.setDividerHeight(dividerHeight);
+    }
+
+    @Override
+    public void sendSearchResult(List filteredList) {
+        
     }
 }
 
