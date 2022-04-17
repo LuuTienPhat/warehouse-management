@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Warehouse Management</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_favority">Favority</string>
+    <!--    <string name="nav_account">Favority</string>-->
+    <string name="nav_history">History</string>
+    <string name="nav_account">Account</string>
+    <string name="nav_warehouse">Quản lý kho</string>
+    <string name="nav_ware">kho</string>
+    <string name="nav_supplies">Vật tư</string>
+    <string name="nav_coupon">Phiếu nhập</string>
+    <string name="nav_my_profile">My profile</string>
+    <string name="nav_change_password">Change Password</string>
+    <string name="nav_sign_out">Sign out</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="login_register_button">Chưa có tài khoản? <b>Đăng ký ngay</b></string>
+    <string name="signup_register_button">Bạn có tài khoản rồi? <b>Đăng nhập ngay</b></string>
+    <string name="signup_forgot_button">Bạn đã cập nhật lại mật khẩu? <b>Đăng nhập ngay</b></string>
 </resources>

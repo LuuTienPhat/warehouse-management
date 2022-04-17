@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "469226245400",
+    "project_id": "warehouse-management-ce066",
+    "storage_bucket": "warehouse-management-ce066.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469226245400:android:2d031346db1ba10c46226d",
+        "android_client_info": {
+          "package_name": "com.example.warehousemanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469226245400-rrrte0bhf44272e9mjag1i5bi35v6ni0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.warehousemanagement",
+            "certificate_hash": "bfede16e734dec80094a8f559f77a83134a8de23"
+          }
+        },
+        {
+          "client_id": "469226245400-kdbilimb8me6jprjsecpprab619um7fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0RnS5_RCvYZD8ZIc2kzJ0c1bojzbtQQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469226245400-kdbilimb8me6jprjsecpprab619um7fa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

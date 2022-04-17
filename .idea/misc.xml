@@ -22,6 +22,34 @@
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_warehouse_detail.xml" value="0.67" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/warehouse_activity.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/warehouse_item.xml" value="0.67" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/bg_search_round_corner.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/ic_favorite.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/ic_logout.xml" value="0.104" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/ic_my_profile.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/login_button_bg.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/side_nav_bar.xml" value="0.1615" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_main2.xml" value="0.16757246376811594" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_sign_up.xml" value="0.16757246376811594" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_splash_login.xml" value="0.22" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_thong_tin_taikhoan.xml" value="0.2" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/app_bar_main.xml" value="0.18164967562557924" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/content_main.xml" value="0.16757246376811594" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/fragment_favorite.xml" value="0.16757246376811594" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/fragment_my_profile.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/layout_header_nav.xml" value="0.16757246376811594" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/nav_header_main.xml" value="0.1" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/menu/main.xml" value="0.2" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/menu/menu_nav.xml" value="0.21" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/drawable-v24/bg_text_box_round_corner.xml" value="0.1115" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/drawable/bg_azureich_white_radius_15.xml" value="0.1" />
         <entry key="..\:/android_project/GiuaKyAndroid_QuanLyNhapHang/warehouse-management/app/src/main/res/drawable/bg_text_box_disabled_round_corner.xml" value="0.1115" />

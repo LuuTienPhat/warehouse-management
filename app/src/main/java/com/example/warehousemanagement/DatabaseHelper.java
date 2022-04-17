@@ -11,7 +11,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final Context context;
     private static DatabaseHelper Instance = null;
 
-    private DatabaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, 1);
         this.context = context;
     }
@@ -34,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_WAREHOUSE_QUERY);
         db.execSQL(CREATE_TABLE_RECEIPT_QUERY);
         db.execSQL(CREATE_TABLE_RECEIPT_DETAIL_QUERY);
+        db.execSQL(CREATE_TABLE_User);
     }
 
     @Override
@@ -51,6 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_PRODUCT = "product";
     public static final String TABLE_RECEIPT = "receipt";
     public static final String TABLE_RECEIPT_DETAIL = "receipt_detail";
+    public static final String TABLE_USER = "User";
 
     public static final String TABLE_WAREHOUSE_ID = "id";
     public static final String TABLE_WAREHOUSE_NAME = "name";
@@ -69,10 +71,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_RECEIPT_DETAIL_UNIT = "unit";
     public static final String TABLE_RECEIPT_DETAIL_QUANTITY = "quantity";
 
+    public static final String TABLE_USER_ID_User = "ID_User";
+    public static final String TABLE_USER_HoTen = "HoTen";
+    public static final String TABLE_USER_Point = "Point";
+    public static final String TABLE_USER_Email = "Email";
+    public static final String TABLE_USER_SDT = "SDT";
+
     private static final String CREATE_TABLE_PRODUCT_QUERY = "CREATE TABLE " + TABLE_PRODUCT + " (" +
             TABLE_PRODUCT_ID + " varchar (10) PRIMARY KEY, " +
             TABLE_PRODUCT_NAME + " varchar(50), " +
             TABLE_PRODUCT_ORIGIN + " varchar(50));";
+
+    private static final String CREATE_TABLE_User = "CREATE TABLE " + TABLE_USER + " (" +
+            TABLE_USER_ID_User + " varchar (10) PRIMARY KEY, " +
+            TABLE_USER_HoTen + " varchar(50), " +
+            TABLE_USER_Point + " varchar(50), " +
+            TABLE_USER_Email + " varchar(50), " +
+            TABLE_USER_SDT + " varchar(50));";
 
     private static final String CREATE_TABLE_WAREHOUSE_QUERY = "CREATE TABLE " + TABLE_WAREHOUSE + " (" +
             TABLE_WAREHOUSE_ID + " VARCHAR (10) PRIMARY KEY, " +
@@ -93,4 +108,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             TABLE_RECEIPT_DETAIL_RECEIPT_ID + ", " +
             TABLE_RECEIPT_DETAIL_PRODUCT_ID +
             "))";
+
 }
