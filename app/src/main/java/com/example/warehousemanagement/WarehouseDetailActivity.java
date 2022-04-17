@@ -17,9 +17,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.dao.WarehouseDao;
+import com.example.warehousemanagement.dialog.CustomDialog;
 import com.example.warehousemanagement.model.Warehouse;
 
-public class WarehouseDetailActivity extends AppCompatActivity {
+public class WarehouseDetailActivity extends AppCompatActivity implements CustomDialog.Listener {
     EditText etName, etId, etAddress;
     ImageButton btnEdit, btnDelete;
     Button btnSave, btnCancel;
@@ -130,27 +131,31 @@ public class WarehouseDetailActivity extends AppCompatActivity {
     }
 
     private void handleBtnDeleteClick(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Xóa kho");
-        builder.setMessage("Bạn có chắc muốn xóa kho này không?");
-        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (warehouseDao.deleteOne(warehouse)) {
-                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
-                    setResult(Activity.RESULT_OK);
-                    finish();
-                } else {
-                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-        });
-        builder.create().show();
+        CustomDialog customDialog = new CustomDialog(CustomDialog.Type.CONFIRM, "Xóa kho",
+                "Bạn có chắc muốn xóa kho này không?", "delete");
+        customDialog.show(getSupportFragmentManager(), "DeleteWarehouse");
+
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Xóa kho");
+//        builder.setMessage("Bạn có chắc muốn xóa kho này không?");
+//        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                if (warehouseDao.deleteOne(warehouse)) {
+//                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
+//                    setResult(Activity.RESULT_OK);
+//                    finish();
+//                } else {
+//                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//            }
+//        });
+//        builder.create().show();
     }
 
     private void handleBtnEditClick(View view) {
@@ -196,6 +201,19 @@ public class WarehouseDetailActivity extends AppCompatActivity {
             etAddress.setFocusableInTouchMode(true);
 
             lyOption.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void sendDialogResult(CustomDialog.Result result, String request) {
+        if (result == CustomDialog.Result.OK && request.equals("delete")) {
+            if (warehouseDao.deleteOne(warehouse)) {
+                Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
+                setResult(Activity.RESULT_OK);
+                finish();
+            } else {
+                Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
