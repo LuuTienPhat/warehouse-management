@@ -58,13 +58,7 @@ public class ReceiptTopFragment extends Fragment {
 
         convertView = inflater.inflate(R.layout.receipt_top_fragment, container, false);
 
-        spinnerWarehouse = convertView.findViewById(R.id.spinnerWarehouse);
-        tvProcess = convertView.findViewById(R.id.tvProcess);
-        tvReceiptDateWarning = convertView.findViewById(R.id.tvReceiptDateWarning);
-        tvReceiptIdWarning = convertView.findViewById(R.id.tvReceiptIdWarning);
-        tvWarehouseWarning = convertView.findViewById(R.id.tvWarehouseWarning);
-        etReceiptId = convertView.findViewById(R.id.etReceiptId);
-        etReceiptDate = convertView.findViewById(R.id.etReceiptDate);
+        setControl();
 
         warehouseDao = new WarehouseDao(DatabaseHelper.getInstance(convertView.getContext()));
         warehouses = warehouseDao.getAll();
@@ -75,6 +69,12 @@ public class ReceiptTopFragment extends Fragment {
 
         initDatePicker();
 
+        setEvent();
+
+        return convertView;
+    }
+
+    private void setEvent() {
         etReceiptDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,8 +98,6 @@ public class ReceiptTopFragment extends Fragment {
 
             }
         });
-
-        return convertView;
     }
 
     private void initDatePicker() {
@@ -178,5 +176,15 @@ public class ReceiptTopFragment extends Fragment {
 
 
         return count == 0;
+    }
+
+    private void setControl() {
+        spinnerWarehouse = convertView.findViewById(R.id.spinnerWarehouse);
+        tvProcess = convertView.findViewById(R.id.tvProcess);
+        tvReceiptDateWarning = convertView.findViewById(R.id.tvReceiptDateWarning);
+        tvReceiptIdWarning = convertView.findViewById(R.id.tvReceiptIdWarning);
+        tvWarehouseWarning = convertView.findViewById(R.id.tvWarehouseWarning);
+        etReceiptId = convertView.findViewById(R.id.etReceiptId);
+        etReceiptDate = convertView.findViewById(R.id.etReceiptDate);
     }
 }
