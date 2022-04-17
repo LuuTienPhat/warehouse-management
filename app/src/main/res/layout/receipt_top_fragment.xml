@@ -74,6 +74,7 @@
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_text_box_round_corner"
                 android:ems="10"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Số phiếu"
                 android:inputType="number"

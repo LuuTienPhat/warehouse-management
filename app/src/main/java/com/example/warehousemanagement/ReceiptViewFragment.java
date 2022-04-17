@@ -28,12 +28,15 @@ public class ReceiptViewFragment extends Fragment {
     ReceiptDetailAdapter receiptDetailAdapter;
     Receipt receipt;
     AddReceiptActivity addReceiptActivity;
+    ReceiptViewActivity receiptViewActivity;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof AddReceiptActivity)
             addReceiptActivity = (AddReceiptActivity) context;
+        else if (context instanceof ReceiptViewActivity)
+            receiptViewActivity = (ReceiptViewActivity) context;
     }
 
     @Nullable
@@ -42,8 +45,13 @@ public class ReceiptViewFragment extends Fragment {
         convertView = inflater.inflate(R.layout.receipt_view_fragment, null);
         setControl();
         setEvent();
-        updateData();
         return convertView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        updateData();
     }
 
     @Override
@@ -52,8 +60,9 @@ public class ReceiptViewFragment extends Fragment {
         updateData();
     }
 
-    private void updateData() {
-        receipt = addReceiptActivity.getNewReceipt();
+    public void updateData() {
+        if (addReceiptActivity != null) receipt = addReceiptActivity.getNewReceipt();
+        else if (receiptViewActivity != null) receipt = receiptViewActivity.getReceipt();
 
         WarehouseDao warehouseDao = new WarehouseDao(DatabaseHelper.getInstance(requireContext()));
         Warehouse warehouse = warehouseDao.getOne(receipt.getWarehouseId());
