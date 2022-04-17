@@ -10,7 +10,7 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="5dp"
         android:listSelector="@android:color/transparent"
-        android:scrollbars="vertical"
+        android:scrollbars="none"
         android:smoothScrollbar="true" />
 
 </LinearLayout>
