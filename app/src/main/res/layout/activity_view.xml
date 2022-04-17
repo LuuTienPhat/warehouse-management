@@ -21,6 +21,7 @@
         android:textSize="30sp" />
 
     <fragment
+        android:id="@+id/search_view_fragment"
         class="com.example.warehousemanagement.SearchViewFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
