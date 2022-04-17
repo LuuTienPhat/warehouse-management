@@ -1,8 +1,7 @@
 package com.example.warehousemanagement;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.MainThread;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.dao.WarehouseDao;
@@ -24,11 +22,11 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
     EditText etName, etId, etAddress;
     ImageButton btnEdit, btnDelete;
     Button btnSave, btnCancel;
-    Warehouse warehouse = null;
+    Warehouse warehouse;
     LinearLayout lyOption, lyUtils;
     TextView tvTitle;
     WarehouseDao warehouseDao;
-    int state;
+    private boolean inEditMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +35,7 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
         setControl();
         setEvent();
 
-        this.state = 0;
-        //changeState();
+        changeState();
 
         warehouseDao = new WarehouseDao(DatabaseHelper.getInstance(this));
 
@@ -46,7 +43,7 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
         String warehouseName = this.getIntent().getStringExtra("warehouseName");
         String warehouseAddress = this.getIntent().getStringExtra("warehouseAddress");
 
-        this.warehouse = new Warehouse(warehouseId, warehouseName, warehouseAddress);
+        warehouse = new Warehouse(warehouseId, warehouseName, warehouseAddress);
         etId.setText(warehouse.getId());
         etName.setText(warehouse.getName());
         etAddress.setText(warehouse.getAddress());
@@ -78,6 +75,13 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
             @Override
             public void onClick(View view) {
                 handleBtnDeleteClick(view);
+            }
+        });
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleBtnEditClick(view);
             }
         });
     }
@@ -119,6 +123,8 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
         warehouse.setName(name);
         warehouse.setAddress(address);
         if (warehouseDao.updateOne(warehouse)) {
+            inEditMode = false;
+            changeState();
             Toast.makeText(this, "Lưu thay đổi thành công", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
@@ -126,8 +132,16 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
     }
 
     private void handleBtnCancelClick(View view) {
-        setResult(Activity.RESULT_OK);
-        finish();
+        if (inEditMode) {
+            etName.setText(warehouse.getName());
+            etAddress.setText(warehouse.getAddress());
+
+            inEditMode = false;
+            changeState();
+        } else {
+            setResult(Activity.RESULT_OK);
+            finish();
+        }
     }
 
     private void handleBtnDeleteClick(View view) {
@@ -159,48 +173,44 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
     }
 
     private void handleBtnEditClick(View view) {
-        this.state = 1;
-        changeState();
+        if (!inEditMode) {
+            inEditMode = true;
+            changeState();
+        }
     }
 
-    //0: Detail, 1: Edit, 2: Add
     private void changeState() {
-        if (this.state == 0) { //Detail
+        if (!inEditMode) {
             tvTitle.setText("Chi tiết");
-            lyUtils.setVisibility(View.VISIBLE);
 
-            etId.setFocusable(false);
-            etId.setFocusableInTouchMode(false);
+            btnEdit.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.space_cadet, null)));
+
             etName.setFocusable(false);
             etName.setFocusableInTouchMode(false);
+            etName.setAlpha(0.5f);
+
             etAddress.setFocusable(false);
             etAddress.setFocusableInTouchMode(false);
+            etAddress.setAlpha(0.5f);
 
-            lyOption.setVisibility(View.GONE);
-        } else if (this.state == 1) {
+            btnSave.setVisibility(View.GONE);
+            btnCancel.setText("Thoát");
+        } else {
             tvTitle.setText("Chỉnh sửa");
-            lyUtils.setVisibility(View.GONE);
 
-            etId.setFocusable(true);
-            etId.setFocusableInTouchMode(true);
+            btnEdit.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.alert_red, null)));
+
             etName.setFocusable(true);
             etName.setFocusableInTouchMode(true);
+            etName.setAlpha(1f);
+
             etAddress.setFocusable(true);
             etAddress.setFocusableInTouchMode(true);
+            etAddress.setAlpha(1f);
 
-            lyOption.setVisibility(View.VISIBLE);
-        } else if (this.state == 2) {
-            tvTitle.setText("Thêm");
-            lyUtils.setVisibility(View.GONE);
-
-            etId.setFocusable(true);
-            etId.setFocusableInTouchMode(true);
-            etName.setFocusable(true);
-            etName.setFocusableInTouchMode(true);
-            etAddress.setFocusable(true);
-            etAddress.setFocusableInTouchMode(true);
-
-            lyOption.setVisibility(View.VISIBLE);
+            btnSave.setVisibility(View.VISIBLE);
+            btnSave.setText("Lưu");
+            btnCancel.setText("Hủy");
         }
     }
 
