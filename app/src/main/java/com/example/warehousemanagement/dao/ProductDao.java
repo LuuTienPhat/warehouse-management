@@ -146,7 +146,31 @@ public class ProductDao implements Dao<Product> {
 
     @Override
     public List<Product> search(String keyword) {
-        return null;
+        List<Product> products = new ArrayList<>();
+        db = dbHelper.getReadableDatabase();
+
+        keyword = "%" + keyword + "%";
+        String query = "SELECT * FROM " + DatabaseHelper.TABLE_PRODUCT + " WHERE "
+                + DatabaseHelper.TABLE_PRODUCT_ID + " LIKE '" + keyword + "' OR "
+                + DatabaseHelper.TABLE_PRODUCT_ORIGIN + " LIKE '" + keyword + "' OR "
+                + DatabaseHelper.TABLE_PRODUCT_NAME + " LIKE '" + keyword + "'";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String id = cursor.getString(0);
+                String name = cursor.getString(1);
+                String origin = cursor.getString(2);
+
+                Product product = new Product(id, name, origin);
+                products.add(product);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return products;
     }
 
     // mới thêm, chưa chuyển vào dao vì RecepitDAO phải override
@@ -163,6 +187,6 @@ public class ProductDao implements Dao<Product> {
             product = new Product(productId, name, origin);
         }
         // nếu product khác null chứng tỏ đã tồn tại
-        return product!=null;
+        return product != null;
     }
 }

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -26,7 +25,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ReceiptActivity extends AppCompatActivity implements IViewActivity, SortOptionDialog.SortOptionDialogListener {
+public class ReceiptActivity extends AppCompatActivity implements IViewActivity, SearchViewFragment.ISendSearchResult, SortOptionDialog.SortOptionDialogListener {
     ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
     ListView listView;
     SearchView searchView;
@@ -41,10 +40,11 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
     WarehouseAdapter warehouseAdapter = null;
     List<Warehouse> warehouses = new ArrayList<>();
 
-    int dividerHeight;
-
     public static String sortOption = "";
     public String sortOption2 = "";
+
+    private boolean maximized = true;
+    private int listViewItemLayout = R.layout.receipt_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +58,7 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
         receiptDao = new ReceiptDao(DatabaseHelper.getInstance(this));
         receipts = receiptDao.getAll();
 
-        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receipts);
-        listView.setAdapter(receiptAdapter);
-        dividerHeight = listView.getDividerHeight();
-
-        initSearchView();
-
+        updateListView(receipts);
     }
 
     private void setEvent() {
@@ -107,41 +102,6 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
                 startActivity(intent);
             }
         });
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                List<Receipt> filteredList = new ArrayList<>();
-                if (!s.trim().isEmpty()) {
-                    filteredList = receiptDao.search(s);
-                } else {
-                    filteredList = receipts;
-                }
-
-                updateListView(R.layout.receipt_item, filteredList);
-                return false;
-            }
-        });
-    }
-
-    private void updateListView(int listViewItemLayout, List<Receipt> receiptList) {
-        receiptAdapter = new ReceiptAdapter(ReceiptActivity.this, R.layout.receipt_item, receiptList);
-        listView.setAdapter(receiptAdapter);
-    }
-
-    private void initSearchView() {
-        int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
-        View searchPlate = findViewById(searchPlateId);
-        searchPlate.setBackgroundResource(0);
-
-        ((EditText)((SearchView)findViewById(R.id.searchView)).findViewById(((SearchView)findViewById(R.id.searchView)).getContext().getResources().getIdentifier("android:id/search_src_text", null, null))).setTextColor(getColor(R.color.cultured));
-//        textView.setTextColor(getColor(R.color.cultured));
-//        textView.setHintTextColor(getColor(R.color.azureish_white));
     }
 
     private void setControl() {
@@ -153,6 +113,13 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
         listView = findViewById(R.id.listView);
         searchView = findViewById(R.id.searchView);
         tvTitle = findViewById(R.id.tvTitle);
+    }
+
+
+    public void updateListView(List list) {
+        receiptAdapter = new ReceiptAdapter(ReceiptActivity.this, listViewItemLayout, list);
+        listView.setAdapter(receiptAdapter);
+        receiptAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -168,9 +135,7 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
 
     private void refresh() {
         receipts = receiptDao.getAll();
-        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receipts);
-        listView.setAdapter(receiptAdapter);
-        receiptAdapter.notifyDataSetChanged();
+        updateListView(receipts);
     }
 
     public void sortData() {
@@ -211,10 +176,8 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
                 }
             });
         }
-        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receiptsToSort);
-        listView.setAdapter(receiptAdapter);
-        System.out.println("notify change");
-        receiptAdapter.notifyDataSetChanged();
+        receipts = receiptsToSort;
+        updateListView(receiptsToSort);
     }
 
     @Override
@@ -235,9 +198,15 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
 
     @Override
     public void handleBtnMinimizeClick(View view) {
-        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item_small, receipts);
-        listView.setAdapter(receiptAdapter);
-        receiptAdapter.notifyDataSetChanged();
+        maximized = !maximized;
+        if (maximized) {
+            listViewItemLayout = R.layout.receipt_item;
+            btnMinimize.setBackgroundResource(R.drawable.ic_minimize_32);
+        } else {
+            listViewItemLayout = R.layout.receipt_item_small;
+            btnMinimize.setBackgroundResource(R.drawable.ic_maximize_32);
+        }
+        updateListView(receipts);
     }
 
     @Override
@@ -251,5 +220,11 @@ public class ReceiptActivity extends AppCompatActivity implements IViewActivity,
     protected void onResume() {
         super.onResume();
         refresh();
+    }
+
+    @Override
+    public void sendSearchResult(List filteredList) {
+        receipts = filteredList;
+        updateListView(filteredList);
     }
 }

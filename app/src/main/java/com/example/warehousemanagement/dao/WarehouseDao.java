@@ -137,6 +137,28 @@ public class WarehouseDao implements Dao<Warehouse> {
 
     @Override
     public List<Warehouse> search(String keyword) {
-        return null;
+        List<Warehouse> warehouses = new ArrayList<>();
+        db = dbHelper.getReadableDatabase();
+
+        keyword = "%" + keyword + "%";
+
+        String query = "SELECT * FROM " + DatabaseHelper.TABLE_WAREHOUSE + " WHERE "
+                + DatabaseHelper.TABLE_WAREHOUSE_ID + " LIKE '" + keyword + "' OR "
+                + DatabaseHelper.TABLE_WAREHOUSE_NAME + " LIKE '" + keyword + "' OR "
+                + DatabaseHelper.TABLE_WAREHOUSE_ADDRESS + " LIKE '" + keyword + "'";
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+            String id = cursor.getString(0);
+            String name = cursor.getString(1);
+            String address = cursor.getString(2);
+
+            Warehouse warehouse = new Warehouse(id, name, address);
+            warehouses.add(warehouse);
+        }
+
+        cursor.close();
+        db.close();
+        return warehouses;
     }
 }

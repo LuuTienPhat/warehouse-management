@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class WarehouseActivity extends AppCompatActivity implements IViewActivity, SortOptionDialog.SortOptionDialogListener {
+public class WarehouseActivity extends AppCompatActivity implements IViewActivity, SearchViewFragment.ISendSearchResult, SortOptionDialog.SortOptionDialogListener {
     ImageButton btnAdd, btnMinimize, btnSort, btnFilter, btnRefresh;
     SearchView searchView;
     TextView tvTitle;
@@ -153,10 +153,10 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
         maximized = !maximized;
         if (maximized) {
             warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
-            btnMinimize.setBackgroundResource(R.drawable.ic_eye_32);
+            btnMinimize.setBackgroundResource(R.drawable.ic_minimize_32);
         } else {
             warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item_small, warehouses);
-            btnMinimize.setBackgroundResource(R.drawable.ic_baseline_visibility_off_24);
+            btnMinimize.setBackgroundResource(R.drawable.ic_maximize_32);
         }
         listView.setAdapter(warehouseAdapter);
     }
@@ -210,5 +210,10 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
     public void openDialog() {
         SortOptionDialog sortOptionDialog = new SortOptionDialog("warehouse");
         sortOptionDialog.show(getSupportFragmentManager(), "sortOptionDialog");
+    }
+
+    @Override
+    public void sendSearchResult(List filteredList) {
+
     }
 }
