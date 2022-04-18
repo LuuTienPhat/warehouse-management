@@ -132,9 +132,7 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
     @Override
     public void handleBtnRefreshClick(View view) {
         warehouses = warehouseDao.getAll();
-        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
-        listView.setAdapter(warehouseAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(warehouses);
     }
 
     @Override
@@ -214,6 +212,12 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
 
     @Override
     public void sendSearchResult(List filteredList) {
+        warehouses = filteredList;
+        updateListView(warehouses);
+    }
 
+    private void updateListView(List list) {
+        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, list);
+        listView.setAdapter(warehouseAdapter);
     }
 }

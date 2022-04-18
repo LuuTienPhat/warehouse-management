@@ -1,12 +1,15 @@
 package com.example.warehousemanagement;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -115,5 +118,18 @@ public class SearchViewFragment extends Fragment {
                 .findViewById(((android.widget.SearchView) convertView
                         .findViewById(R.id.searchView)).getContext().getResources().getIdentifier("android:id/search_src_text", null, null)))
                 .setTextColor(requireActivity().getColor(R.color.cultured));
+
+
+        int hintTextId = searchView.getContext()
+                .getResources()
+                .getIdentifier("android:id/search_src_text", null, null);
+        TextView hintText = (TextView) convertView.findViewById(hintTextId);
+        hintText.setHintTextColor(requireActivity().getColor(R.color.steel_blue));
+
+        int closeBtnId = searchView.getContext()
+                .getResources()
+                .getIdentifier("android:id/search_close_btn", null, null);
+        ImageView closeIcon = (ImageView) searchView.findViewById(closeBtnId);
+        closeIcon.setImageResource(R.drawable.ic_close_24);
     }
 }

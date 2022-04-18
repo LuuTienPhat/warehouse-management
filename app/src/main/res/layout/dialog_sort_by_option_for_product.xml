@@ -24,65 +24,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mã vật tư"
-                android:textSize="20dp"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp"
-                android:background="@drawable/border_bottom"
-                android:checked="true"
                 android:id="@+id/radioBtnTheoMa"
-                />
-            <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tên vật tư"
-                android:textSize="20dp"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp"
                 android:background="@drawable/border_bottom"
+                android:buttonTint="@color/radio_button_color"
+                android:checked="true"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="10dp"
+                android:text="Mã vật tư"
+                android:textColor="@color/space_cadet"
+                android:textSize="18sp" />
+
+            <RadioButton
                 android:id="@+id/radioBtnTheoTen"
-                />
-            <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nguồn gốc xuất xứ"
-                android:textSize="20dp"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp"
                 android:background="@drawable/border_bottom"
+                android:buttonTint="@color/radio_button_color"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="10dp"
+                android:text="Tên vật tư"
+                android:textColor="@color/space_cadet"
+                android:textSize="18sp" />
+
+            <RadioButton
                 android:id="@+id/radioBtnTheoXuatXu"
 
-                />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/radio_button_color"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="10dp"
+                android:text="Nguồn gốc của vật tư"
+                android:textColor="@color/space_cadet"
+                android:textSize="18sp" />
+
         </RadioGroup>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <Button
-                android:layout_width="wrap_content"
+            <include
+                layout="@layout/group_button_ok_cancel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_azureich_white_radius_25"
-                android:text="Hủy"
-                android:textSize="20dp"
-                android:id="@+id/btnHuy"
-                android:textColor="@color/black"
-                android:layout_marginRight="20dp"
-                android:textStyle="bold"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_steel_blue_radius_15"
-                android:text="Sắp xếp"
-                android:textSize="20dp"
-                android:id="@+id/btnXacNhan"
-                android:textColor="@color/white"
-                android:textStyle="bold"/>
+                android:layout_marginTop="40dp" />
         </LinearLayout>
 
 

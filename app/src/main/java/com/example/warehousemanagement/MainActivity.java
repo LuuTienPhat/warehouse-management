@@ -1,5 +1,6 @@
 package com.example.warehousemanagement;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -19,26 +20,16 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.bumptech.glide.Glide;
 import com.example.warehousemanagement.dao.ProductDao;
 import com.example.warehousemanagement.dao.ReceiptDao;
 import com.example.warehousemanagement.dao.ReceiptDetailDao;
 import com.example.warehousemanagement.dao.WarehouseDao;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity {
     LinearLayout btnWarehouse, btnProduct, btnReceipt;
     DatabaseHelper databaseHelper = null;
     public static final int MY_REQUEST_CODE =10;
@@ -99,14 +90,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         showUserInformation();
         databaseHelper = DatabaseHelper.getInstance(this);
         ProductDao productDao = new ProductDao(databaseHelper);
-        productDao.fillData();
-
         WarehouseDao warehouseDao = new WarehouseDao(databaseHelper);
-        warehouseDao.fillData();
-
         ReceiptDao receiptDao = new ReceiptDao(databaseHelper);
-        receiptDao.fillData();
-
         ReceiptDetailDao receiptDetailDao = new ReceiptDetailDao(databaseHelper);
         receiptDetailDao.fillData();
         showUserInformation();

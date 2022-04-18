@@ -25,67 +25,47 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <RadioButton
                 android:id="@+id/radioBtnTheoMa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_bottom"
+                android:buttonTint="@color/radio_button_color"
                 android:checked="true"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="10dp"
                 android:text="Mã kho"
-                android:textSize="20dp" />
+                android:textColor="@color/space_cadet"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/radioBtnTheoTen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_bottom"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp"
+                android:buttonTint="@color/radio_button_color"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="10dp"
                 android:text="Tên kho"
-                android:textSize="20dp" />
+                android:textColor="@color/space_cadet"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/radioBtnTheoDiaChi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp"
+                android:buttonTint="@color/radio_button_color"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="10dp"
                 android:text="Địa chỉ"
-                android:textSize="20dp" />
+                android:textColor="@color/space_cadet"
+                android:textSize="18sp" />
+
         </RadioGroup>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnHuy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_azureich_white_radius_25"
-                android:text="Hủy"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnXacNhan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_steel_blue_radius_15"
-                android:text="Sắp xếp"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+    <include
+        layout="@layout/group_button_ok_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp" />
     </LinearLayout>

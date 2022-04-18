@@ -39,12 +39,12 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-<!--            <ImageButton-->
-<!--                android:id="@+id/btnEdit"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="30dp"-->
-<!--                android:background="@drawable/ic_edit_32" />-->
+            <ImageButton
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/ic_edit_32" />
 
             <ImageButton
                 android:id="@+id/btnDelete"
@@ -126,6 +126,7 @@
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:text="Kho Bình Chánh"
+            android:alpha="0.5"
             android:textAlignment="textStart"
             android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue" />
@@ -158,6 +159,7 @@
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:text="95 Việt Phú, Bình Chánh, TPHCM"
+            android:alpha="0.5"
             android:textAlignment="textStart"
             android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue" />

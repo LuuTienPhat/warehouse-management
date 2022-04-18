@@ -31,6 +31,12 @@ public class AddWarehouseActivity extends AppCompatActivity {
         setEvent();
     }
 
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK);
+        finish();
+    }
+
     private void setEvent() {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
