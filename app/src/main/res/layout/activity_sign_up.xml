@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp"
-    android:gravity="center"
     tools:context=".SignUpActivity">
+
     <LinearLayout
         android:id="@+id/linearlayout_inputs"
         android:layout_width="match_parent"
@@ -21,12 +22,14 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/imageView_cloudRight">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/roboto_bold"
             android:text="Đăng Ký Tài Khoản"
             android:textColor="@color/textHeadline"
             android:textSize="20sp" />
@@ -36,72 +39,86 @@
             android:id="@+id/editTextEmailNav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/login_edittext_bg"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_azureich_white_radius_15"
             android:drawableStart="@drawable/ic_person"
             android:drawableLeft="@drawable/ic_person"
             android:drawablePadding="16dp"
+            android:drawableTint="@color/space_cadet"
             android:hint="Họ và tên"
             android:inputType="text"
             android:padding="16dp"
+            android:textColorHint="@color/steel_blue"
+            android:textCursorDrawable="@color/steel_blue"
             android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/login_edittext_bg"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_azureich_white_radius_15"
             android:drawableStart="@drawable/ic_baseline_email_24"
             android:drawableLeft="@drawable/ic_baseline_email_24"
             android:drawablePadding="16dp"
+            android:drawableTint="@color/space_cadet"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="16dp"
+            android:textColorHint="@color/steel_blue"
+            android:textCursorDrawable="@color/steel_blue"
             android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextSdt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/login_edittext_bg"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_azureich_white_radius_15"
             android:drawableStart="@drawable/ic_baseline_phone_24"
             android:drawableLeft="@drawable/ic_baseline_phone_24"
             android:drawablePadding="16dp"
+            android:drawableTint="@color/space_cadet"
             android:hint="Số điện thoại"
             android:inputType="number"
             android:padding="16dp"
+            android:textColorHint="@color/steel_blue"
+            android:textCursorDrawable="@color/steel_blue"
             android:textSize="14sp" />
-
 
 
         <EditText
             android:id="@+id/editTextMatKhau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/login_edittext_bg"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_azureich_white_radius_15"
             android:drawableStart="@drawable/ic_lock"
             android:drawableLeft="@drawable/ic_lock"
             android:drawablePadding="16dp"
+            android:drawableTint="@color/space_cadet"
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="16dp"
+            android:textColorHint="@color/steel_blue"
+            android:textCursorDrawable="@color/steel_blue"
             android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextXacNhan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/login_edittext_bg"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_azureich_white_radius_15"
             android:drawableStart="@drawable/ic_baseline_lock_clock_24"
             android:drawableLeft="@drawable/ic_baseline_lock_clock_24"
             android:drawablePadding="16dp"
+            android:drawableTint="@color/space_cadet"
             android:hint="Xác nhận lại Password"
             android:inputType="textPassword"
             android:padding="16dp"
+            android:textColorHint="@color/steel_blue"
+            android:textCursorDrawable="@color/steel_blue"
             android:textSize="14sp" />
 
 
@@ -109,12 +126,12 @@
             android:id="@+id/buttonSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/login_button_bg"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_space_cadet_radius_15"
             android:backgroundTint="@color/colorPrimary"
             android:text="Đăng Ký"
-            android:textColor="@color/white"
-            app:backgroundTint="#3385ff" />
+            android:textColor="@color/cultured"
+            app:backgroundTint="@color/space_cadet" />
 
     </LinearLayout>
 
@@ -122,41 +139,13 @@
         android:id="@+id/textView_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="@string/signup_register_button"
-        android:textColor="@color/textHeadline"
+        android:textColor="@color/space_cadet"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearlayout_inputs" />
-<!--    <EditText-->
-<!--        android:id="@+id/edt_email"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="Email"-->
-<!--        android:inputType="textEmailAddress"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:imeOptions="actionNext"-->
-<!--        android:maxLength="100"-->
-<!--        ></EditText>-->
-<!--    <EditText-->
-<!--        android:id="@+id/edt_password"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="Password"-->
-<!--        android:inputType="textPassword"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:imeOptions="actionDone"-->
-<!--        android:maxLength="100"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        ></EditText>-->
-<!--    <Button-->
-<!--        android:id="@+id/btn_sign_up"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Sign up"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        ></Button>-->
+ />
+
 
 </LinearLayout>

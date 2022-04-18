@@ -59,8 +59,7 @@
             android:hint="Email"
             android:inputType="text"
             android:padding="16dp"
-            android:text="1"
-            android:textColor="@color/space_cadet"
+
             android:textColorHint="@color/steel_blue"
             android:textCursorDrawable="@color/steel_blue"
             android:textSize="14sp" />
@@ -69,6 +68,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
+            android:textColorHint="@color/steel_blue"
+            android:textCursorDrawable="@color/steel_blue"
+
             tools:ignore="MissingContraints">
 
             <EditText
@@ -83,6 +85,7 @@
                 android:drawableRight="@drawable/ic_visibility"
                 android:drawablePadding="16dp"
                 android:hint="Password"
+                android:drawableTint="@color/space_cadet"
                 android:inputType="textPassword"
                 android:padding="16dp"
                 android:textSize="14sp" />

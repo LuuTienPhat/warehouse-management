@@ -23,16 +23,18 @@
         android:text="TruongCoder"
         android:textColor="@color/cultured"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+
+        />
 
     <TextView
         android:id="@+id/tv_email"
-        android:scrollHorizontally="true"
-        android:ellipsize="end"
-        android:maxLines="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
         android:text="nguyenquangtruonghktcute@gmail.com"
         android:textColor="@color/azureish_white"
         android:textSize="16sp"
