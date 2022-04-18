@@ -125,11 +125,12 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
 
     @Override
     public void handleBtnRefreshClick(View view) {
+        refresh();
+    }
+    
+    private void refresh() {
         products = productDao.getAll();
-
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(products);
     }
 
     @Override
@@ -193,10 +194,11 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
                 }
             });
         }
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        System.out.println("notify change");
-        productAdapter.notifyDataSetChanged();
+        updateListView(products);
+//        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
+//        listView.setAdapter(productAdapter);
+//        System.out.println("notify change");
+//        productAdapter.notifyDataSetChanged();
     }
 
     public void openDialog() {
@@ -255,9 +257,12 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             Toast.makeText(this, "Thêm vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(products);
+
+//        products = productDao.getAll();
+//        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
+//        listView.setAdapter(productAdapter);
+//        listView.setDividerHeight(dividerHeight);
     }
 
     public void editProduct(Product product) {
@@ -265,9 +270,11 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             Toast.makeText(this, "Sửa vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(products);
+//        products = productDao.getAll();
+//        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
+//        listView.setAdapter(productAdapter);
+//        listView.setDividerHeight(dividerHeight);
     }
 
     public void deleteProduct(Product product) {
@@ -275,9 +282,11 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             Toast.makeText(this, "Xóa vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(products);
+//        products = productDao.getAll();
+//        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
+//        listView.setAdapter(productAdapter);
+//        listView.setDividerHeight(dividerHeight);
     }
 
     @Override
@@ -292,4 +301,3 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
         productAdapter.notifyDataSetChanged();
     }
 }
-

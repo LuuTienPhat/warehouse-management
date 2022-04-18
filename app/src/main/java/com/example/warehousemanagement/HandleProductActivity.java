@@ -9,29 +9,41 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.warehousemanagement.adapter.ProductAdapter;
+import com.example.warehousemanagement.adapter.ProductQuantityDetailAdapter;
 import com.example.warehousemanagement.dao.ProductDao;
 import com.example.warehousemanagement.dialog.CustomDialog;
 import com.example.warehousemanagement.model.Product;
+import com.example.warehousemanagement.model.ProductQuantityDetail;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HandleProductActivity extends AppCompatActivity implements CustomDialog.Listener {
     EditText etName, etId, etOrigin;
     ImageButton btnEdit, btnDelete;
     Button btnSave, btnCancel;
     Product product;
+    ProductDao productDao = null;
     LinearLayout lyOption, lyUtils;
     TextView tvTitle, tvProductIdAlert, tvProductNameAlert, tvProductOriginAlert;
-
+    ProductQuantityDetailAdapter productQuantityDetailAdapter = null;
+    ListView listView;
+    List<ProductQuantityDetail> productQuantityDetailList = new ArrayList<>();
     //xét xem là thêm hay sửa
     public int editMode = -99;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.product_add_activity_linear);
+        setContentView(R.layout.product_handle_activity);
+        productDao = new ProductDao(DatabaseHelper.getInstance(this));
+
         setControl();
         setEvent();
     }
@@ -84,6 +96,8 @@ public class HandleProductActivity extends AppCompatActivity implements CustomDi
 //            btnDelete.setEnabled(true);
             Product productFromParent = (Product) this.getIntent().getSerializableExtra("product");
 
+            product = productFromParent;
+
             etId.setText(productFromParent.getId());
             etId.setEnabled(false);
             etId.getBackground().setAlpha(76);
@@ -101,6 +115,11 @@ public class HandleProductActivity extends AppCompatActivity implements CustomDi
 
             btnSave.setEnabled(false);
             btnSave.getBackground().setAlpha(76);
+
+//lấy chi tiết số lượng
+            productQuantityDetailList = productDao.getProductQuantityInWarehouses(product.getId());
+            productQuantityDetailAdapter = new ProductQuantityDetailAdapter(this, R.layout.product_quantity_in_warehouse_item, productQuantityDetailList);
+            listView.setAdapter(productQuantityDetailAdapter);
         }
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +146,8 @@ public class HandleProductActivity extends AppCompatActivity implements CustomDi
         tvProductIdAlert = findViewById(R.id.tvProductIdAlert);
         tvProductNameAlert = findViewById(R.id.tvProductNameAlert);
         tvProductOriginAlert = findViewById(R.id.tvProductOriginAlert);
+
+        listView = findViewById(R.id.listView);
     }
 
     private boolean validate() {
@@ -171,7 +192,7 @@ public class HandleProductActivity extends AppCompatActivity implements CustomDi
         }
 
         // nếu validate chuẩn r mới hiện dialog xác nhận
-        if(editMode == ProductActivity.LAUNCH_ADD_PRODUCT_ACTIVITY){
+        if (editMode == ProductActivity.LAUNCH_ADD_PRODUCT_ACTIVITY) {
             String id = etId.getText().toString().trim();
             String name = etName.getText().toString().trim();
             String origin = etOrigin.getText().toString().trim();
@@ -191,8 +212,10 @@ public class HandleProductActivity extends AppCompatActivity implements CustomDi
             setResult(Activity.RESULT_OK, returnIntent);
             finish();
         }
+
+
         //nếu là chế độ edit delete mới mở confirm dialog // đây là confirm sửa
-        if(editMode==ProductActivity.LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY){
+        if (editMode == ProductActivity.LAUNCH_EDIT_DELETE_PRODUCT_ACTIVITY) {
             openDialog("edit");
         }
     }
@@ -227,11 +250,11 @@ public class HandleProductActivity extends AppCompatActivity implements CustomDi
     }
 
     public void openDialog(String confirmFor) {
-        String content="";
-        if(confirmFor.equalsIgnoreCase("edit")){
+        String content = "";
+        if (confirmFor.equalsIgnoreCase("edit")) {
             content = "Bạn có chắc muốn SỬA thông tin cho vật tư này?";
         }
-        if(confirmFor.equalsIgnoreCase("delete")){
+        if (confirmFor.equalsIgnoreCase("delete")) {
             content = "Bạn có chắc muôn XÓA vật tư này?";
         }
         CustomDialog edit_deleteConfirmCustomDialog = new CustomDialog(CustomDialog.Type.CONFIRM, "Xác nhận", content, confirmFor);
@@ -240,7 +263,7 @@ public class HandleProductActivity extends AppCompatActivity implements CustomDi
 
     @Override
     public void sendDialogResult(CustomDialog.Result result, String request) {
-        if (request.equalsIgnoreCase("delete") && result==CustomDialog.Result.OK) {
+        if (request.equalsIgnoreCase("delete") && result == CustomDialog.Result.OK) {
             String id = etId.getText().toString().trim();
             String name = etName.getText().toString().trim();
             String origin = etOrigin.getText().toString().trim();
@@ -259,7 +282,7 @@ public class HandleProductActivity extends AppCompatActivity implements CustomDi
             finish();
         }
         // nếu xác nhận sửa trả về true
-        if (request.equalsIgnoreCase("edit") && result==CustomDialog.Result.OK) {
+        if (request.equalsIgnoreCase("edit") && result == CustomDialog.Result.OK) {
             String id = etId.getText().toString().trim();
             String name = etName.getText().toString().trim();
             String origin = etOrigin.getText().toString().trim();
