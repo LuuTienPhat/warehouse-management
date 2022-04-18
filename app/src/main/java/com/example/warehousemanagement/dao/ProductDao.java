@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.warehousemanagement.DatabaseHelper;
 import com.example.warehousemanagement.model.Product;
+import com.example.warehousemanagement.model.ProductQuantityDetail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -188,5 +189,46 @@ public class ProductDao implements Dao<Product> {
         }
         // nếu product khác null chứng tỏ đã tồn tại
         return product != null;
+    }
+
+    public List<ProductQuantityDetail> getProductQuantityInWarehouses(String productId) {
+        List<ProductQuantityDetail> productQuantityDetails = new ArrayList<>();
+        db = dbHelper.getReadableDatabase();
+
+        String queryString = "SELECT "+DatabaseHelper.TABLE_WAREHOUSE+"."+DatabaseHelper.TABLE_WAREHOUSE_ID+", "
+                +DatabaseHelper.TABLE_WAREHOUSE_NAME + ", " + DatabaseHelper.TABLE_RECEIPT_DETAIL_UNIT
+                + ", SUM("+DatabaseHelper.TABLE_RECEIPT_DETAIL_QUANTITY+") AS QUANTITY "
+                + " FROM " + DatabaseHelper.TABLE_RECEIPT_DETAIL +" INNER JOIN " +DatabaseHelper.TABLE_RECEIPT
+                +" ON "+DatabaseHelper.TABLE_RECEIPT_DETAIL+"."+DatabaseHelper.TABLE_RECEIPT_DETAIL_RECEIPT_ID +"="+DatabaseHelper.TABLE_RECEIPT+"."+DatabaseHelper.TABLE_RECEIPT_ID
+                +" INNER JOIN " +DatabaseHelper.TABLE_WAREHOUSE
+                +" ON "+DatabaseHelper.TABLE_RECEIPT+"."+DatabaseHelper.TABLE_RECEIPT_WAREHOUSE_ID +"="+DatabaseHelper.TABLE_WAREHOUSE+"."+DatabaseHelper.TABLE_WAREHOUSE_ID
+                +" WHERE "+DatabaseHelper.TABLE_RECEIPT_DETAIL+"."+DatabaseHelper.TABLE_RECEIPT_DETAIL_PRODUCT_ID+"= '"+ productId+"' "
+                +" GROUP BY "+DatabaseHelper.TABLE_WAREHOUSE+"."+DatabaseHelper.TABLE_WAREHOUSE_ID+", "+DatabaseHelper.TABLE_RECEIPT_DETAIL+"."+DatabaseHelper.TABLE_RECEIPT_DETAIL_PRODUCT_ID;
+
+        System.out.println(queryString);
+
+        Cursor cursor = db.rawQuery(queryString, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String warehouseId = cursor.getString(0);
+                String warehouseName = cursor.getString(1);
+                String unit = cursor.getString(2);
+                int quantity = cursor.getInt(3);
+
+                ProductQuantityDetail productQuantityDetail = new ProductQuantityDetail(warehouseId, warehouseName, quantity, unit, productId);
+
+                productQuantityDetails.add(productQuantityDetail);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        for(ProductQuantityDetail p : productQuantityDetails){
+            System.out.println("-------------"+p.getWareHouseId()+", "+p.getProductId()+", "+p.getQuantity());
+        }
+
+        return productQuantityDetails;
     }
 }

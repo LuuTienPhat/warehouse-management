@@ -5,8 +5,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
+        android:background="@drawable/bg_culture_top_radius_25"
         tools:ignore="MissingConstraints"
-        android:background="@color/white">
+        >
 
         <include
             layout="@layout/group_sort_order_radio_button"
