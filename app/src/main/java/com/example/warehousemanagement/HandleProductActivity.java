@@ -10,14 +10,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.dao.ProductDao;
 import com.example.warehousemanagement.dialog.CustomDialog;
-import com.example.warehousemanagement.dialog.Edit_DeleteConfirmDialog;
-import com.example.warehousemanagement.dialog.SortOptionDialog;
 import com.example.warehousemanagement.model.Product;
 
 public class HandleProductActivity extends AppCompatActivity implements CustomDialog.Listener {

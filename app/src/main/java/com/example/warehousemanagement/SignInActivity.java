@@ -1,13 +1,11 @@
 package com.example.warehousemanagement;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,10 +36,10 @@ public class SignInActivity extends AppCompatActivity {
         btnDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = edttaikhoan.getText().toString().trim();
-                String matkhau = edtmatkhau.getText().toString().trim();
-//                String email = "1@gmail.com";
-//                String matkhau = "123456";
+//                String email = edttaikhoan.getText().toString().trim();
+//                String matkhau = edtmatkhau.getText().toString().trim();
+                String email = "1@gmail.com";
+                String matkhau = "123456";
 
                 // validations for input email and password // check th trong
                 if (TextUtils.isEmpty(email)) {

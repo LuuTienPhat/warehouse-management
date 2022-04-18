@@ -24,7 +24,7 @@ public class NavigationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View inflateView = inflater.inflate(R.layout.pending_delete_constraint_cancel_previous_next, container, false);
+        View inflateView = inflater.inflate(R.layout.navigation_cancel_previous_next, container, false);
         btnCancel = inflateView.findViewById(R.id.btnCancel);
         btnPrevious = inflateView.findViewById(R.id.btnPrevious);
         btnForward = inflateView.findViewById(R.id.btnForward);

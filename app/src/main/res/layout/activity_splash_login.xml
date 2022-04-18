@@ -2,52 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Theme.WarehouseManagement"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
     android:gravity="center"
-    >
+    android:orientation="vertical"
+    android:padding="20dp">
+
     <LinearLayout
-        android:alpha="1"
         android:id="@+id/linearlayout_inputs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
+        android:alpha="1"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_cloudRight">
+        android:orientation="vertical">
+
         <ImageView
-            android:rotation="0"
             android:id="@+id/imageView_logoRays"
             android:layout_width="130dp"
-            android:scaleType="centerInside"
             android:layout_height="130dp"
             android:layout_marginTop="80dp"
-            android:src="@drawable/iconwarehouse"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:background="@mipmap/ic_launcher_round"
+            android:rotation="0"
+            android:scaleType="centerInside" />
 
-            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/roboto_bold"
             android:text="Ứng dụng quản lý kho"
-            android:textColor="@color/textHeadline"
+            android:textColor="@color/space_cadet"
             android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/roboto_regular"
             android:text="Sign in to continue"
             android:textColor="@color/textDescription"
             android:textSize="14sp" />
@@ -57,42 +52,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="@drawable/login_edittext_bg"
+            android:background="@drawable/bg_azureich_white_radius_15"
             android:drawableStart="@drawable/ic_baseline_email_24"
-            android:drawableLeft="@drawable/ic_baseline_email_24"
             android:drawablePadding="16dp"
+            android:drawableTint="@color/space_cadet"
             android:hint="Email"
             android:inputType="text"
             android:padding="16dp"
+            android:text="1"
+            android:textColor="@color/space_cadet"
+            android:textColorHint="@color/steel_blue"
+            android:textCursorDrawable="@color/steel_blue"
             android:textSize="14sp" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
-            tools:ignore="MissingContraints"
-            >
-        <EditText
-            android:id="@+id/editTextPass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/login_edittext_bg"
-            android:drawableStart="@drawable/ic_lock"
-            android:drawableLeft="@drawable/ic_lock"
-            android:drawableEnd="@drawable/ic_visibility"
-            android:drawableRight="@drawable/ic_visibility"
-            android:drawablePadding="16dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="16dp"
-            android:textSize="14sp" />
+            tools:ignore="MissingContraints">
+
+            <EditText
+                android:id="@+id/editTextPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_azureich_white_radius_15"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawableLeft="@drawable/ic_lock"
+                android:drawableEnd="@drawable/ic_visibility"
+                android:drawableRight="@drawable/ic_visibility"
+                android:drawablePadding="16dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="16dp"
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/buttonDangnhap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="@drawable/login_button_bg"
+            android:background="@drawable/bg_space_cadet_radius_15"
             android:backgroundTint="@color/colorPrimary"
             android:text="Login"
             android:textColor="@color/cultured"
@@ -104,26 +105,21 @@
         android:id="@+id/textView_forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
+        android:layout_margin="20dp"
         android:alpha="1"
-        android:layout_marginRight="30dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="Bạn quên mật khẩu?"
-        android:textColor="@color/textDescription"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearlayout_inputs" />
+        android:textColor="@color/steel_blue"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/textView_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_register_button"
-        android:textColor="@color/textHeadline"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/login_register_button"
+        android:textColor="@color/space_cadet"
+        android:textSize="14sp" />
 
 </LinearLayout>

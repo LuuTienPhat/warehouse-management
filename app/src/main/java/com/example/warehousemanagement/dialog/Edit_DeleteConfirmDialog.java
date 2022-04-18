@@ -6,14 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.warehousemanagement.R;
-import com.example.warehousemanagement.ReceiptActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class Edit_DeleteConfirmDialog extends BottomSheetDialogFragment {
