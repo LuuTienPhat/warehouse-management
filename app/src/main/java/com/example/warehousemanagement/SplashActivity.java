@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FirebaseApp.initializeApp(this);
+        //FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_splash);
 
         Handler handler = new Handler();

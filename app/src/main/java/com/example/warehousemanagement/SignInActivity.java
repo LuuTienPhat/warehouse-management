@@ -97,7 +97,6 @@ public class SignInActivity extends AppCompatActivity {
 
 
 
-
 //                if(taikhoan.equals("")||matkhau.equals(""))
 //                {
 //                    Toast.makeText(LoginActivity.this, "Điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();

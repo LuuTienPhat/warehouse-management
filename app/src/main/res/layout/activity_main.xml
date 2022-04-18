@@ -64,6 +64,17 @@
 
         </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvCredit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/roboto_thin"
+        android:text="Team11"
+        android:textAlignment="center"
+        android:textColor="@color/space_cadet"
+        android:textSize="16dp" />
 
         <LinearLayout
             android:id="@+id/btnProduct"

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:gravity="center"
-    tools:context=".SignInActivity">
+    >
     <LinearLayout
         android:alpha="1"
         android:id="@+id/linearlayout_inputs"
@@ -95,8 +95,8 @@
             android:background="@drawable/login_button_bg"
             android:backgroundTint="@color/colorPrimary"
             android:text="Login"
-            android:textColor="@color/white"
-            app:backgroundTint="#3385ff" />
+            android:textColor="@color/cultured"
+            app:backgroundTint="@color/space_cadet" />
 
     </LinearLayout>
 
