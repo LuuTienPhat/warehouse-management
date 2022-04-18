@@ -1,7 +1,6 @@
 package com.example.warehousemanagement;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

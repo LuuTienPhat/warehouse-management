@@ -1,8 +1,6 @@
 package com.example.warehousemanagement.activities.receipt;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

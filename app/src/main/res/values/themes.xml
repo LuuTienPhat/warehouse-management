@@ -37,4 +37,11 @@
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bg_radius_top_25</item>
     </style>
+    <style name="Theme.WarehouseManagement.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.WarehouseManagement.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.WarehouseManagement.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
