@@ -1,21 +1,25 @@
 package com.example.warehousemanagement;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.warehousemanagement.adapter.WarehouseAdapter;
+import com.example.warehousemanagement.adapter.WarehouseSpinnerAdapter;
 import com.example.warehousemanagement.dao.ReceiptDao;
 import com.example.warehousemanagement.dao.WarehouseDao;
+import com.example.warehousemanagement.model.Receipt;
 import com.example.warehousemanagement.model.Warehouse;
 
 import java.time.LocalDate;
@@ -28,7 +32,7 @@ public class ReceiptTopFragment extends Fragment {
     EditText etReceiptId;
     Button etReceiptDate;
     Spinner spinnerWarehouse;
-    WarehouseAdapter warehouseAdapter;
+    WarehouseSpinnerAdapter warehouseSpinnerAdapter;
     WarehouseDao warehouseDao = null;
     List<Warehouse> warehouses = new ArrayList<>();
     Warehouse selectedWarehouse = null;
@@ -37,10 +41,14 @@ public class ReceiptTopFragment extends Fragment {
 
     View convertView;
 
+    AddReceiptActivity addReceiptActivity = null;
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        LayoutInflater layoutInflater = null;
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof AddReceiptActivity) {
+            addReceiptActivity = (AddReceiptActivity) context;
+        }
     }
 
     @Override
@@ -50,23 +58,23 @@ public class ReceiptTopFragment extends Fragment {
 
         convertView = inflater.inflate(R.layout.receipt_top_fragment, container, false);
 
-        spinnerWarehouse = convertView.findViewById(R.id.spinnerWarehouse);
-        tvProcess = convertView.findViewById(R.id.tvProcess);
-        tvReceiptDateWarning = convertView.findViewById(R.id.tvReceiptDateWarning);
-        tvReceiptIdWarning = convertView.findViewById(R.id.tvReceiptIdWarning);
-        tvWarehouseWarning = convertView.findViewById(R.id.tvWarehouseWarning);
-        etReceiptId = convertView.findViewById(R.id.etReceiptId);
-        etReceiptDate = convertView.findViewById(R.id.etReceiptDate);
+        setControl();
 
         warehouseDao = new WarehouseDao(DatabaseHelper.getInstance(convertView.getContext()));
         warehouses = warehouseDao.getAll();
         warehouses.add(0, new Warehouse("", "Chọn kho", ""));
 
-        warehouseAdapter = new WarehouseAdapter(convertView.getContext(), R.layout.warehouse_spinner, warehouses);
-        spinnerWarehouse.setAdapter(warehouseAdapter);
+        warehouseSpinnerAdapter = new WarehouseSpinnerAdapter(convertView.getContext(), R.layout.warehouse_spinner, warehouses);
+        spinnerWarehouse.setAdapter(warehouseSpinnerAdapter);
 
         initDatePicker();
 
+        setEvent();
+
+        return convertView;
+    }
+
+    private void setEvent() {
         etReceiptDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +82,22 @@ public class ReceiptTopFragment extends Fragment {
             }
         });
 
-        return convertView;
+        spinnerWarehouse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                if (position == 0) {
+                    selectedWarehouse = null;
+                    return;
+                } else {
+                    selectedWarehouse = (Warehouse) adapterView.getItemAtPosition(position);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     private void initDatePicker() {
@@ -94,41 +117,74 @@ public class ReceiptTopFragment extends Fragment {
 
         etReceiptDate.setText(now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         datePickerDialog = new DatePickerDialog(requireActivity(), dateSetListener, year, month, day);
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+    }
+
+    public boolean senDataToActivity() {
+        if (isInputValid()) {
+            int receiptId = Integer.parseInt(etReceiptId.getText().toString().trim());
+            String warehouseId = selectedWarehouse.getId();
+
+            Receipt receipt = addReceiptActivity.getNewReceipt();
+            receipt.setId(receiptId);
+            receipt.setWarehouseId(selectedWarehouse.getId());
+            LocalDate receiptDate = LocalDate.of(datePickerDialog.getDatePicker().getYear(),
+                    datePickerDialog.getDatePicker().getMonth() + 1,
+                    datePickerDialog.getDatePicker().getDayOfMonth());
+            receipt.setDate(receiptDate);
+            addReceiptActivity.setNewReceipt(receipt);
+
+            return true;
+        } else return false;
     }
 
     private boolean isInputValid() {
         int count = 0;
-        if (chosenDate == null) {
-            count++;
-            tvReceiptDateWarning.setText("Ngày tạo không hợp lệ!");
-        } else {
-            count--;
-            tvReceiptDateWarning.setText("");
-        }
+//        if (chosenDate == null) {
+//            count++;
+//            tvReceiptDateWarning.setText("Ngày tạo không hợp lệ!");
+//        } else {
+//            count--;
+//            tvReceiptDateWarning.setText("");
+//        }
 
         if (selectedWarehouse == null) {
             count++;
             tvWarehouseWarning.setText("Kho không hợp lệ");
 
-        } else {
-            count--;
-            tvReceiptIdWarning.setText("");
-        }
+        } else tvReceiptIdWarning.setText("");
 
-        ReceiptDao receiptDao = new ReceiptDao(DatabaseHelper.getInstance(convertView.getContext()));
-        String receiptId = etReceiptId.getText().toString();
-
+        String receiptId = etReceiptId.getText().toString().trim();
         if (receiptId.isEmpty()) {
             count++;
             tvReceiptIdWarning.setText("Số phiếu không hợp lệ");
-
-        } else if (receiptDao.getOne(receiptId).getId() == Integer.parseInt(receiptId)) {
-            count++;
-            tvReceiptIdWarning.setText("Số phiếu đã bị trùng");
         } else {
-            count--;
-            tvReceiptIdWarning.setText("");
+            try {
+                Integer.parseInt(receiptId);
+
+                ReceiptDao receiptDao = new ReceiptDao(DatabaseHelper.getInstance(convertView.getContext()));
+                if (receiptDao.getOne(receiptId) != null) {
+                    count++;
+                    tvReceiptIdWarning.setText("Số phiếu đã bị trùng");
+                } else tvReceiptIdWarning.setText("");
+
+            } catch (Exception ex) {
+                count++;
+                tvReceiptIdWarning.setText("Số phiếu phải là số");
+            }
         }
+
+
         return count == 0;
+    }
+
+    private void setControl() {
+        spinnerWarehouse = convertView.findViewById(R.id.spinnerWarehouse);
+        tvProcess = convertView.findViewById(R.id.tvProcess);
+        tvReceiptDateWarning = convertView.findViewById(R.id.tvReceiptDateWarning);
+        tvReceiptIdWarning = convertView.findViewById(R.id.tvReceiptIdWarning);
+        tvWarehouseWarning = convertView.findViewById(R.id.tvWarehouseWarning);
+        etReceiptId = convertView.findViewById(R.id.etReceiptId);
+        etReceiptDate = convertView.findViewById(R.id.etReceiptDate);
     }
 }

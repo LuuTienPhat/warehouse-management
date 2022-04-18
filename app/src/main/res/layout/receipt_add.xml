@@ -1,45 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingHorizontal="21dp">
 
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Tạo phiếu nhập"
+        android:textAlignment="textStart"
+        android:textColor="@color/space_cadet"
+        android:textSize="30sp" />
+
     <FrameLayout
-        android:id="@+id/fragmentNavigation1"
-        android:name="com.example.warehousemanagement.ReceiptTopFragment"
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="21dp"
-        android:paddingTop="50dp"
-        app:layout_constraintBottom_toTopOf="@id/fragmentNavigation2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:layout_weight="1"/>
 
     <include
-        android:id="@+id/fragmentNavigation2"
+        android:id="@+id/navigationBar"
         layout="@layout/navigation_cancel_previous_next"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginBottom="10dp"
-        android:paddingHorizontal="21dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragmentNavigation1" />
-
-    <!--    <androidx.fragment.app.FragmentContainerView-->
-    <!--        android:id="@+id/fragmentNavigation2"-->
-    <!--        android:name="com.example.warehousemanagement.NavigationFragment"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="70dp"-->
-    <!--        android:layout_marginBottom="10dp"-->
-    <!--        android:paddingHorizontal="21dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/fragmentNavigation1" />-->
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" />
+</LinearLayout>

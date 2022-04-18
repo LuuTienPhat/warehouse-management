@@ -1,59 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
         tools:ignore="MissingConstraints">
 
+        <include
+            layout="@layout/group_sort_order_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thứ tự"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="20dp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="12dp"
-                    android:checked="true"
-                    android:layout_weight="1"
-                    android:textSize="20dp"
-                    android:background="@drawable/border_bottom"
-                    android:text="Tăng dần"
-                    android:id="@+id/radioBtnTangDan"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-
-                    android:paddingVertical="12dp"
-                    android:textSize="20dp"
-                    android:background="@drawable/border_bottom"
-                    android:text="Giảm dần"
-                    android:id="@+id/radioBtnGiamDan"/>
-            </RadioGroup>
-        </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sắp xếp theo?"
+            android:text="Sắp xếp theo"
+            android:textColor="@color/steel_blue"
             android:textSize="24dp"
             android:textStyle="bold"
             android:layout_marginVertical="20dp"
@@ -125,4 +87,3 @@
 
 
     </LinearLayout>
-</RelativeLayout>

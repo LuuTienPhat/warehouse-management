@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".SplashScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReceiptActivity"
             android:exported="false" />
         <activity
@@ -20,6 +23,9 @@
             android:exported="false" />
         <activity
             android:name=".EditReceiptDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductViewActivity"
             android:exported="false" />
         <activity
             android:name=".ReceiptViewActivity"
@@ -37,14 +43,16 @@
             android:name=".ProductDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".AddProductActivity"
+            android:name=".HandleProductActivity"
             android:exported="false" />
         <activity
             android:name=".WarehouseDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".AddWarehouseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />

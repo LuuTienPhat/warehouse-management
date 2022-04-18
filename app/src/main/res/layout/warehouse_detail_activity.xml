@@ -8,9 +8,9 @@
     android:paddingEnd="21dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="30dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -28,6 +28,10 @@
             android:textColor="@color/space_cadet"
             android:textSize="30sp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <LinearLayout
             android:id="@+id/lyUtils"
             android:layout_width="wrap_content"
@@ -35,12 +39,12 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/btnEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/ic_edit_32" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/btnEdit"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="30dp"-->
+<!--                android:background="@drawable/ic_edit_32" />-->
 
             <ImageButton
                 android:id="@+id/btnDelete"
@@ -74,12 +78,13 @@
             android:background="@drawable/bg_text_box_round_corner"
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Mã kho"
             android:inputType="text"
             android:paddingStart="20dp"
             android:text="K1"
+            android:focusable="false"
             android:textAlignment="textStart"
             android:textColor="@color/space_cadet"
+            android:alpha="0.5"
             android:textColorHint="@color/steel_blue" />
 
         <TextView
@@ -118,7 +123,6 @@
             android:background="@drawable/bg_text_box_round_corner"
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Mã kho"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:text="Kho Bình Chánh"
@@ -151,7 +155,6 @@
             android:background="@drawable/bg_text_box_round_corner"
             android:ems="10"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Mã kho"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:text="95 Việt Phú, Bình Chánh, TPHCM"
@@ -162,10 +165,6 @@
 
 
     <include
-        layout="@layout/group_button_save_cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        layout="@layout/group_button_ok_cancel" />
 
 </LinearLayout>

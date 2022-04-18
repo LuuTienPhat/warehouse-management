@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item>
-        <shape
-            android:shape="rectangle">
-            <stroke android:width="1dp" android:color="#221A1A" />
-            <solid android:color="#fff" />
+<!--    <item>-->
+<!--        <shape-->
+<!--            android:shape="rectangle">-->
+<!--            <stroke android:width="1dp" android:color="#221A1A" />-->
+<!--            <solid android:color="#fff" />-->
 
-        </shape>
-    </item>
-    <!--android:top="1dp"-->
-    <item android:bottom="1dp">
-        <shape
-            android:shape="rectangle">
-            <stroke android:width="1dp" android:color="#FFFFFF" />
-            <solid android:color="#00000000" />
+<!--        </shape>-->
+<!--    </item>-->
+<!--    &lt;!&ndash;android:top="1dp"&ndash;&gt;-->
+<!--    <item android:bottom="1dp">-->
+<!--        <shape-->
+<!--            android:shape="rectangle">-->
+<!--            <stroke android:width="1dp" android:color="#FFFFFF" />-->
+<!--            <solid android:color="#00000000" />-->
+<!--        </shape>-->
+<!--    </item>-->
+
+    <item android:gravity="bottom">
+        <shape>
+            <size android:height="1dp" />
+            <solid android:color="@color/azureish_white" />
         </shape>
     </item>
 

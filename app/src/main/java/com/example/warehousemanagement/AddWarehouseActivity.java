@@ -8,13 +8,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.warehousemanagement.dao.WarehouseDao;
 import com.example.warehousemanagement.model.Warehouse;
 
 public class AddWarehouseActivity extends AppCompatActivity {
-    EditText tvName, tvId, tvAddress;
+    EditText etName, etId, etAddress;
     ImageButton btnEdit, btnDelete;
     Button btnSave, btnCancel;
     Warehouse warehouse = null;
@@ -27,15 +29,6 @@ public class AddWarehouseActivity extends AppCompatActivity {
         setContentView(R.layout.warehouse_add_activity);
         setControl();
         setEvent();
-
-        String warehouseId = this.getIntent().getStringExtra("warehouseId");
-        String warehouseName = this.getIntent().getStringExtra("warehouseName");
-        String warehouseAddress = this.getIntent().getStringExtra("warehouseAddress");
-
-//        this.warehouse = new WarehouseEntity(warehouseId, warehouseName, warehouseAddress);
-//        tvId.setText(warehouse.getId());
-//        tvName.setText(warehouse.getName());
-//        tvAddress.setText(warehouse.getAddress());
     }
 
     private void setEvent() {
@@ -55,35 +48,60 @@ public class AddWarehouseActivity extends AppCompatActivity {
     }
 
     private void setControl() {
-
-
         btnEdit = findViewById(R.id.btnEdit);
         btnCancel = findViewById(R.id.btnCancel);
 
-        tvAddress = findViewById(R.id.etAddress);
-        tvName = findViewById(R.id.etName);
-        tvId = findViewById(R.id.etId);
+        etAddress = findViewById(R.id.etAddress);
+        etName = findViewById(R.id.etName);
+        etId = findViewById(R.id.etId);
 
         lyOption = findViewById(R.id.lyOption);
-        btnSave = findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnOK);
         btnCancel = findViewById(R.id.btnCancel);
     }
 
     private void handleBtnSaveClick(View view) {
-        String id = tvId.getText().toString().trim();
-        String name = tvName.getText().toString().trim();
-        String address = tvAddress.getText().toString().trim();
+        String id = etId.getText().toString().trim();
+        String name = etName.getText().toString().trim();
+        String address = etAddress.getText().toString().trim();
 
-//        WarehouseEntity warehouse = new WarehouseEntity(id, name, address);
-//        AppDatabase db = AppDatabase.getInstance(this);
-//        WarehouseDao warehouseDao = db.warehouseDao();
-//        warehouseDao.insertOne(warehouse);
+        // validate inputs
+        int errors = 0;
+        if (id.isEmpty()) {
+            etId.setError("Vui lòng nhập mã kho!");
+            errors++;
+        }
+        if (name.isEmpty()) {
+            etName.setError("Vui lòng nhập tên kho!");
+            errors++;
+        }
+        if (address.isEmpty()) {
+            etAddress.setError("Vui lòng nhập địa chỉ!");
+            errors++;
+        }
+        if (errors != 0) {
+            return;
+        }
+
+        // Check if the id exists or not. If yes, insert the new one. If not, show a warning.
+        WarehouseDao warehouseDao = new WarehouseDao(DatabaseHelper.getInstance(this));
+        if (warehouseDao.getOne(id) == null) {
+            if (warehouseDao.insertOne(new Warehouse(id, name, address))) {
+                Toast.makeText(this, "Thêm kho thành công", Toast.LENGTH_SHORT).show();
+                etId.setText("");
+                etName.setText("");
+                etAddress.setText("");
+            } else {
+                Toast.makeText(this, "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            etId.requestFocus();
+            etId.setError("Mã kho này đã tồn tại! Vui lòng nhập mã kho khác!");
+        }
     }
 
     private void handleBtnCancelClick(View view) {
-        Intent intent = new Intent(this, WarehouseActivity.class);
-        startActivity(intent);
+        setResult(RESULT_OK);
+        finish();
     }
-
-
 }
