@@ -1,5 +1,22 @@
 package com.example.warehousemanagement;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
+import android.os.Bundle;
+
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +47,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ProductActivity extends AppCompatActivity implements BaseActivity, SortOptionDialog.SortOptionDialogListener {
-    ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
+    ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh, btnStatistical;
     ListView listView;
     SearchView searchView;
     TextView tvTitle;
@@ -38,7 +55,8 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
     ProductAdapter productAdapter = null;
     List<Product> products = new ArrayList<>();
     int dividerHeight;
-    public String sortOption2="";
+    public String sortOption2 = "";
+
 
     public static int LAUNCH_ADD_PRODUCT_ACTIVITY = 1;
     public static int LAUNCH_EDIT_PRODUCT_ACTIVITY = 2;
@@ -48,8 +66,11 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
+
         setControl();
         setEvent();
+
+
 
         tvTitle.setText("Vật tư");
         productDao = new ProductDao(DatabaseHelper.getInstance(this));
@@ -58,6 +79,7 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
         productAdapter = new ProductAdapter(this, R.layout.constraint_product_item, products);
         listView.setAdapter(productAdapter);
         dividerHeight = listView.getDividerHeight();
+
     }
 
     private void setEvent() {
@@ -71,6 +93,12 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
             @Override
             public void onClick(View view) {
                 handleBtnRefreshClick(view);
+            }
+        });
+        btnStatistical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProductActivity.this, ChartActivity.class));
             }
         });
         btnSort.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +130,10 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
         });
     }
 
+
+
     private void setControl() {
+        btnStatistical = findViewById(R.id.btnStatistical);
         btnAdd = findViewById(R.id.btnAdd);
         btnRefresh = findViewById(R.id.btnRefresh);
         btnFilter = findViewById(R.id.btnFilter);
@@ -137,6 +168,7 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
         intent.putExtra("requestCode", LAUNCH_ADD_PRODUCT_ACTIVITY);
         startActivityForResult(intent, LAUNCH_ADD_PRODUCT_ACTIVITY);
     }
+
     //hàm trong set event khi click vào item treên list view
     public void handleListViewItemClick(View view, Product product) {
         Intent intent = new Intent(this, AddProductActivity.class);
@@ -173,10 +205,10 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
         productAdapter.notifyDataSetChanged();
     }
 
-    public void sortData(){
-        System.out.println("begin sort;"+sortOption2);
+    public void sortData() {
+        System.out.println("begin sort;" + sortOption2);
         if (!sortOption2.isEmpty()) {
-            System.out.println("begin sort;"+sortOption2);
+            System.out.println("begin sort;" + sortOption2);
             Collections.sort(products, new Comparator<Product>() {
                 @Override
                 public int compare(Product pd1, Product pd2) {
@@ -198,13 +230,13 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
                     if (sapXepTheo.equalsIgnoreCase("theo_ma")) {
                         // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
                         // so sanh string dungf compare to, < tra ve <0, lon hon tra ve > 0
-                        return (pd1.getId().compareTo(pd2.getId())<0) ? lessThan : (pd1.getId().compareTo(pd2.getId())>0) ? greaterThan : 0;
+                        return (pd1.getId().compareTo(pd2.getId()) < 0) ? lessThan : (pd1.getId().compareTo(pd2.getId()) > 0) ? greaterThan : 0;
                     } else if (sapXepTheo.equalsIgnoreCase("theo_ten")) {
                         // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                        return (pd1.getName().compareTo(pd2.getName())<0) ? lessThan : (pd1.getName().compareTo(pd2.getName())>0) ? greaterThan : 0;
-                    }else if (sapXepTheo.equalsIgnoreCase("theo_xuat_xu")) {
+                        return (pd1.getName().compareTo(pd2.getName()) < 0) ? lessThan : (pd1.getName().compareTo(pd2.getName()) > 0) ? greaterThan : 0;
+                    } else if (sapXepTheo.equalsIgnoreCase("theo_xuat_xu")) {
                         // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                        return (pd1.getOrigin().compareTo(pd2.getOrigin())<0) ? lessThan : (pd1.getOrigin().compareTo(pd2.getOrigin())>0) ? greaterThan : 0;
+                        return (pd1.getOrigin().compareTo(pd2.getOrigin()) < 0) ? lessThan : (pd1.getOrigin().compareTo(pd2.getOrigin()) > 0) ? greaterThan : 0;
                     }
                     return 0;
                 }
@@ -215,7 +247,8 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
         System.out.println("notify change");
         productAdapter.notifyDataSetChanged();
     }
-    public void openDialog(){
+
+    public void openDialog() {
         SortOptionDialog sortOptionDialog = new SortOptionDialog("product");
         sortOptionDialog.show(getSupportFragmentManager(), "sortOptionDialog");
     }
@@ -230,7 +263,7 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LAUNCH_ADD_PRODUCT_ACTIVITY) {
-            if(resultCode == Activity.RESULT_OK){
+            if (resultCode == Activity.RESULT_OK) {
                 String result = data.getStringExtra("result");
                 System.out.println(result);
 
@@ -242,7 +275,7 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
             }
         }
         if (requestCode == LAUNCH_EDIT_PRODUCT_ACTIVITY) {
-            if(resultCode == Activity.RESULT_OK){
+            if (resultCode == Activity.RESULT_OK) {
                 String result = data.getStringExtra("result");
                 System.out.println(result);
 
@@ -256,8 +289,8 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
             }
         }
         if (requestCode == LAUNCH_DEL_PRODUCT_ACTIVITY) {
-            if(resultCode == Activity.RESULT_OK){
-                String result=data.getStringExtra("result");
+            if (resultCode == Activity.RESULT_OK) {
+                String result = data.getStringExtra("result");
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 // Write your code if there's no result
@@ -265,8 +298,8 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
         }
     } //onActivityResult
 
-    public void addProduct(Product product){
-        if(productDao.insertOne(product)){
+    public void addProduct(Product product) {
+        if (productDao.insertOne(product)) {
             Toast.makeText(this, "Thêm vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
@@ -275,8 +308,8 @@ public class ProductActivity extends AppCompatActivity implements BaseActivity, 
         listView.setDividerHeight(dividerHeight);
     }
 
-    public void editProduct(Product product){
-        if(productDao.updateOne(product)){
+    public void editProduct(Product product) {
+        if (productDao.updateOne(product)) {
             Toast.makeText(this, "Sửa vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();

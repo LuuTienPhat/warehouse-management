@@ -37,6 +37,13 @@
         android:layout_gravity="end">
 
         <ImageButton
+            android:id="@+id/btnStatistical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_statistical_32" />
+
+        <ImageButton
             android:id="@+id/btnSort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

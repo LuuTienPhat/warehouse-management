@@ -12,7 +12,6 @@ import com.example.warehousemanagement.dao.ProductDao;
 import com.example.warehousemanagement.dao.ReceiptDao;
 import com.example.warehousemanagement.dao.ReceiptDetailDao;
 import com.example.warehousemanagement.dao.WarehouseDao;
-
 public class MainActivity extends AppCompatActivity {
     LinearLayout btnWarehouse, btnProduct, btnReceipt;
     DatabaseHelper databaseHelper = null;

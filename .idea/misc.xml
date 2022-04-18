@@ -3,6 +3,61 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/border_bottom.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_ Statistical_background.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_ Statistical_foreground.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_add_circle_32.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_baseline_search_cultured_24.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_delete_forever_32.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_down_32.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_edit_32.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_eye_32.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_filter_32.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_left_48.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_statistical.xml" value="0.1545" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/drawable/ic_statistical_32.xml" value="0.124" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/activity_chart.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/activity_chart_receipt.xml" value="0.11197916666666667" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/activity_chart_warehouse.xml" value="0.253125" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/activity_edit_warehouse.xml" value="0.264" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/activity_product_detail.xml" value="0.264" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/activity_view.xml" value="0.2351851851851852" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/constraint_product_item.xml" value="0.2351851851851852" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/constraint_product_item_small.xml" value="0.2351851851851852" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/dialog_confirm.xml" value="0.2351851851851852" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/dialog_notification.xml" value="0.2351851851851852" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/dialog_sort_by_option_for_product.xml" value="0.2351851851851852" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/dialog_sort_by_option_for_receipt.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/dialog_sort_by_option_for_warehouse.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/group_button_save_cancel.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/group_button_utils.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/navigation_cancel_previous_next.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/pending_delete_constraint_cancel_previous_next.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/piechart1.xml" value="0.14671814671814673" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/product_add_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/product_add_activity_linear.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/product_item_small_dark.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_add.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_add_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_detail_add_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_detail_add_product_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_detail_edit_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_detail_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_detail_view.xml" value="0.253125" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_item.xml" value="0.253125" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_item_small.xml" value="0.253125" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_top_fragment.xml" value="0.253125" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/receipt_view_activity.xml" value="0.2351851851851852" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/warehouse_add_activity.xml" value="0.2351851851851852" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/warehouse_detail_activity.xml" value="0.2351851851851852" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/warehouse_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/warehouse_item_small_product_quantity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/warehouse_item_spinner.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/warehouse_spinner.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/mipmap-anydpi-v26/ic_ Statistical.xml" value="0.1" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable-v24/bg_text_box_round_corner.xml" value="0.3675" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/bg_btn_confirm_dark.xml" value="0.3675" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/bg_btn_confirm_light.xml" value="0.2725" />

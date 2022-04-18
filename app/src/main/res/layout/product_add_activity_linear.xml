@@ -33,30 +33,32 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/space_cadet"
                     android:textSize="30dp" />
+
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    >
+                    android:orientation="horizontal">
+
                     <ImageButton
                         android:id="@+id/btnEdit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="36dp"
                         android:background="@drawable/ic_edit_32"
-                        android:backgroundTint="@color/warning"/>
+                        android:backgroundTint="@color/warning" />
 
                     <ImageButton
                         android:id="@+id/btnDelete"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_delete_32"
-                        android:backgroundTint="@color/alert_red"/>
+                        android:backgroundTint="@color/alert_red" />
                 </LinearLayout>
 
             </LinearLayout>

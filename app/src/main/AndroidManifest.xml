@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ChartActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReceiptActivity"
             android:exported="false" />
         <activity
@@ -28,6 +31,12 @@
             android:exported="false" />
         <activity
             android:name=".WarehouseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChartActivityWarehouse"
+            android:exported="false" />
+        <activity
+            android:name=".ChartActivityReceipt"
             android:exported="false" />
         <activity
             android:name=".ProductActivity"

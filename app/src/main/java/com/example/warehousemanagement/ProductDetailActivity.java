@@ -53,6 +53,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     @MainThread
     public void onBackPressed() {
         if (this.state == 0) {
+//            finish();
             Intent intent = new Intent(this, WarehouseActivity.class);
             startActivity(intent);
         } else if (this.state == 1) {

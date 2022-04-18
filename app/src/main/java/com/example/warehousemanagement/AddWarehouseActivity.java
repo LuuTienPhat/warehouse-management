@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.model.Warehouse;
 
-public class AddWarehouseActivity extends AppCompatActivity {
+public class   AddWarehouseActivity extends AppCompatActivity {
     EditText tvName, tvId, tvAddress;
     ImageButton btnEdit, btnDelete;
     Button btnSave, btnCancel;
