@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Theme.WarehouseManagement"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,35 +20,23 @@
         android:textColor="@color/space_cadet"
         android:textSize="30sp" />
 
-    <SearchView
-        android:focusable="false"
-        android:id="@+id/searchView"
+    <fragment
+        android:id="@+id/search_view_fragment"
+        class="com.example.warehousemanagement.SearchViewFragment"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/bg_search_round_corner"
-        android:iconifiedByDefault="false"
-        android:queryHint="Tìm kiếm"
-        android:searchIcon="@drawable/ic_baseline_search_cultured_24"
-        android:textAlignment="textStart" />
-
+        tools:layout="@layout/search_view" />
 
     <include
-        android:id="@+id/utils"
         layout="@layout/group_button_utils"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp" />
 
-
-    <ListView
-        android:id="@+id/listView"
+    <include
+        layout="@layout/list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"
-        android:listSelector="@android:color/transparent"
-        android:scrollbars="vertical"
-        android:smoothScrollbar="true" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

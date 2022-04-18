@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Theme.WarehouseManagement"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/inputGroup1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="21dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvWarehouseId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="start"
+                android:text="Mã kho"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etWarehouseId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_azureich_white_radius_15"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Mã kho"
+                android:inputType="number"
+                android:paddingHorizontal="20dp"
+                android:text="K1"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textColorHint="@color/steel_blue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/inputGroup2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvWarehouseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="start"
+                android:text="Tên kho"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etWarehouseName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_azureich_white_radius_15"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Tên kho"
+                android:inputType="text"
+                android:paddingHorizontal="20dp"
+                android:text="Kho Bình Chánh"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textColorHint="@color/steel_blue" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="21dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="start"
+                android:text="Số phiếu"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etReceiptId"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_steel_blue_radius_15"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Số phiếu"
+                android:inputType="text"
+                android:paddingHorizontal="20dp"
+                android:text="1"
+                android:textAlignment="textStart"
+                android:textColor="@color/cultured"
+                android:textColorHint="@color/steel_blue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="start"
+                android:text="Ngày lập"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etReceiptDate"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_azureich_white_radius_15"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Ngày lập"
+                android:inputType="text"
+                android:paddingHorizontal="20dp"
+                android:text="19/03/2022"
+                android:textAlignment="textStart"
+                android:textColor="@color/space_cadet"
+                android:textColorHint="@color/steel_blue" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        layout="@layout/receipt_detail_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

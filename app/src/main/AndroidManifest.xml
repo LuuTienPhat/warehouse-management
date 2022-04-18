@@ -3,6 +3,7 @@
     package="com.example.warehousemanagement">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".ChartActivity"
+            android:name=".SplashScreenActivity"
             android:exported="false" />
         <activity
             android:name=".ReceiptActivity"
@@ -24,6 +25,9 @@
             android:name=".EditReceiptDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".ProductViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReceiptViewActivity"
             android:exported="false" />
         <activity
@@ -33,26 +37,22 @@
             android:name=".WarehouseActivity"
             android:exported="false" />
         <activity
-            android:name=".ChartActivityWarehouse"
-            android:exported="false" />
-        <activity
-            android:name=".ChartActivityReceipt"
-            android:exported="false" />
-        <activity
             android:name=".ProductActivity"
             android:exported="false" />
         <activity
             android:name=".ProductDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".AddProductActivity"
+            android:name=".HandleProductActivity"
             android:exported="false" />
         <activity
             android:name=".WarehouseDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".AddWarehouseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

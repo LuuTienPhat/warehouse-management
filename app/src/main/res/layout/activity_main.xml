@@ -77,9 +77,10 @@
 
             <ImageView
                 android:id="@+id/image2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_product_72" />
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:background="@drawable/ic_product_96"
+                android:backgroundTint="@color/space_cadet" />
 
             <TextView
                 android:id="@+id/tvProduct"
@@ -105,9 +106,10 @@
 
             <ImageView
                 android:id="@+id/image3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_receipt_72" />
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:backgroundTint="@color/space_cadet"
+                android:src="@drawable/ic_receipt_24" />
 
             <TextView
                 android:id="@+id/tvReceipt"

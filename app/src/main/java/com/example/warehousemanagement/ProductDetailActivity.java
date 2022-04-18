@@ -106,7 +106,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         etId = findViewById(R.id.etId);
 
         lyOption = findViewById(R.id.lyOption);
-        btnSave = findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnOK);
         btnCancel = findViewById(R.id.btnCancel);
     }
 

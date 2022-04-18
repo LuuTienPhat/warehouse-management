@@ -1,57 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Theme.WarehouseManagement"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:scrollbars="none">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintVertical_chainStyle="packed">
-
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Tạo phiếu nhập"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toTopOf="@id/constraintLayout3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout1"
-            app:layout_constraintVertical_bias="0.0">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvWarehouseName"
@@ -63,23 +28,14 @@
                 android:text="Kho"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@id/spinnerWarehouse"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="20sp" />
 
             <Spinner
                 android:id="@+id/spinnerWarehouse"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="10dp"
-                android:background="@android:color/transparent"
-                app:layout_constraintBottom_toTopOf="@id/tvWarehouseWarning"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvWarehouseName" />
+                android:background="@android:color/transparent" />
 
             <TextView
                 android:id="@+id/tvWarehouseWarning"
@@ -87,27 +43,18 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
                 android:paddingHorizontal="5dp"
-                android:text="Nhập lại"
                 android:textAlignment="textEnd"
                 android:textColor="@color/space_cadet"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinnerWarehouse" />
+                android:textSize="16sp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toTopOf="@id/constraintLayout4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout2"
-            app:layout_constraintVertical_bias="0.0">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvReceiptId"
@@ -118,12 +65,7 @@
                 android:text="Số phiếu"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/etReceiptId"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/etReceiptId"
@@ -132,18 +74,15 @@
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_text_box_round_corner"
                 android:ems="10"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="Số phiếu"
-                android:inputType="text"
+                android:inputType="number"
                 android:paddingHorizontal="20dp"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
                 android:textColorHint="@color/steel_blue"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/tvReceiptIdWarning"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvReceiptId" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvReceiptIdWarning"
@@ -151,27 +90,18 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
                 android:paddingHorizontal="5dp"
-                android:text="Nhập lại"
                 android:textAlignment="textEnd"
                 android:textColor="@color/space_cadet"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etReceiptId" />
+                android:textSize="16sp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout3"
-            app:layout_constraintVertical_bias="0.0">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvReceiptDate"
@@ -182,12 +112,7 @@
                 android:text="Ngày tạo"
                 android:textAlignment="textStart"
                 android:textColor="@color/space_cadet"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@id/etReceiptDate"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/etReceiptDate"
@@ -202,11 +127,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/space_cadet"
                 android:textColorHint="@color/steel_blue"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@id/tvReceiptDateWarning"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvReceiptDate" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvReceiptDateWarning"
@@ -214,16 +135,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
                 android:paddingHorizontal="5dp"
-                android:text="Nhập lại"
                 android:textAlignment="textEnd"
                 android:textColor="@color/space_cadet"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etReceiptDate" />
+                android:textSize="16sp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>

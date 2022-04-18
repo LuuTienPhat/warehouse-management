@@ -1,6 +1,7 @@
 package com.example.warehousemanagement;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,23 +9,24 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.dao.WarehouseDao;
+import com.example.warehousemanagement.dialog.CustomDialog;
 import com.example.warehousemanagement.model.Warehouse;
 
-public class WarehouseDetailActivity extends AppCompatActivity {
+public class WarehouseDetailActivity extends AppCompatActivity implements CustomDialog.Listener {
     EditText etName, etId, etAddress;
     ImageButton btnEdit, btnDelete;
     Button btnSave, btnCancel;
-    Warehouse warehouse = null;
+    Warehouse warehouse;
     LinearLayout lyOption, lyUtils;
     TextView tvTitle;
-
     WarehouseDao warehouseDao;
-    int state;
+    private boolean inEditMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,35 +35,25 @@ public class WarehouseDetailActivity extends AppCompatActivity {
         setControl();
         setEvent();
 
-        this.state = 0;
-        //changeState();
+        changeState();
 
-//        db = AppDatabase.getInstance(this);
-//        warehouseDao = db.warehouseDao();
-//
-//        String warehouseId = this.getIntent().getStringExtra("warehouseId");
-//        String warehouseName = this.getIntent().getStringExtra("warehouseName");
-//        String warehouseAddress = this.getIntent().getStringExtra("warehouseAddress");
-//
-//        this.warehouse = new Warehouse(warehouseId, warehouseName, warehouseAddress);
-//        etId.setText(warehouse.getId());
-//        etName.setText(warehouse.getName());
-//        etAddress.setText(warehouse.getAddress());
+        warehouseDao = new WarehouseDao(DatabaseHelper.getInstance(this));
+
+        String warehouseId = this.getIntent().getStringExtra("warehouseId");
+        String warehouseName = this.getIntent().getStringExtra("warehouseName");
+        String warehouseAddress = this.getIntent().getStringExtra("warehouseAddress");
+
+        warehouse = new Warehouse(warehouseId, warehouseName, warehouseAddress);
+        etId.setText(warehouse.getId());
+        etName.setText(warehouse.getName());
+        etAddress.setText(warehouse.getAddress());
     }
 
     @Override
     @MainThread
     public void onBackPressed() {
-        if (this.state == 0) {
-            Intent intent = new Intent(this, WarehouseActivity.class);
-            startActivity(intent);
-        } else if (this.state == 1) {
-            this.state = 0;
-            changeState();
-        } else if (this.state == 2) {
-            this.state = 0;
-            changeState();
-        }
+        setResult(Activity.RESULT_OK);
+        finish();
     }
 
     private void setEvent() {
@@ -79,17 +71,17 @@ public class WarehouseDetailActivity extends AppCompatActivity {
             }
         });
 
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleBtnEditClick(view);
-            }
-        });
-
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handleBtnDeleteClick(view);
+            }
+        });
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleBtnEditClick(view);
             }
         });
     }
@@ -105,87 +97,133 @@ public class WarehouseDetailActivity extends AppCompatActivity {
         etId = findViewById(R.id.etId);
 
         lyOption = findViewById(R.id.lyOption);
-        btnSave = findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnOK);
         btnCancel = findViewById(R.id.btnCancel);
     }
 
     private void handleBtnSaveClick(View view) {
-        String id = etId.getText().toString().trim();
         String name = etName.getText().toString().trim();
         String address = etAddress.getText().toString().trim();
 
-        //validation
+        // validate inputs
+        int errors = 0;
+        if (name.isEmpty()) {
+            etName.setError("Vui lòng nhập tên kho!");
+            errors++;
+        }
+        if (address.isEmpty()) {
+            etAddress.setError("Vui lòng nhập địa chỉ!");
+            errors++;
+        }
+        if (errors != 0) {
+            return;
+        }
 
-//        if (this.state == 1) {
-//            Warehouse newWarehouse = new Warehouse(id, name, address);
-//            AppDatabase db = AppDatabase.getInstance(this);
-//            WarehouseDao warehouseDao = db.warehouseDao();
-//            warehouseDao.updateOne(newWarehouse);
-//        } else if (this.state == 2) {
-//            Warehouse newWarehouse = new Warehouse(id, name, address);
-//            AppDatabase db = AppDatabase.getInstance(this);
-//            WarehouseDao warehouseDao = db.warehouseDao();
-//            warehouseDao.insertOne(newWarehouse);
-//        }
+        // update data
+        warehouse.setName(name);
+        warehouse.setAddress(address);
+        if (warehouseDao.updateOne(warehouse)) {
+            inEditMode = false;
+            changeState();
+            Toast.makeText(this, "Lưu thay đổi thành công", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void handleBtnCancelClick(View view) {
-        if (this.state == 1) {
-            this.state = 0;
+        if (inEditMode) {
+            etName.setText(warehouse.getName());
+            etAddress.setText(warehouse.getAddress());
+
+            inEditMode = false;
             changeState();
-        } else if (this.state == 2) {
-            Intent intent = new Intent(this, WarehouseActivity.class);
-            startActivity(intent);
+        } else {
+            setResult(Activity.RESULT_OK);
+            finish();
         }
     }
 
     private void handleBtnDeleteClick(View view) {
-//        warehouseDao.deleteOne(warehouse);
+        CustomDialog customDialog = new CustomDialog(CustomDialog.Type.CONFIRM, "Xóa kho",
+                "Bạn có chắc muốn xóa kho này không?", "delete");
+        customDialog.show(getSupportFragmentManager(), "DeleteWarehouse");
+
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Xóa kho");
+//        builder.setMessage("Bạn có chắc muốn xóa kho này không?");
+//        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                if (warehouseDao.deleteOne(warehouse)) {
+//                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
+//                    setResult(Activity.RESULT_OK);
+//                    finish();
+//                } else {
+//                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//            }
+//        });
+//        builder.create().show();
     }
 
     private void handleBtnEditClick(View view) {
-        this.state = 1;
-        changeState();
+        if (!inEditMode) {
+            inEditMode = true;
+            changeState();
+        }
     }
 
-    //0: Detail, 1: Edit, 2: Add
     private void changeState() {
-        if (this.state == 0) { //Detail
+        if (!inEditMode) {
             tvTitle.setText("Chi tiết");
-            lyUtils.setVisibility(View.VISIBLE);
 
-            etId.setFocusable(false);
-            etId.setFocusableInTouchMode(false);
+            btnEdit.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.space_cadet, null)));
+
             etName.setFocusable(false);
             etName.setFocusableInTouchMode(false);
+            etName.setAlpha(0.5f);
+
             etAddress.setFocusable(false);
             etAddress.setFocusableInTouchMode(false);
+            etAddress.setAlpha(0.5f);
 
-            lyOption.setVisibility(View.GONE);
-        } else if (this.state == 1) {
+            btnSave.setVisibility(View.GONE);
+            btnCancel.setText("Thoát");
+        } else {
             tvTitle.setText("Chỉnh sửa");
-            lyUtils.setVisibility(View.GONE);
 
-            etId.setFocusable(true);
-            etId.setFocusableInTouchMode(true);
+            btnEdit.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.alert_red, null)));
+
             etName.setFocusable(true);
             etName.setFocusableInTouchMode(true);
+            etName.setAlpha(1f);
+
             etAddress.setFocusable(true);
             etAddress.setFocusableInTouchMode(true);
+            etAddress.setAlpha(1f);
 
-            lyOption.setVisibility(View.VISIBLE);
-        } else if (this.state == 2) {
-            tvTitle.setText("Thêm");
-            lyUtils.setVisibility(View.GONE);
+            btnSave.setVisibility(View.VISIBLE);
+            btnSave.setText("Lưu");
+            btnCancel.setText("Hủy");
+        }
+    }
 
-            etId.setFocusable(true);
-            etId.setFocusableInTouchMode(true);
-            etName.setFocusable(true);
-            etName.setFocusableInTouchMode(true);
-            etAddress.setFocusable(true);
-            etAddress.setFocusableInTouchMode(true);
-
-            lyOption.setVisibility(View.VISIBLE);
+    @Override
+    public void sendDialogResult(CustomDialog.Result result, String request) {
+        if (result == CustomDialog.Result.OK && request.equals("delete")) {
+            if (warehouseDao.deleteOne(warehouse)) {
+                Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
+                setResult(Activity.RESULT_OK);
+                finish();
+            } else {
+                Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

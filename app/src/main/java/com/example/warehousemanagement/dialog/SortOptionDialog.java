@@ -37,8 +37,8 @@ public class SortOptionDialog extends BottomSheetDialogFragment {
         if (sortOptionFor.equalsIgnoreCase("receipt")) {
             view1 = inflater.inflate(R.layout.dialog_sort_by_option_for_receipt, container, false);
 
-            Button btnXacNhan = (Button) view1.findViewById(R.id.btnXacNhan);
-            Button btnHuy = (Button) view1.findViewById(R.id.btnHuy);
+            Button btnXacNhan = (Button) view1.findViewById(R.id.btnOK);
+            Button btnHuy = (Button) view1.findViewById(R.id.btnCancel);
             RadioButton rBTangDan = (RadioButton) view1.findViewById(R.id.radioBtnTangDan);
             RadioButton rBGiamDan = (RadioButton) view1.findViewById(R.id.radioBtnGiamDan);
 
@@ -87,8 +87,8 @@ public class SortOptionDialog extends BottomSheetDialogFragment {
         if (sortOptionFor.equalsIgnoreCase("product")) {
             view1 = inflater.inflate(R.layout.dialog_sort_by_option_for_product, container, false);
 
-            Button btnXacNhan = (Button) view1.findViewById(R.id.btnXacNhan);
-            Button btnHuy = (Button) view1.findViewById(R.id.btnHuy);
+            Button btnXacNhan = (Button) view1.findViewById(R.id.btnOK);
+            Button btnHuy = (Button) view1.findViewById(R.id.btnCancel);
             RadioButton rBTangDan = (RadioButton) view1.findViewById(R.id.radioBtnTangDan);
             RadioButton rBGiamDan = (RadioButton) view1.findViewById(R.id.radioBtnGiamDan);
 
@@ -137,8 +137,8 @@ public class SortOptionDialog extends BottomSheetDialogFragment {
         if (sortOptionFor.equalsIgnoreCase("warehouse")) {
             view1 = inflater.inflate(R.layout.dialog_sort_by_option_for_warehouse, container, false);
 
-            Button btnXacNhan = (Button) view1.findViewById(R.id.btnXacNhan);
-            Button btnHuy = (Button) view1.findViewById(R.id.btnHuy);
+            Button btnXacNhan = (Button) view1.findViewById(R.id.btnOK);
+            Button btnHuy = (Button) view1.findViewById(R.id.btnCancel);
             RadioButton rBTangDan = (RadioButton) view1.findViewById(R.id.radioBtnTangDan);
             RadioButton rBGiamDan = (RadioButton) view1.findViewById(R.id.radioBtnGiamDan);
 
@@ -200,5 +200,10 @@ public class SortOptionDialog extends BottomSheetDialogFragment {
 
     public interface SortOptionDialogListener {
         void setSortOption(String sortOption);
+    }
+
+    @Override
+    public int getTheme() {
+        return R.style.BottomSheetDialogTheme;
     }
 }

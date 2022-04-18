@@ -1,5 +1,6 @@
 package com.example.warehousemanagement;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,10 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.warehousemanagement.adapter.WarehouseAdapter;
@@ -21,8 +26,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class WarehouseActivity extends AppCompatActivity implements BaseActivity, SortOptionDialog.SortOptionDialogListener {
-    ImageButton btnAdd, btnMinimize, btnSort, btnFilter, btnRefresh,btnStatistical;
+public class WarehouseActivity extends AppCompatActivity implements IViewActivity, SearchViewFragment.ISendSearchResult, SortOptionDialog.SortOptionDialogListener {
+    ImageButton btnAdd, btnMinimize, btnSort, btnFilter, btnRefresh;
     SearchView searchView;
     TextView tvTitle;
     ListView listView;
@@ -31,6 +36,8 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
     List<Warehouse> warehouses = new ArrayList<>();
     int dividerHeight;
     public String sortOption2 = "";
+    private ActivityResultLauncher<Intent> activityResultLauncher;
+    private boolean maximized = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +53,20 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
         warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
         listView.setAdapter(warehouseAdapter);
         dividerHeight = listView.getDividerHeight();
+
+        activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            btnRefresh.performClick();
+                        }
+                    }
+                });
     }
 
     private void setControl() {
-        btnStatistical= findViewById(R.id.btnStatistical);
         btnAdd = findViewById(R.id.btnAdd);
         btnRefresh = findViewById(R.id.btnRefresh);
         btnFilter = findViewById(R.id.btnFilter);
@@ -71,12 +88,6 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
             @Override
             public void onClick(View view) {
                 handleBtnRefreshClick(view);
-            }
-        });
-        btnStatistical.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(WarehouseActivity.this, ChartActivityWarehouse.class));
             }
         });
         btnSort.setOnClickListener(new View.OnClickListener() {
@@ -107,23 +118,21 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
                 intent.putExtra("warehouseId", warehouse.getId());
                 intent.putExtra("warehouseName", warehouse.getName());
                 intent.putExtra("warehouseAddress", warehouse.getAddress());
-                startActivity(intent);
+                activityResultLauncher.launch(intent);
             }
         });
     }
 
     @Override
     public void handleBtnAddClick(View view) {
-
+        Intent intent = new Intent(this, AddWarehouseActivity.class);
+        activityResultLauncher.launch(intent);
     }
 
     @Override
     public void handleBtnRefreshClick(View view) {
         warehouses = warehouseDao.getAll();
-
-        WarehouseAdapter warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
-        listView.setAdapter(warehouseAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(warehouses);
     }
 
     @Override
@@ -139,10 +148,15 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
 
     @Override
     public void handleBtnMinimizeClick(View view) {
-        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item_small, warehouses);
+        maximized = !maximized;
+        if (maximized) {
+            warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
+            btnMinimize.setBackgroundResource(R.drawable.ic_minimize_32);
+        } else {
+            warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item_small, warehouses);
+            btnMinimize.setBackgroundResource(R.drawable.ic_maximize_32);
+        }
         listView.setAdapter(warehouseAdapter);
-        listView.setDividerHeight(10);
-        warehouseAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -150,10 +164,11 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
         sortOption2 = sortOption;
         sortData();
     }
-    public void sortData(){
-        System.out.println("begin sort;"+sortOption2);
+
+    public void sortData() {
+        System.out.println("begin sort;" + sortOption2);
         if (!sortOption2.isEmpty()) {
-            System.out.println("begin sort;"+sortOption2);
+            System.out.println("begin sort;" + sortOption2);
             Collections.sort(warehouses, new Comparator<Warehouse>() {
                 @Override
                 public int compare(Warehouse pd1, Warehouse pd2) {
@@ -187,14 +202,22 @@ public class WarehouseActivity extends AppCompatActivity implements BaseActivity
                 }
             });
         }
-        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
-        listView.setAdapter(warehouseAdapter);
-        System.out.println("notify change");
         warehouseAdapter.notifyDataSetChanged();
     }
 
     public void openDialog() {
         SortOptionDialog sortOptionDialog = new SortOptionDialog("warehouse");
         sortOptionDialog.show(getSupportFragmentManager(), "sortOptionDialog");
+    }
+
+    @Override
+    public void sendSearchResult(List filteredList) {
+        warehouses = filteredList;
+        updateListView(warehouses);
+    }
+
+    private void updateListView(List list) {
+        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, list);
+        listView.setAdapter(warehouseAdapter);
     }
 }

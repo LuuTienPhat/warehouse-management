@@ -25,8 +25,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ReceiptActivity extends AppCompatActivity implements BaseActivity, SortOptionDialog.SortOptionDialogListener{
-    ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh, btnStatistical;
+public class ReceiptActivity extends AppCompatActivity implements IViewActivity, SearchViewFragment.ISendSearchResult, SortOptionDialog.SortOptionDialogListener {
+    ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
     ListView listView;
     SearchView searchView;
     TextView tvTitle;
@@ -40,10 +40,11 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
     WarehouseAdapter warehouseAdapter = null;
     List<Warehouse> warehouses = new ArrayList<>();
 
-    int dividerHeight;
-
     public static String sortOption = "";
     public String sortOption2 = "";
+
+    private boolean maximized = true;
+    private int listViewItemLayout = R.layout.receipt_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +58,7 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
         receiptDao = new ReceiptDao(DatabaseHelper.getInstance(this));
         receipts = receiptDao.getAll();
 
-        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receipts);
-        listView.setAdapter(receiptAdapter);
-        dividerHeight = listView.getDividerHeight();
+        updateListView(receipts);
     }
 
     private void setEvent() {
@@ -73,12 +72,6 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
             @Override
             public void onClick(View view) {
                 handleBtnRefreshClick(view);
-            }
-        });
-        btnStatistical.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ReceiptActivity.this, ChartActivityReceipt.class));
             }
         });
         btnSort.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +105,6 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
     }
 
     private void setControl() {
-        btnStatistical= findViewById(R.id.btnStatistical);
         btnAdd = findViewById(R.id.btnAdd);
         btnRefresh = findViewById(R.id.btnRefresh);
         btnFilter = findViewById(R.id.btnFilter);
@@ -123,6 +115,13 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
         tvTitle = findViewById(R.id.tvTitle);
     }
 
+
+    public void updateListView(List list) {
+        receiptAdapter = new ReceiptAdapter(ReceiptActivity.this, listViewItemLayout, list);
+        listView.setAdapter(receiptAdapter);
+        receiptAdapter.notifyDataSetChanged();
+    }
+
     @Override
     public void handleBtnAddClick(View view) {
         Intent intent = new Intent(this, AddReceiptActivity.class);
@@ -131,9 +130,12 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
 
     @Override
     public void handleBtnRefreshClick(View view) {
-        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receipts);
-        listView.setAdapter(receiptAdapter);
-        receiptAdapter.notifyDataSetChanged();
+        refresh();
+    }
+
+    private void refresh() {
+        receipts = receiptDao.getAll();
+        updateListView(receipts);
     }
 
     public void sortData() {
@@ -168,16 +170,14 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
                         return rc1.getDate().isBefore(rc2.getDate()) ? lessThan : rc1.getDate().isAfter(rc2.getDate()) ? greaterThan : 0;
                     } else if (sapXepTheo.equalsIgnoreCase("theo_so_luong")) {
                         // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
-                        return rc1.countReceptDetailsQuantity() < rc2.countReceptDetailsQuantity() ? lessThan : rc1.countReceptDetailsQuantity() > rc2.countReceptDetailsQuantity() ? greaterThan : 0;
+                        return rc1.countReceiptDetailsQuantity() < rc2.countReceiptDetailsQuantity() ? lessThan : rc1.countReceiptDetailsQuantity() > rc2.countReceiptDetailsQuantity() ? greaterThan : 0;
                     }
                     return 0;
                 }
             });
         }
-        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item, receiptsToSort);
-        listView.setAdapter(receiptAdapter);
-        System.out.println("notify change");
-        receiptAdapter.notifyDataSetChanged();
+        receipts = receiptsToSort;
+        updateListView(receiptsToSort);
     }
 
     @Override
@@ -198,9 +198,15 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
 
     @Override
     public void handleBtnMinimizeClick(View view) {
-        receiptAdapter = new ReceiptAdapter(this, R.layout.receipt_item_small, receipts);
-        listView.setAdapter(receiptAdapter);
-        receiptAdapter.notifyDataSetChanged();
+        maximized = !maximized;
+        if (maximized) {
+            listViewItemLayout = R.layout.receipt_item;
+            btnMinimize.setBackgroundResource(R.drawable.ic_minimize_32);
+        } else {
+            listViewItemLayout = R.layout.receipt_item_small;
+            btnMinimize.setBackgroundResource(R.drawable.ic_maximize_32);
+        }
+        updateListView(receipts);
     }
 
     @Override
@@ -208,5 +214,17 @@ public class ReceiptActivity extends AppCompatActivity implements BaseActivity, 
         sortOption2 = sortOption;
         System.out.println(sortOption2 + "///////////////////////////////////////////////////////");
         sortData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refresh();
+    }
+
+    @Override
+    public void sendSearchResult(List filteredList) {
+        receipts = filteredList;
+        updateListView(filteredList);
     }
 }

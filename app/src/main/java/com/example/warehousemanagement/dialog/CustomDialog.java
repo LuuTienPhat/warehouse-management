@@ -24,17 +24,27 @@ public class CustomDialog extends BottomSheetDialogFragment {
     }
 
     public interface Listener {
-        void sendDialogResult(Result result);
+        void sendDialogResult(Result result, String request);
     }
+
+    View convertView = null;
 
     private Listener listener;
     private Type type;
     private String title, content;
+    private String request;
 
-    public CustomDialog(Type type, String title, String content) {
+//    public CustomDialog(Type type, String title, String content) {
+//        this.title = title;
+//        this.content = content;
+//        this.type = type;
+//    }
+
+    public CustomDialog(Type type, String title, String content, String request) {
         this.title = title;
         this.content = content;
         this.type = type;
+        this.request = request;
     }
 
     @Override
@@ -50,8 +60,6 @@ public class CustomDialog extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View convertView = null;
         if (type == Type.NOTIFICATION) {
             convertView = inflater.inflate(R.layout.dialog_notification, null);
 
@@ -62,7 +70,7 @@ public class CustomDialog extends BottomSheetDialogFragment {
             btnOK.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.sendDialogResult(Result.OK);
+                    listener.sendDialogResult(Result.OK, request);
                     dismiss();
                 }
             });
@@ -79,19 +87,23 @@ public class CustomDialog extends BottomSheetDialogFragment {
             btnOK.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.sendDialogResult(Result.OK);
+                    listener.sendDialogResult(Result.OK, request);
                     dismiss();
                 }
             });
             btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.sendDialogResult(Result.CANCEL);
+                    listener.sendDialogResult(Result.CANCEL, request);
                     dismiss();
                 }
             });
         }
-
         return convertView;
+    }
+
+    @Override
+    public int getTheme() {
+        return R.style.BottomSheetDialogTheme;
     }
 }

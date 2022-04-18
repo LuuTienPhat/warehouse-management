@@ -1,136 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
         tools:ignore="MissingConstraints">
 
+        <include
+            layout="@layout/group_sort_order_radio_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="Thứ tự"
+            android:text="Sắp xếp theo"
+            android:textColor="@color/steel_blue"
             android:textSize="24dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radioBtnTangDan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_bottom"
-                    android:checked="true"
-                    android:paddingVertical="12dp"
-                    android:text="Tăng dần"
-                    android:textSize="20dp" />
-
-                <RadioButton
-                    android:id="@+id/radioBtnGiamDan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_weight="1"
-                    android:background="@drawable/border_bottom"
-                    android:paddingVertical="12dp"
-                    android:text="Giảm dần"
-                    android:textSize="20dp" />
-            </RadioGroup>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:layout_marginVertical="20dp"
-            android:text="Sắp xếp theo?"
-            android:textSize="24dp"
-            android:textStyle="bold" />
-
+            />
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <RadioButton
                 android:id="@+id/radioBtnTheoMa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_bottom"
+                android:buttonTint="@color/radio_button_color"
                 android:checked="true"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="10dp"
                 android:text="Mã vật tư"
-                android:textSize="20dp" />
+                android:textColor="@color/space_cadet"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/radioBtnTheoTen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_bottom"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp"
+                android:buttonTint="@color/radio_button_color"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="10dp"
                 android:text="Tên vật tư"
-                android:textSize="20dp" />
+                android:textColor="@color/space_cadet"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/radioBtnTheoXuatXu"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp"
-                android:text="Nguồn gốc xuất xứ"
-                android:textSize="20dp"
+                android:buttonTint="@color/radio_button_color"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="10dp"
+                android:text="Nguồn gốc của vật tư"
+                android:textColor="@color/space_cadet"
+                android:textSize="18sp" />
 
-                />
         </RadioGroup>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnHuy"
-                android:layout_width="wrap_content"
+            <include
+                layout="@layout/group_button_ok_cancel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_azureich_white_radius_25"
-                android:text="Hủy"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnXacNhan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_steel_blue_radius_15"
-                android:text="Sắp xếp"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_marginTop="40dp" />
         </LinearLayout>
 
 
     </LinearLayout>
-</RelativeLayout>

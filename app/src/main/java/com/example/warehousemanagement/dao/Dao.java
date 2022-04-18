@@ -15,4 +15,6 @@ public interface Dao<T> {
     List<T> getAll();
 
     T getOne(String id);
+
+    List<T> search(String keyword);
 }
