@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReceiptDao implements Dao<Receipt> {
+public class  ReceiptDao implements Dao<Receipt> {
     private SQLiteDatabase db;
     private final SQLiteOpenHelper dbHelper;
 
