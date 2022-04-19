@@ -20,7 +20,7 @@ public class AddWarehouseActivity extends AppCompatActivity {
     Button btnSave, btnCancel;
     Warehouse warehouse = null;
     LinearLayout lyOption, lyUtils;
-    TextView tvTitle;
+    TextView tvWarehouseIdWarning, tvWarehouseNameWarning, tvWareHouseAddressWarning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,10 @@ public class AddWarehouseActivity extends AppCompatActivity {
         lyOption = findViewById(R.id.lyOption);
         btnSave = findViewById(R.id.btnOK);
         btnCancel = findViewById(R.id.btnCancel);
+
+        tvWarehouseIdWarning = findViewById(R.id.tvWarehouseIdWarning);
+        tvWarehouseNameWarning = findViewById(R.id.tvWarehouseNameWarning);
+        tvWareHouseAddressWarning = findViewById(R.id.tvWarehouseAddressWarning);
     }
 
     private void handleBtnSaveClick(View view) {
@@ -73,16 +77,23 @@ public class AddWarehouseActivity extends AppCompatActivity {
         // validate inputs
         int errors = 0;
         if (id.isEmpty()) {
-            etId.setError("Vui lòng nhập mã kho!");
+            tvWarehouseIdWarning.setText("Vui lòng nhập mã kho!");
+            tvWarehouseIdWarning.setVisibility(View.VISIBLE);
             errors++;
+        } else {
+            tvWarehouseIdWarning.setVisibility(View.GONE);
         }
         if (name.isEmpty()) {
-            etName.setError("Vui lòng nhập tên kho!");
+            tvWarehouseNameWarning.setVisibility(View.VISIBLE);
             errors++;
+        } else {
+            tvWarehouseNameWarning.setVisibility(View.GONE);
         }
         if (address.isEmpty()) {
-            etAddress.setError("Vui lòng nhập địa chỉ!");
+            tvWareHouseAddressWarning.setVisibility(View.VISIBLE);
             errors++;
+        } else {
+            tvWareHouseAddressWarning.setVisibility(View.GONE);
         }
         if (errors != 0) {
             return;
@@ -91,6 +102,7 @@ public class AddWarehouseActivity extends AppCompatActivity {
         // Check if the id exists or not. If yes, insert the new one. If not, show a warning.
         WarehouseDao warehouseDao = new WarehouseDao(DatabaseHelper.getInstance(this));
         if (warehouseDao.getOne(id) == null) {
+            tvWarehouseIdWarning.setVisibility(View.GONE);
             if (warehouseDao.insertOne(new Warehouse(id, name, address))) {
                 Toast.makeText(this, "Thêm kho thành công", Toast.LENGTH_SHORT).show();
                 etId.setText("");
@@ -101,7 +113,8 @@ public class AddWarehouseActivity extends AppCompatActivity {
             }
         } else {
             etId.requestFocus();
-            etId.setError("Mã kho này đã tồn tại! Vui lòng nhập mã kho khác!");
+            tvWarehouseIdWarning.setText("Mã kho này đã tồn tại!");
+            tvWarehouseIdWarning.setVisibility(View.VISIBLE);
         }
     }
 
