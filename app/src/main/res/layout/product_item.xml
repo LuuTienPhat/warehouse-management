@@ -42,14 +42,14 @@
                 android:textColor="@color/space_cadet"
                 android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/tvProductUnit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="(K1)"
-                android:textColor="@color/space_cadet"
-                android:textSize="18sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvProductUnit"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/roboto_regular"-->
+<!--                android:text="(K1)"-->
+<!--                android:textColor="@color/space_cadet"-->
+<!--                android:textSize="18sp" />-->
         </LinearLayout>
 
         <TextView

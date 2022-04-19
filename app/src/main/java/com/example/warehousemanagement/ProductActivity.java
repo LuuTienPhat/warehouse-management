@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ProductActivity extends AppCompatActivity implements IViewActivity, SearchViewFragment.ISendSearchResult, SortOptionDialog.SortOptionDialogListener {
-    ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
+    ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh, btnStatistical;
     ListView listView;
     SearchView searchView;
     TextView tvTitle;
@@ -80,6 +80,12 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
                 handleBtnFilterClick(view);
             }
         });
+        btnStatistical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProductActivity.this, ChartActivity.class));
+            }
+        });
         btnMinimize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,6 +104,7 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
     }
 
     private void setControl() {
+        btnStatistical = findViewById(R.id.btnStatistical);
         btnAdd = findViewById(R.id.btnAdd);
         btnRefresh = findViewById(R.id.btnRefresh);
         btnFilter = findViewById(R.id.btnFilter);
@@ -125,11 +132,12 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
 
     @Override
     public void handleBtnRefreshClick(View view) {
+        refresh();
+    }
+    
+    private void refresh() {
         products = productDao.getAll();
-
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(products);
     }
 
     @Override
@@ -193,10 +201,11 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
                 }
             });
         }
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        System.out.println("notify change");
-        productAdapter.notifyDataSetChanged();
+        updateListView(products);
+//        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
+//        listView.setAdapter(productAdapter);
+//        System.out.println("notify change");
+//        productAdapter.notifyDataSetChanged();
     }
 
     public void openDialog() {
@@ -255,9 +264,12 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             Toast.makeText(this, "Thêm vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(products);
+
+//        products = productDao.getAll();
+//        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
+//        listView.setAdapter(productAdapter);
+//        listView.setDividerHeight(dividerHeight);
     }
 
     public void editProduct(Product product) {
@@ -265,9 +277,11 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             Toast.makeText(this, "Sửa vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(products);
+//        products = productDao.getAll();
+//        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
+//        listView.setAdapter(productAdapter);
+//        listView.setDividerHeight(dividerHeight);
     }
 
     public void deleteProduct(Product product) {
@@ -275,9 +289,11 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
             Toast.makeText(this, "Xóa vật tư thành công", Toast.LENGTH_LONG).show();
         }
         products = productDao.getAll();
-        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
-        listView.setAdapter(productAdapter);
-        listView.setDividerHeight(dividerHeight);
+        updateListView(products);
+//        products = productDao.getAll();
+//        productAdapter = new ProductAdapter(this, R.layout.product_item, products);
+//        listView.setAdapter(productAdapter);
+//        listView.setDividerHeight(dividerHeight);
     }
 
     @Override
@@ -292,4 +308,3 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
         productAdapter.notifyDataSetChanged();
     }
 }
-

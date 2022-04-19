@@ -24,7 +24,7 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
     Button btnSave, btnCancel;
     Warehouse warehouse;
     LinearLayout lyOption, lyUtils;
-    TextView tvTitle;
+    TextView tvTitle, tvWarehouseNameWarning, tvWareHouseAddressWarning;;
     WarehouseDao warehouseDao;
     private boolean inEditMode = false;
 
@@ -99,6 +99,9 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
         lyOption = findViewById(R.id.lyOption);
         btnSave = findViewById(R.id.btnOK);
         btnCancel = findViewById(R.id.btnCancel);
+
+        tvWarehouseNameWarning = findViewById(R.id.tvWarehouseNameWarning);
+        tvWareHouseAddressWarning = findViewById(R.id.tvWarehouseAddressWarning);
     }
 
     private void handleBtnSaveClick(View view) {
@@ -108,12 +111,16 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
         // validate inputs
         int errors = 0;
         if (name.isEmpty()) {
-            etName.setError("Vui lòng nhập tên kho!");
+            tvWarehouseNameWarning.setVisibility(View.VISIBLE);
             errors++;
+        } else {
+            tvWarehouseNameWarning.setVisibility(View.GONE);
         }
         if (address.isEmpty()) {
-            etAddress.setError("Vui lòng nhập địa chỉ!");
+            tvWareHouseAddressWarning.setVisibility(View.VISIBLE);
             errors++;
+        } else {
+            tvWareHouseAddressWarning.setVisibility(View.GONE);
         }
         if (errors != 0) {
             return;
@@ -135,6 +142,8 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
         if (inEditMode) {
             etName.setText(warehouse.getName());
             etAddress.setText(warehouse.getAddress());
+            tvWarehouseNameWarning.setVisibility(View.GONE);
+            tvWareHouseAddressWarning.setVisibility(View.GONE);
 
             inEditMode = false;
             changeState();
@@ -217,12 +226,16 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
     @Override
     public void sendDialogResult(CustomDialog.Result result, String request) {
         if (result == CustomDialog.Result.OK && request.equals("delete")) {
-            if (warehouseDao.deleteOne(warehouse)) {
-                Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
-                setResult(Activity.RESULT_OK);
-                finish();
+            if (warehouseDao.canDelete(warehouse.getId())) {
+                if (warehouseDao.deleteOne(warehouse)) {
+                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
+                    setResult(Activity.RESULT_OK);
+                    finish();
+                } else {
+                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                }
             } else {
-                Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Không thể xóa kho có phiếu nhập!", Toast.LENGTH_SHORT).show();
             }
         }
     }

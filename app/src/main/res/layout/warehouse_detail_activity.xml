@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -18,7 +18,6 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginEnd="30dp"
             android:fontFamily="@font/roboto_bold"
             android:gravity="start"
@@ -56,7 +55,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
         <TextView
@@ -101,7 +100,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
         <TextView
@@ -129,12 +128,20 @@
             android:textAlignment="textStart"
             android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue" />
+        <TextView
+            android:id="@+id/tvWarehouseNameWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vui lòng nhập tên kho!"
+            android:gravity="end"
+            android:textSize="18sp"
+            android:textColor="@color/alert_red"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
         android:orientation="vertical">
 
         <TextView
@@ -162,10 +169,27 @@
             android:textAlignment="textStart"
             android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue" />
+
+        <TextView
+            android:id="@+id/tvWarehouseAddressWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vui lòng nhập địa chỉ!"
+            android:gravity="end"
+            android:textSize="18sp"
+            android:textColor="@color/alert_red"
+            android:visibility="gone"/>
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
     <include
-        layout="@layout/group_button_ok_cancel" />
+        layout="@layout/group_button_ok_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"/>
 
 </LinearLayout>
