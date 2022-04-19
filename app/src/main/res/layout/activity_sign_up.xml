@@ -28,7 +28,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="Đăng Ký Tài Khoản"
             android:textColor="@color/space_cadet"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
 
         <EditText

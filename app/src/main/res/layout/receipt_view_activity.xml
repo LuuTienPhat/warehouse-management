@@ -6,17 +6,33 @@
     android:orientation="vertical"
     android:paddingHorizontal="21dp">
 
-    <TextView
-        android:id="@+id/tvTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="30dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Title"
-        android:textAlignment="textStart"
-        android:textColor="@color/space_cadet"
-        android:textSize="30sp" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btnPdf"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/ic_picture_as_pdf_32" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frameLayout"

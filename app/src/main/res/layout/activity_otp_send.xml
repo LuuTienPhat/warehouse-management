@@ -71,23 +71,18 @@
 
             <EditText
                 android:id="@+id/etPhone"
+                style="@style/EditTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:background="@drawable/bg_azureich_white_radius_15"
                 android:drawableStart="@drawable/ic_baseline_phone_24"
                 android:drawableLeft="@drawable/ic_baseline_phone_24"
                 android:drawablePadding="16dp"
                 android:drawableTint="@color/space_cadet"
-                android:ems="10"
                 android:hint="01234567890"
-
                 android:inputType="phone"
                 android:padding="16dp"
-                android:textCursorDrawable="@color/steel_blue"
-                android:textSize="20sp"
-
-                />
+                android:textSize="20sp" />
         </LinearLayout>
 
 
