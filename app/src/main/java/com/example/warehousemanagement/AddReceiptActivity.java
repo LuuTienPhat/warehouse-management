@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class AddReceiptActivity extends AppCompatActivity implements CustomDialog.Listener {
     private ImageButton btnCancel, btnPrevious, btnForward;
     private FrameLayout frameLayout;
-    private TextView tvTitle;
+    private TextView tvTitle, tvProcess;
 
     private ReceiptInformationFragment receiptInformationFragment;
     private ReceiptDetailViewFragment receiptDetailViewFragment;
@@ -40,7 +40,7 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.receipt_add);
+        setContentView(R.layout.receipt_add_activity);
         setControl();
         setEvent();
 
@@ -93,7 +93,10 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
                     for (ReceiptDetail receiptDetail : newReceipt.getReceiptDetails()) {
                         receiptDetailDao.insertOne(receiptDetail);
                     }
-                    finish();
+
+                    String dialogContent = "Bạn có muốn thoát không";
+                    CustomDialog customDialog = new CustomDialog(CustomDialog.Type.NOTIFICATION, "Thành công", "Tạo phiếu thành công", "add-success");
+                    customDialog.show(getSupportFragmentManager(), "");
                 }
             }
         });
@@ -105,25 +108,33 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
         btnForward = findViewById(R.id.btnForward);
         frameLayout = findViewById(R.id.frameLayout);
         tvTitle = findViewById(R.id.tvTitle);
+        tvProcess = findViewById(R.id.tvProcess);
     }
 
     private void switchFragment(int no) {
         switch (no) {
             case 1:
                 tvTitle.setText("Tạo phiếu nhập");
+                tvProcess.setText("1/3");
                 replaceFragment(receiptInformationFragment);
                 break;
             case 2:
                 if (receiptInformationFragment.senDataToActivity()) {
                     tvTitle.setText("Thêm vật tư");
+                    tvProcess.setText("2/3");
                     replaceFragment(receiptDetailViewFragment);
                 } else {
-                    Toast.makeText(this, "Hãy kiểm tra lại thông tin nhập", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Hãy kiểm tra lại thông tin phiếu", Toast.LENGTH_LONG).show();
                 }
                 break;
             case 3:
-                tvTitle.setText("Xem trước");
-                replaceFragment(receiptViewFragment);
+                if (!newReceipt.getReceiptDetails().isEmpty()) {
+                    tvTitle.setText("Xem trước");
+                    tvProcess.setText("2/3");
+                    replaceFragment(receiptViewFragment);
+                } else {
+                    Toast.makeText(this, "Phiếu nhập phải có ít nhất 1 vật tư", Toast.LENGTH_LONG).show();
+                }
                 break;
             default:
                 break;
@@ -187,6 +198,8 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
             } else if (request.equals("deleteAll")) {
                 newReceipt.getReceiptDetails().clear();
                 receiptDetailViewFragment.updateListView();
+            } else if (request.equals("add-success")) {
+                finish();
             }
         }
     }
