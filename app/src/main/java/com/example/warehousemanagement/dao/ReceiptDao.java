@@ -12,9 +12,10 @@ import com.example.warehousemanagement.model.ReceiptDetail;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class  ReceiptDao implements Dao<Receipt> {
+public class ReceiptDao implements Dao<Receipt> {
     private SQLiteDatabase db;
     private final SQLiteOpenHelper dbHelper;
 
@@ -204,5 +205,63 @@ public class  ReceiptDao implements Dao<Receipt> {
         cursor.close();
         db.close();
         return receipts;
+    }
+
+    public HashMap<String, Integer> getDataTK() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor c = db.rawQuery("select warehouse_id, count(warehouse_id) as quantity from receipt \n" +
+                "group by warehouse_id\n" +
+                "order by warehouse_id asc", null);
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+
+        if (c.moveToFirst()) {
+            do {
+                String warehouseID = c.getString(0);
+                int quantity = c.getInt(1);
+                hashMap.put(warehouseID, quantity);
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return hashMap;
+    }
+    public HashMap<String, Integer> getDataTKRC() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor d = db.rawQuery("select  product_id, sum(quantity)  from receipt_detail \n" +
+                "group by product_id\n" +
+                "order by product_id asc", null);
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+
+        if (d.moveToFirst()) {
+            do {
+                String produceID = d.getString(0);
+                int quantity = d.getInt(1);
+                hashMap.put(produceID, quantity);
+            } while (d.moveToNext());
+        }
+        d.close();
+        db.close();
+
+        return hashMap;
+    }
+    public HashMap<String, Integer> getDataTKPN() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor d = db.rawQuery("select  receipt_id, count(product_id)  from receipt_detail \n" +
+                "group by receipt_id\n" +
+                "order by receipt_id asc", null);
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+
+        if (d.moveToFirst()) {
+            do {
+                String receiptID = d.getString(0);
+                int quantity = d.getInt(1);
+                hashMap.put(receiptID, quantity);
+            } while (d.moveToNext());
+        }
+        d.close();
+        db.close();
+
+        return hashMap;
     }
 }

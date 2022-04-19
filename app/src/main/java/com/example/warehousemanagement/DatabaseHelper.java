@@ -1,11 +1,14 @@
 package com.example.warehousemanagement;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.warehousemanagement.dao.ProductDao;
+
+import java.util.HashMap;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private final Context context;

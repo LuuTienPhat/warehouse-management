@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class DatabaseAccess {
@@ -188,6 +189,5 @@ public class DatabaseAccess {
             return false;
         }
     }
-
 
 }
