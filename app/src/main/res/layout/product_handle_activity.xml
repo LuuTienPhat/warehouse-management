@@ -64,14 +64,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvProductId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="start"
                     android:text="Mã vật tư"
@@ -82,8 +82,8 @@
                 <EditText
                     android:id="@+id/editTextProductId"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/bg_text_box_round_corner"
                     android:ems="10"
                     android:fontFamily="@font/roboto_regular"
@@ -109,14 +109,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvProductName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="start"
                     android:text="Tên vật tư"
@@ -127,8 +127,8 @@
                 <EditText
                     android:id="@+id/editTextProductName"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/bg_text_box_round_corner"
                     android:ems="10"
                     android:fontFamily="@font/roboto_regular"
@@ -154,14 +154,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvProductOrigin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="start"
                     android:text="Xuất xứ"
@@ -172,8 +172,8 @@
                 <EditText
                     android:id="@+id/editTextProductOrigin"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/bg_text_box_round_corner"
                     android:ems="10"
                     android:fontFamily="@font/roboto_regular"
@@ -195,15 +195,12 @@
                     android:textColor="@color/space_cadet"
                     android:textSize="16sp" />
             </LinearLayout>
-
             <include
                 layout="@layout/list_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:layout_weight="1" />
-
-
             <include layout="@layout/group_button_ok_cancel" />
         </LinearLayout>
     </ScrollView>
