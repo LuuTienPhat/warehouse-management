@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -34,7 +35,7 @@ public class ChartActivityWarehouse extends AppCompatActivity{
     private void setupPieChart1() {
         pieChart1.setDrawHoleEnabled(true);
         pieChart1.setUsePercentValues(true);
-        pieChart1.setEntryLabelTextSize(12);
+        pieChart1.setEntryLabelTextSize(13);
         pieChart1.setEntryLabelColor(Color.BLACK);
         pieChart1.setCenterText("WarehouseChart");
         pieChart1.setCenterTextSize(24);
@@ -50,10 +51,11 @@ public class ChartActivityWarehouse extends AppCompatActivity{
 
     private void loadPieChart1Data() {
         ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(0.35f, "Kho1"));
-        entries.add(new PieEntry(0.15f, "Kho2"));
-        entries.add(new PieEntry(0.2f, "Kho3"));
-        entries.add(new PieEntry(0.3f, "Kho4"));
+        entries.add(new PieEntry(0.6f, "Kho Bình Chánh"));
+        entries.add(new PieEntry(0.2f, "Kho Tân Phú"));
+        entries.add(new PieEntry(0.2f, "Kho Thủ Đức"));
+
+
 
 
         ArrayList<Integer> colors = new ArrayList<>();
@@ -64,14 +66,17 @@ public class ChartActivityWarehouse extends AppCompatActivity{
         for (int color : ColorTemplate.VORDIPLOM_COLORS) {
             colors.add(color);
         }
-
+        Description description = new Description();
+        description.setText("\nThống kê nhà kho dựa trên số phiếu nhập");
+        description.setTextSize(20);
+        pieChart1.setDescription(description);
         PieDataSet dataSet = new PieDataSet(entries, "Expense Category");
         dataSet.setColors(colors);
 
         PieData data = new PieData(dataSet);
         data.setDrawValues(true);
         data.setValueFormatter(new PercentFormatter(pieChart1));
-        data.setValueTextSize(12f);
+        data.setValueTextSize(15f);
         data.setValueTextColor(Color.BLACK);
 
         pieChart1.setData(data);
