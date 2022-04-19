@@ -15,16 +15,13 @@
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/dialog_sort_by_option_for_product.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/dialog_sort_by_option_for_receipt.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/dialog_sort_by_option_for_warehouse.xml" value="0.264" />
-        <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/group_button_ok_cancel.xml" value="0.159375" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/group_button_save_cancel.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/group_button_utils.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/navigation_cancel_previous_next.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/pending_delete_constraint_cancel_previous_next.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/product_add_activity.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/product_add_activity_linear.xml" value="0.25" />
-        <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/receipt_detail_view.xml" value="0.159375" />
-        <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/receipt_view_activity.xml" value="0.159375" />
-        <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/search_view.xml" value="0.159375" />
+        <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/receipt_detail_edit_activity.xml" value="0.17708333333333334" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/warehouse_add_activity.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/warehouse_detail_activity.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/warehouse_item.xml" value="0.25" />
@@ -32,7 +29,6 @@
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/warehouse_item_small_product_quantity.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/warehouse_item_spinner.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/warehouse-management/app/src/main/res/layout/warehouse_spinner.xml" value="0.25" />
-        <entry key="..\:/Mobile app/warehouse-management/app/src/main/res/layout/activity_chart.xml" value="0.1140625" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable-v24/bg_text_box_round_corner.xml" value="0.3675" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable-xxhdpi/bg_steel_blue_radius_25.xml" value="0.348" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable-xxxhdpi/bg_space_cadet_top_radius_15.xml" value="0.337" />
@@ -57,6 +53,7 @@
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/border_bottom.xml" value="0.154" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/button_main_activity.xml" value="0.3675" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/empty_tall_divider.xml" value="0.2855" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_android_icon.xml" value="0.2705" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_baseline_delete.xml" value="0.317" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.3675" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_baseline_search_cultured_24.xml" value="0.3675" />
@@ -64,21 +61,38 @@
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_close_48.xml" value="0.348" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_delete_32.xml" value="0.348" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_delete_forever_32.xml" value="0.348" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_edit_32.xml" value="0.2685" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3675" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_left_48.xml" value="0.2705" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_picture_as_pdf.xml" value="0.2685" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_picture_as_pdf_32.xml" value="0.2685" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_refresh_32.xml" value="0.3675" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/ic_right_48.xml" value="0.2705" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/drawable/spinner_item_border.xml" value="0.282" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/font/roboto.xml" value="0.396875" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_add_product.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_add_receipt.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_add_warehouse.xml" value="0.33" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_chart.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_chart_receipt.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_chart_warehouse.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_edit_receipt_detail.xml" value="0.5" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_edit_warehouse.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_forgot_password.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_otp_send.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_otp_verify.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_product.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_product_detail.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_sign_in.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_sign_up.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_splash.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_splash_login.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_thong_tin_taikhoan.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_view.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_warehouse.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/activity_warehouse_detail.xml" value="0.33" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/app_bar_main.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/constraint_cancel_previous_next.xml" value="0.25" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/constraint_product_item.xml" value="0.25" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/constraint_product_item_small.xml" value="0.33" />
@@ -89,25 +103,36 @@
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/constraint_utils.xml" value="0.5" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/constraint_warehouse_item.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/constraint_warehouse_item_small.xml" value="0.33" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/content_main.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/dialog_confirm.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/dialog_notification.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/dialog_sort_by_option_for_product.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/dialog_sort_by_option_for_receipt.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/dialog_warning.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/fragment_blank.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/fragment_favorite.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/fragment_home.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/fragment_my_profile.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/group_button_ok_cancel.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/group_button_save_cancel.xml" value="0.67" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/group_sort_order_radio_button.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/layout_header_nav.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/layout_warning_dialog.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/linear_dialog_notification.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/list_view.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/motion.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/navigation_cancel_previous_next.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/notification_dialog.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/pdf_activity.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/pending_delete_constraint_cancel_previous_next.xml" value="0.17699871740059855" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/product_add_activity.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/product_add_activity_linear.xml" value="0.5" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/product_handle_activity.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/product_item.xml" value="0.44926611359285257" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/product_item_in_receipt_detail.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/product_item_small.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/product_item_small_dark.xml" value="0.17699871740059855" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/product_quantity_in_warehouse_item.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/recceipt_view_activity.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_add.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_add_activity.xml" value="0.33" />
@@ -117,6 +142,7 @@
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_detail_edit_activity.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_detail_item.xml" value="0.5" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_detail_view.xml" value="0.33" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_information_fragment.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_item.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_item_small.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_item_small_constraint.xml" value="0.3009833262077811" />
@@ -124,6 +150,7 @@
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_view_activity.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/receipt_view_fragment.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/search_view.xml" value="0.3009833262077811" />
+        <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/splash_screen_activity.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/test.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/warehouse_activity.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/warehouse_add_activity.xml" value="0.3009833262077811" />
@@ -136,33 +163,12 @@
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/layout/warning_dialog.xml" value="0.33" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.317" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3675" />
-<<<<<<< HEAD
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/border.xml" value="0.1" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/border_right.xml" value="0.1" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/ic_change_password.xml" value="0.164" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/drawable/ic_person.xml" value="0.164" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_change_password.xml" value="0.25" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_otp_send.xml" value="0.33" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_otp_verify.xml" value="0.33" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_sign_in.xml" value="0.15806159420289856" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_splash_login.xml" value="0.33" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_thong_tin_taikhoan.xml" value="0.33" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_view.xml" value="0.15806159420289856" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_splash_login.xml" value="0.25" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_thong_tin_taikhoan.xml" value="0.18" />
         <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/app_bar_main.xml" value="0.12" />
         <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/content_main.xml" value="0.22" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/fragment_favorite.xml" value="0.2" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/fragment_home.xml" value="0.12771739130434784" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/fragment_my_profile.xml" value="0.12771739130434784" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/group_button_ok_cancel.xml" value="0.2" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/group_button_utils.xml" value="0.2" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/group_sort_order_radio_button.xml" value="0.2" />
         <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/layout_header_nav.xml" value="0.33" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/menu/menu_nav.xml" value="0.2" />
-=======
->>>>>>> master
       </map>
     </option>
   </component>
