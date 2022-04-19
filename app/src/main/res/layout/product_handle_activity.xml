@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:padding="20dp">
+        android:padding="21dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,21 +69,16 @@
 
                 <TextView
                     android:id="@+id/tvProductId"
+                    style="@style/TextViewOfEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="start"
-                    android:text="Mã vật tư"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/space_cadet"
-                    android:textSize="20sp" />
+                    android:text="Mã vật tư" />
 
                 <EditText
                     android:id="@+id/editTextProductId"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginVertical="8dp"
                     android:background="@drawable/bg_text_box_round_corner"
                     android:ems="10"
                     android:fontFamily="@font/roboto_regular"
@@ -96,14 +91,10 @@
 
                 <TextView
                     android:id="@+id/tvProductIdAlert"
+                    style="@style/TextViewWarningOfEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:paddingHorizontal="5dp"
-                    android:text="Nhập lại"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/space_cadet"
-                    android:textSize="16sp" />
+                    android:text="Nhập lại" />
             </LinearLayout>
 
             <LinearLayout
@@ -114,41 +105,25 @@
 
                 <TextView
                     android:id="@+id/tvProductName"
+                    style="@style/TextViewOfEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="start"
-                    android:text="Tên vật tư"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/space_cadet"
-                    android:textSize="20sp" />
+                    android:text="Tên vật tư" />
 
                 <EditText
                     android:id="@+id/editTextProductName"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/bg_text_box_round_corner"
-                    android:ems="10"
-                    android:fontFamily="@font/roboto_regular"
-                    android:hint="Nhập tên vật tư.."
-                    android:inputType="text"
-                    android:paddingHorizontal="20sp"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/space_cadet"
-                    android:textColorHint="@color/steel_blue" />
+                    android:layout_marginVertical="8dp"
+                    android:hint="Nhập tên vật tư.." />
 
                 <TextView
                     android:id="@+id/tvProductNameAlert"
+                    style="@style/TextViewWarningOfEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:paddingHorizontal="5dp"
-                    android:text="Nhập lại"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/space_cadet"
-                    android:textSize="16sp" />
+                    android:text="Nhập lại" />
             </LinearLayout>
 
             <LinearLayout
@@ -159,49 +134,38 @@
 
                 <TextView
                     android:id="@+id/tvProductOrigin"
+                    style="@style/TextViewOfEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="start"
-                    android:text="Xuất xứ"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/space_cadet"
-                    android:textSize="20sp" />
+                    android:text="Xuất xứ" />
 
                 <EditText
                     android:id="@+id/editTextProductOrigin"
+                    style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/bg_text_box_round_corner"
-                    android:ems="10"
-                    android:fontFamily="@font/roboto_regular"
-                    android:hint="Nhập xuất xứ.."
-                    android:inputType="text"
-                    android:paddingHorizontal="20sp"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/space_cadet"
-                    android:textColorHint="@color/steel_blue" />
+                    android:layout_marginVertical="8dp"
+                    android:hint="Nhập xuất xứ.." />
 
                 <TextView
                     android:id="@+id/tvProductOriginAlert"
+                    style="@style/TextViewWarningOfEditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:paddingHorizontal="5dp"
-                    android:text="Nhập lại"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/space_cadet"
-                    android:textSize="16sp" />
+                    android:text="Nhập lại" />
             </LinearLayout>
+
             <include
                 layout="@layout/list_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:layout_weight="1" />
+
             <include layout="@layout/group_button_ok_cancel" />
+
         </LinearLayout>
+
     </ScrollView>
+
 </LinearLayout>

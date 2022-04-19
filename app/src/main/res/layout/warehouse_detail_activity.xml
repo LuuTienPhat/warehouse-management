@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingStart="21dp"
-    android:paddingEnd="21dp">
+    android:paddingHorizontal="21dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,9 +26,10 @@
             android:textSize="30sp" />
 
         <Space
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
+
         <LinearLayout
             android:id="@+id/lyUtils"
             android:layout_width="wrap_content"
@@ -59,40 +59,26 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/TextViewOfEditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="start"
-            android:text="Mã kho"
-            android:textAlignment="textStart"
-            android:textColor="@color/space_cadet"
-            android:textSize="20dp" />
+            android:text="Mã kho" />
 
         <EditText
             android:id="@+id/etId"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/bg_text_box_round_corner"
-            android:ems="10"
-            android:fontFamily="@font/roboto_regular"
-            android:inputType="text"
-            android:paddingStart="20dp"
-            android:text="K1"
-            android:focusable="false"
-            android:textAlignment="textStart"
-            android:textColor="@color/space_cadet"
+            android:layout_marginVertical="10dp"
             android:alpha="0.5"
-            android:textColorHint="@color/steel_blue" />
+            android:focusable="false"
+            android:text="K1" />
 
         <TextView
+            style="@style/TextViewWarningOfEditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/roboto_regular"
             android:text="Nhập mã kho"
-            android:textColor="@color/space_cadet"
-            android:textSize="14dp"
             android:visibility="gone" />
 
     </LinearLayout>
@@ -104,39 +90,28 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/TextViewOfEditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="start"
-            android:text="Tên kho"
-            android:textAlignment="textStart"
-            android:textColor="@color/space_cadet"
-            android:textSize="20sp" />
+
+            android:text="Tên kho" />
 
         <EditText
             android:id="@+id/etName"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/bg_text_box_round_corner"
-            android:ems="10"
-            android:fontFamily="@font/roboto_regular"
-            android:inputType="textPersonName"
-            android:paddingStart="20dp"
-            android:text="Kho Bình Chánh"
+            android:layout_marginVertical="10dp"
             android:alpha="0.5"
-            android:textAlignment="textStart"
-            android:textColor="@color/space_cadet"
-            android:textColorHint="@color/steel_blue" />
+            android:text="Kho Bình Chánh" />
+
         <TextView
             android:id="@+id/tvWarehouseNameWarning"
+            style="@style/TextViewWarningOfEditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Vui lòng nhập tên kho!"
-            android:gravity="end"
-            android:textSize="18sp"
-            android:textColor="@color/alert_red"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout
@@ -145,51 +120,39 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/TextViewOfEditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="start"
-            android:text="Địa chỉ"
-            android:textAlignment="textStart"
-            android:textColor="@color/space_cadet"
-            android:textSize="20dp" />
+
+            android:text="Địa chỉ" />
 
         <EditText
             android:id="@+id/etAddress"
+            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/bg_text_box_round_corner"
-            android:ems="10"
-            android:fontFamily="@font/roboto_regular"
-            android:inputType="textPersonName"
-            android:paddingStart="20dp"
-            android:text="95 Việt Phú, Bình Chánh, TPHCM"
+            android:layout_marginVertical="10dp"
             android:alpha="0.5"
-            android:textAlignment="textStart"
-            android:textColor="@color/space_cadet"
-            android:textColorHint="@color/steel_blue" />
+            android:text="95 Việt Phú, Bình Chánh, TPHCM" />
 
         <TextView
             android:id="@+id/tvWarehouseAddressWarning"
+            style="@style/TextViewWarningOfEditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Vui lòng nhập địa chỉ!"
-            android:gravity="end"
-            android:textSize="18sp"
-            android:textColor="@color/alert_red"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <include
         layout="@layout/group_button_ok_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="30dp" />
 
 </LinearLayout>

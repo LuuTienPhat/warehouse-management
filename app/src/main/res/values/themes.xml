@@ -37,11 +37,50 @@
     <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bg_radius_top_25</item>
     </style>
+
     <style name="Theme.WarehouseManagement.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="Theme.WarehouseManagement.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WarehouseManagement.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.WarehouseManagement.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="EditTextStyle" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/bg_azureich_white_radius_15</item>
+        <item name="android:textColor">@color/space_cadet</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColorHint">@color/steel_blue</item>
+        <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="TextViewOfEditTextStyle" parent="@android:style/Widget.TextView">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/space_cadet</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextViewWarningOfEditTextStyle" parent="@android:style/Widget.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">start</item>
+        <item name="android:paddingHorizontal">5dp</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textColor">@color/space_cadet</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextViewTitle" parent="@android:style/Widget.TextView">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/space_cadet</item>
+        <item name="android:textSize">30sp</item>
+    </style>
 </resources>

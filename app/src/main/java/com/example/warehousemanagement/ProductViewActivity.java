@@ -66,10 +66,17 @@ public class ProductViewActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1) {
-            ReceiptDetail receiptDetail = (ReceiptDetail) data.getSerializableExtra("receiptDetail");
+            ReceiptDetail receiptDetail = null;
+            try {
+                receiptDetail = (ReceiptDetail) data.getSerializableExtra("receiptDetail");
+                resultCode = 2;
+            } catch (Exception ex) {
+                resultCode = 4; //ERROR
+            }
+
             Intent intent = new Intent();
             intent.putExtra("receiptDetail", receiptDetail);
-            setResult(2, intent);
+            setResult(resultCode, intent);
             finish();
         }
     }
