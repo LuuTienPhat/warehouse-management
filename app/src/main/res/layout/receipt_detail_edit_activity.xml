@@ -92,7 +92,6 @@
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
         android:orientation="vertical">
 
         <TextView
@@ -132,6 +131,11 @@
             android:textColor="@color/space_cadet"
             android:textSize="16sp" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <include
         android:id="@+id/constraintLayout5"
