@@ -24,7 +24,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ProductActivity extends AppCompatActivity implements IViewActivity, SearchViewFragment.ISendSearchResult, SortOptionDialog.SortOptionDialogListener {
-    ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh;
+    ImageButton btnMinimize, btnAdd, btnSort, btnFilter, btnRefresh, btnStatistical;
     ListView listView;
     SearchView searchView;
     TextView tvTitle;
@@ -80,6 +80,12 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
                 handleBtnFilterClick(view);
             }
         });
+        btnStatistical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProductActivity.this, ChartActivity.class));
+            }
+        });
         btnMinimize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,6 +104,7 @@ public class ProductActivity extends AppCompatActivity implements IViewActivity,
     }
 
     private void setControl() {
+        btnStatistical = findViewById(R.id.btnStatistical);
         btnAdd = findViewById(R.id.btnAdd);
         btnRefresh = findViewById(R.id.btnRefresh);
         btnFilter = findViewById(R.id.btnFilter);
