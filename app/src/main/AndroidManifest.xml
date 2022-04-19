@@ -16,9 +16,6 @@
             android:name=".ChangePassword"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
-            android:exported="false" />
-        <activity
             android:name=".ReceiptActivity"
             android:exported="false" />
         <activity
@@ -32,9 +29,6 @@
             android:exported="false" />
         <activity
             android:name=".ReceiptViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.receipt.AddReceiptActivity"
             android:exported="false" />
         <activity
             android:name=".WarehouseActivity"
@@ -76,9 +70,10 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".OtpSendActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
-        android:name=".ChartActivity"
-        android:exported="false" />
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ChartActivity"
+            android:exported="false" />
         <activity
             android:name=".ChartActivityWarehouse"
             android:exported="false" />
