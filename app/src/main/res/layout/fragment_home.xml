@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/cultured"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@android:color/white">
+    android:padding="20dp">
 
 
     <LinearLayout
@@ -18,7 +18,7 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="1"></Space>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvTitle"
@@ -35,7 +35,7 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="1"></Space>
+            android:layout_weight="1" />
 
         <LinearLayout
             android:id="@+id/constraintLayout1"
@@ -61,14 +61,14 @@
 
                 <TextView
                     android:id="@+id/tvWarehouse"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto_medium"
                     android:text="KHO"
                     android:textAlignment="center"
                     android:textColor="@color/space_cadet"
-                    android:textSize="30dp" />
+                    android:textSize="28sp" />
 
             </LinearLayout>
 
@@ -91,14 +91,14 @@
 
                 <TextView
                     android:id="@+id/tvProduct"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto_medium"
                     android:text="VẬT TƯ"
                     android:textAlignment="center"
                     android:textColor="@color/space_cadet"
-                    android:textSize="30dp" />
+                    android:textSize="28sp" />
 
             </LinearLayout>
 
@@ -119,7 +119,7 @@
 
                 <TextView
                     android:id="@+id/tvReceipt"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto_medium"
@@ -127,7 +127,7 @@
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/space_cadet"
-                    android:textSize="30dp" />
+                    android:textSize="28sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -135,7 +135,7 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="1"></Space>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvCredit"
@@ -147,7 +147,7 @@
             android:text="Team11"
             android:textAlignment="center"
             android:textColor="@color/space_cadet"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <Space
             android:layout_width="0dp"

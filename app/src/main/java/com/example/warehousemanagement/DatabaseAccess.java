@@ -19,59 +19,57 @@ public class DatabaseAccess {
     SQLiteDatabase db;
     FirebaseDatabase rootNode; //f_instanse
     DatabaseReference userref; //f_db
-    private  static  DatabaseAccess instance;
-    Cursor c= null;
-    public  String iduser;
-    Map<String,String> user; // Map lưu dữ liệu dạng String : String --> Hoten: Thien
-    Map<String,Long> diem; //Firebase sử dụng kiểu Long thay vì Int
-    private DatabaseAccess(Context context){
+    private static DatabaseAccess instance;
+    Cursor c = null;
+    public String iduser;
+    Map<String, String> user; // Map lưu dữ liệu dạng String : String --> Hoten: Thien
+    Map<String, Long> diem; //Firebase sử dụng kiểu Long thay vì Int
+
+    private DatabaseAccess(Context context) {
         this.openHelper = new DatabaseHelper(context);
 
     }
 
-    public  static  DatabaseAccess getInstance(Context context){
-        if(instance==null){
+    public static DatabaseAccess getInstance(Context context) {
+        if (instance == null) {
             instance = new DatabaseAccess(context);
         }
         return instance;
     }
 
-    public void open(){
+    public void open() {
         this.db = openHelper.getWritableDatabase();
     }
-    public  void close(){
-        if(db!=null){
+
+    public void close() {
+        if (db != null) {
             this.db.close();
         }
     }
-    public Boolean insertData(String iduser,String hoten, String email,String sdt,int diem )
-    {
+
+    public Boolean insertData(String iduser, String hoten, String email, String sdt, int diem) {
         db = openHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("ID_User",iduser);
-        contentValues.put("HoTen",hoten);
-        contentValues.put("Point",diem);
-        contentValues.put("Email",email);
-        contentValues.put("SDT",sdt);
-        long result = db.insert("User",null,contentValues);
-        if(result==-1) {
+        contentValues.put("ID_User", iduser);
+        contentValues.put("HoTen", hoten);
+        contentValues.put("Point", diem);
+        contentValues.put("Email", email);
+        contentValues.put("SDT", sdt);
+        long result = db.insert("User", null, contentValues);
+        if (result == -1) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
 
     }
-    public Boolean checktaikhoan(String email)
-    {
+
+    public Boolean checktaikhoan(String email) {
         db = openHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from User where Email = ?", new String[]{email});
-        if(cursor.getCount() >0)
-        {
-            return  true;
-        }
-        else
-        {
+        if (cursor.getCount() > 0) {
+            return true;
+        } else {
             return false;
         }
 
@@ -85,8 +83,7 @@ public class DatabaseAccess {
         rootNode = FirebaseDatabase.getInstance();
         userref = rootNode.getReference("User").child(iduser);
         Cursor cursor = db.rawQuery("Select * from User where ID_User = ?", new String[]{iduser});
-        if(cursor.getCount() >0)
-        {
+        if (cursor.getCount() > 0) {
             //Cập Nhật User từ FireBase
             //TH1: Đã có dữ liệu ở SQLite
             userref.addValueEventListener(new ValueEventListener() {
@@ -97,13 +94,13 @@ public class DatabaseAccess {
 
                     db = openHelper.getWritableDatabase();
                     ContentValues contentValues = new ContentValues();
-                    contentValues.put("HoTen",user.get("hoTen"));
+                    contentValues.put("HoTen", user.get("hoTen"));
 
                     int Point = diem.get("point").intValue();
                     contentValues.put("Point", Point);
-                    contentValues.put("SDT",user.get("sdt"));
+                    contentValues.put("SDT", user.get("sdt"));
                     //db.rawQuery("Select * from User where ID_User = ?", new String[]{iduser});
-                    db.update("User",contentValues,"ID_User = ?", new String[]{iduser});
+                    db.update("User", contentValues, "ID_User = ?", new String[]{iduser});
                 }
 
                 @Override
@@ -111,9 +108,7 @@ public class DatabaseAccess {
 
                 }
             });
-        }
-        else
-        {
+        } else {
             //Cập Nhật User từ FireBase
             //TH2: Chưa có dữ liệu ở SQLite
             rootNode = FirebaseDatabase.getInstance();
@@ -128,13 +123,13 @@ public class DatabaseAccess {
                     db = openHelper.getWritableDatabase();
 
                     ContentValues contentValues = new ContentValues();
-                    contentValues.put("ID_User",iduser);
-                    contentValues.put("HoTen",user.get("hoTen"));
+                    contentValues.put("ID_User", iduser);
+                    contentValues.put("HoTen", user.get("hoTen"));
                     int Point = diem.get("point").intValue();
                     contentValues.put("Point", Point);
-                    contentValues.put("Email",user.get("email"));
-                    contentValues.put("SDT",user.get("sdt"));
-                    db.insert("User",null,contentValues);
+                    contentValues.put("Email", user.get("email"));
+                    contentValues.put("SDT", user.get("sdt"));
+                    db.insert("User", null, contentValues);
                 }
 
                 @Override
@@ -145,7 +140,7 @@ public class DatabaseAccess {
         }
     }
 
-    public Boolean capnhatthongtin(String iduser, String hoten,String sdt){
+    public Boolean capnhatthongtin(String iduser, String hoten, String sdt) {
         rootNode = FirebaseDatabase.getInstance();
         userref = rootNode.getReference("User").child(iduser);
 
@@ -155,52 +150,44 @@ public class DatabaseAccess {
 
         db = openHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("HoTen",hoten);
-        contentValues.put("SDT",sdt);
+        contentValues.put("HoTen", hoten);
+        contentValues.put("SDT", sdt);
         Cursor cursor = db.rawQuery("Select * from User where ID_User = ?", new String[]{iduser});
-        if(cursor.getCount()>0) {
-            long result = db.update("User",contentValues,"ID_User = ?", new String[]{iduser});
-            if(result==-1) {
+        if (cursor.getCount() > 0) {
+            long result = db.update("User", contentValues, "ID_User = ?", new String[]{iduser});
+            if (result == -1) {
                 return false;
-            }
-            else {
+            } else {
                 return true;
             }
-        }
-        else {
-            return  false;
+        } else {
+            return false;
         }
     }
 
-    public Boolean capnhatdiem(String iduser,int Point, int PointPlus){
+    public Boolean capnhatdiem(String iduser, int Point, int PointPlus) {
 
         //Cập Nhật User lên FireBase
         rootNode = FirebaseDatabase.getInstance();
         userref = rootNode.getReference("User").child(iduser);
-        userref.child("point").setValue(Point+PointPlus);
-        
+        userref.child("point").setValue(Point + PointPlus);
+
         //Cập nhật dữ liệu lên SQLite
         db = openHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Point", Point + PointPlus);
         Cursor cursor = db.rawQuery("Select * from User where ID_User = ?", new String[]{iduser});
-        if(cursor.getCount()>0) {
-            long result = db.update("User",contentValues,"ID_User = ?", new String[]{iduser});
-            if(result==-1) {
+        if (cursor.getCount() > 0) {
+            long result = db.update("User", contentValues, "ID_User = ?", new String[]{iduser});
+            if (result == -1) {
                 return false;
-            }
-            else {
+            } else {
                 return true;
             }
-        }
-        else {
-            return  false;
+        } else {
+            return false;
         }
     }
-
-
-
-
 
 
 }
