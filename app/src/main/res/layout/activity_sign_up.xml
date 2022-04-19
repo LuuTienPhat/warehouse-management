@@ -19,11 +19,7 @@
         android:layout_marginRight="30dp"
         android:alpha="1"
         android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/imageView_cloudRight">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,8 +27,8 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Đăng Ký Tài Khoản"
-            android:textColor="@color/textHeadline"
-            android:textSize="20sp" />
+            android:textColor="@color/space_cadet"
+            android:textSize="24sp" />
 
 
         <EditText
@@ -48,8 +44,9 @@
             android:hint="Họ và tên"
             android:inputType="text"
             android:padding="16dp"
+            android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue"
-            android:textCursorDrawable="@color/steel_blue"
+            android:textCursorDrawable="@drawable/custom_cursor"
             android:textSize="14sp" />
 
         <EditText
@@ -65,8 +62,9 @@
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="16dp"
+            android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue"
-            android:textCursorDrawable="@color/steel_blue"
+            android:textCursorDrawable="@drawable/custom_cursor"
             android:textSize="14sp" />
 
         <EditText
@@ -82,8 +80,9 @@
             android:hint="Số điện thoại"
             android:inputType="number"
             android:padding="16dp"
+            android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue"
-            android:textCursorDrawable="@color/steel_blue"
+            android:textCursorDrawable="@drawable/custom_cursor"
             android:textSize="14sp" />
 
 
@@ -100,8 +99,9 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="16dp"
+            android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue"
-            android:textCursorDrawable="@color/steel_blue"
+            android:textCursorDrawable="@drawable/custom_cursor"
             android:textSize="14sp" />
 
         <EditText
@@ -117,8 +117,9 @@
             android:hint="Xác nhận lại Password"
             android:inputType="textPassword"
             android:padding="16dp"
+            android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue"
-            android:textCursorDrawable="@color/steel_blue"
+            android:textCursorDrawable="@drawable/custom_cursor"
             android:textSize="14sp" />
 
 
@@ -144,8 +145,7 @@
         android:fontFamily="@font/roboto_regular"
         android:text="@string/signup_register_button"
         android:textColor="@color/space_cadet"
-        android:textSize="14sp"
- />
+        android:textSize="14sp" />
 
 
 </LinearLayout>
