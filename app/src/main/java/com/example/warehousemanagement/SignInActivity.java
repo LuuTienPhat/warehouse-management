@@ -36,10 +36,12 @@ public class SignInActivity extends AppCompatActivity {
         btnDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String email = edttaikhoan.getText().toString().trim();
-//                String matkhau = edtmatkhau.getText().toString().trim();
-                String email = "1@gmail.com";
-                String matkhau = "123456";
+                String email = edttaikhoan.getText().toString().trim();
+                String matkhau = edtmatkhau.getText().toString().trim();
+//                String email = "1@gmail.com";
+//                String matkhau = "123456";
+//                String email = "1236@gmail.com";
+//                String matkhau = "123456";
 
                 // validations for input email and password // check th trong
                 if (TextUtils.isEmpty(email)) {

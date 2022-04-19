@@ -59,7 +59,7 @@
             android:hint="Email"
             android:inputType="text"
             android:padding="16dp"
-
+            android:text="1236@gmail.com"
             android:textColorHint="@color/steel_blue"
             android:textCursorDrawable="@color/steel_blue"
             android:textSize="14sp" />
@@ -97,7 +97,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/bg_space_cadet_radius_15"
-            android:backgroundTint="@color/colorPrimary"
             android:text="Login"
             android:textColor="@color/cultured"
             app:backgroundTint="@color/space_cadet" />

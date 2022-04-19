@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Theme.WarehouseManagement"
@@ -28,8 +28,8 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/ic_avatar_default"
-
                 >
 
             </de.hdodenhof.circleimageview.CircleImageView>
@@ -83,8 +83,9 @@
                     android:id="@+id/textIntEdtHoten"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+
                     android:drawableLeft="@drawable/ic_person"
+                    android:background="@drawable/bg_azureich_white_radius_15"
                     android:drawablePadding="10dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +100,8 @@
                     android:id="@+id/textIntEdtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@drawable/bg_azureich_white_radius_15"
+
                     android:drawableLeft="@drawable/ic_baseline_email_24"
                     android:drawablePadding="10dp"
                     android:text="" />
@@ -116,7 +118,7 @@
                     android:id="@+id/textIntEdtSdt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@drawable/bg_azureich_white_radius_15"
                     android:drawableLeft="@drawable/ic_baseline_phone_24"
                     android:drawablePadding="10dp"
                     android:text="" />
@@ -134,7 +136,7 @@
                     android:id="@+id/textIntEdtUID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@drawable/bg_azureich_white_radius_15"
                     android:drawableLeft="@drawable/ic_lock"
                     android:drawablePadding="10dp"
                     android:inputType="textPassword"
@@ -148,10 +150,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_space_cadet_radius_15"
-                android:backgroundTint="@color/purple_700"
                 android:text="Cập nhật"
                 android:textColor="@color/cultured"
                 app:backgroundTint="@color/space_cadet" />
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

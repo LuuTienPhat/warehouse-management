@@ -43,9 +43,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper = null;
     public static final int MY_REQUEST_CODE =10;
     private static final int FRAGMENT_HOME =0;
-    //    private static final int FRAGMENT_FRAVORITE =1;
-//    private static final int FRAGMENT_HISTORY =2;
-//    private static final int FRAGMENT_MY_PROFILE =3;
+
     private DrawerLayout mDrawerLayout;
     private ImageView imageView;
     private NavigationView mNavigationView;
@@ -61,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
         unitUi();
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -85,11 +84,21 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this,ThongTinTaikhoanActivity.class);
                     startActivityForResult(intent, 2);
                     showUserInformation();
-//            if(mCurrentFragment != FRAGMENT_MY_PROFILE){
-//                replaceFragment(mMyProfileFragment);
-//                mCurrentFragment = FRAGMENT_MY_PROFILE;
-//            }
-                }else if(id==R.id.logout){
+                }else if(id==R.id.nav_ware){
+                    Intent intent = new Intent(MainActivity.this,WarehouseActivity.class);
+                    startActivity(intent);
+                }else if(id==R.id.nav_supplies){
+                    Intent intent = new Intent(MainActivity.this,ProductActivity.class);
+                    startActivity(intent);
+                }else if(id==R.id.nav_coupon){
+                    Intent intent = new Intent(MainActivity.this,ReceiptActivity.class);
+                    startActivity(intent);
+                }
+                else if(id==R.id.change_password){
+                    Intent intent = new Intent(MainActivity.this,ChangePassword.class);
+                    startActivity(intent);
+                }
+                else if(id==R.id.logout){
                     FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(MainActivity.this,SignInActivity.class);
                     startActivity(intent);

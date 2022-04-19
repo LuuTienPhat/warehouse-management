@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreenActivity"
             android:exported="false" />
         <activity
@@ -62,11 +65,21 @@
         <activity
             android:name=".SplashActivity"
             android:exported="false" />
-        <activity android:name=".ThongTinTaikhoanActivity" android:exported="false" />
-        <activity android:name=".ForgotPasswordActivity" android:exported="false" />
+        <activity
+            android:name=".ThongTinTaikhoanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity android:name=".OtpVerifyActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".OtpSendActivity"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
         <activity
             android:name=".SignInActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
