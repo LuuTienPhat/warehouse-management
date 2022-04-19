@@ -43,9 +43,9 @@ public class ProductQuantityDetailAdapter extends ArrayAdapter<ProductQuantityDe
 //        TextView tvProductUnit = convertView.findViewById(R.id.tvProductUnit);
 
         tvWarehouseId.setText(productQuantityDetail.getWareHouseId());
-        tvWarehouseName.setText(productQuantityDetail.getWareHouseName());
-        tvProductQuantity.setText(productQuantityDetail.getProductId()
-                +" - Số lượng: "+productQuantityDetail.getQuantity()+", "+productQuantityDetail.getUnit());
+        tvWarehouseName.setText(" - "+productQuantityDetail.getWareHouseName());
+        tvProductQuantity.setText(/*productQuantityDetail.getProductId()+*/
+                " | SL: "+productQuantityDetail.getQuantity()+" ("+productQuantityDetail.getUnit()+")");
 //        tvProductUnit.setText("ĐVT");
 
         return convertView;
