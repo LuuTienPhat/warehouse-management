@@ -161,4 +161,11 @@ public class WarehouseDao implements Dao<Warehouse> {
         db.close();
         return warehouses;
     }
+
+    public boolean canDelete(String id) {
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(String.format("SELECT * FROM %s WHERE %s = '%s'",
+                DatabaseHelper.TABLE_RECEIPT, DatabaseHelper.TABLE_RECEIPT_WAREHOUSE_ID, id), null);
+        return !cursor.moveToNext();
+    }
 }

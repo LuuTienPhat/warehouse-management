@@ -217,12 +217,16 @@ public class WarehouseDetailActivity extends AppCompatActivity implements Custom
     @Override
     public void sendDialogResult(CustomDialog.Result result, String request) {
         if (result == CustomDialog.Result.OK && request.equals("delete")) {
-            if (warehouseDao.deleteOne(warehouse)) {
-                Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
-                setResult(Activity.RESULT_OK);
-                finish();
+            if (warehouseDao.canDelete(warehouse.getId())) {
+                if (warehouseDao.deleteOne(warehouse)) {
+                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Xóa kho thành công", Toast.LENGTH_SHORT).show();
+                    setResult(Activity.RESULT_OK);
+                    finish();
+                } else {
+                    Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                }
             } else {
-                Toast.makeText(WarehouseDetailActivity.this.getApplicationContext(), "Đã có lỗi xảy ra, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Không thể xóa kho có phiếu nhập!", Toast.LENGTH_SHORT).show();
             }
         }
     }
