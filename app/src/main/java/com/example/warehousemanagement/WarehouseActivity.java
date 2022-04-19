@@ -38,6 +38,7 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
     public String sortOption2 = "";
     private ActivityResultLauncher<Intent> activityResultLauncher;
     private boolean maximized = true;
+    private int listViewItemLayout = R.layout.warehouse_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,13 +158,13 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
     public void handleBtnMinimizeClick(View view) {
         maximized = !maximized;
         if (maximized) {
-            warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, warehouses);
+            listViewItemLayout = R.layout.warehouse_item;
             btnMinimize.setBackgroundResource(R.drawable.ic_minimize_32);
         } else {
-            warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item_small, warehouses);
+            listViewItemLayout = R.layout.warehouse_item_small;
             btnMinimize.setBackgroundResource(R.drawable.ic_maximize_32);
         }
-        listView.setAdapter(warehouseAdapter);
+        updateListView(warehouses);
     }
 
     @Override
@@ -224,7 +225,7 @@ public class WarehouseActivity extends AppCompatActivity implements IViewActivit
     }
 
     private void updateListView(List list) {
-        warehouseAdapter = new WarehouseAdapter(this, R.layout.warehouse_item, list);
+        warehouseAdapter = new WarehouseAdapter(this, listViewItemLayout, list);
         listView.setAdapter(warehouseAdapter);
     }
 }
