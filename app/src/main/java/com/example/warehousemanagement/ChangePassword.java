@@ -28,7 +28,8 @@ public class ChangePassword extends AppCompatActivity {
     private String m_Text = "";
     private String m_Text1 = "";
     private String strEmail="";
-
+    private String strNewPassword="";
+    private String strOldPassword="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +38,8 @@ public class ChangePassword extends AppCompatActivity {
         btnChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String strOldPassword  = edtOldPassword.getText().toString().trim();
-                String strNewPassword  = edtNewPassword.getText().toString().trim();
+                strOldPassword  = edtOldPassword.getText().toString().trim();
+                strNewPassword  = edtNewPassword.getText().toString().trim();
 //                String strEmail="";
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
@@ -51,8 +52,8 @@ public class ChangePassword extends AppCompatActivity {
         });
     }
     public void onClickChangePassword() {
-        String strOldPassword  = edtOldPassword.getText().toString().trim();
-        String strNewPassword  = edtNewPassword.getText().toString().trim();
+ //       String strOldPassword  = edtOldPassword.getText().toString().trim();
+ //       strNewPassword  = edtNewPassword.getText().toString().trim();
 
 //        progressDialog.show();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -73,7 +74,9 @@ public class ChangePassword extends AppCompatActivity {
 //                            progressDialog.dismiss();
 
                         }else{
-                            reAuthentiate(finalStrEmail,strOldPassword);
+                            //reAuthentiate(finalStrEmail,strOldPassword);
+                            //reAuthentiate1(finalStrEmail,strOldPassword);
+                            Toast.makeText(ChangePassword.this,"Password change failed",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -81,14 +84,10 @@ public class ChangePassword extends AppCompatActivity {
     private void reAuthentiate(String email,String password){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-// Get auth credentials from the user for re-authentication. The example below shows
-// email and password credentials but there are multiple possible providers,
-// such as GoogleAuthProvider or FacebookAuthProvider.
         AuthCredential credential = EmailAuthProvider
                 .getCredential(email, password);
 //                .getCredential("user@example.com", "password1234");
 
-// Prompt the user to re-provide their sign-in credentials
         user.reauthenticate(credential)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -101,6 +100,28 @@ public class ChangePassword extends AppCompatActivity {
                             startActivityForResult(intent, REQUEST_CODE_EXAMPLE);
 //                            startActivityForResult(intent, 2);
                             //onClickChangePassword();
+                        }else{
+                            Toast.makeText(ChangePassword.this,"Mật khẩu không chính xác",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                    }
+                });
+    }
+    private void reAuthentiate1(String email,String password){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        AuthCredential credential = EmailAuthProvider
+                .getCredential(email, password);
+//                .getCredential("user@example.com", "password1234");
+
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+//                            String text = "121212";
+                            onClickChangePassword();
                         }else{
                             Toast.makeText(ChangePassword.this,"Cần xác thực lại",Toast.LENGTH_SHORT).show();
                             return;
@@ -127,10 +148,10 @@ public class ChangePassword extends AppCompatActivity {
             // RESULT_OK chỉ ra rằng kết quả này đã thành công
             if(resultCode == ChangePassword.RESULT_OK) {
                 // Nhận dữ liệu từ Intent trả về
-                final String result = data.getStringExtra(OtpVerifyActivity.EXTRA_DATA);
+                final String result = data.getStringExtra(OtpSendActivity.EXTRA_DATA);
                 onClickChangePassword();
                 // Sử dụng kết quả result bằng cách hiện Toast
-               // Toast.makeText(this, "Result:111111111 " + result, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Result:111111111 " + result, Toast.LENGTH_LONG).show();
                 finish();
             } else {
 
