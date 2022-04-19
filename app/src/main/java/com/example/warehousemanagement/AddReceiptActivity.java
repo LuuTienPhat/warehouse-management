@@ -94,8 +94,7 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
                         receiptDetailDao.insertOne(receiptDetail);
                     }
 
-                    String dialogContent = "Bạn có muốn thoát không";
-                    CustomDialog customDialog = new CustomDialog(CustomDialog.Type.NOTIFICATION, "Thành công", "Tạo phiếu thành công", "add-success");
+                    CustomDialog customDialog = new CustomDialog(CustomDialog.Type.NOTIFICATION, "Thành công", "Tạo phiếu thành công", "exit");
                     customDialog.show(getSupportFragmentManager(), "");
                 }
             }
@@ -139,6 +138,13 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        String dialogContent = "Bạn có muốn thoát không";
+        CustomDialog customDialog = new CustomDialog(CustomDialog.Type.CONFIRM, "Thông báo", dialogContent, "exit");
+        customDialog.show(getSupportFragmentManager(), "");
     }
 
     @Override
