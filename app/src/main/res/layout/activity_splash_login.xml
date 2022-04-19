@@ -60,7 +60,6 @@
             android:hint="Email"
             android:inputType="text"
             android:padding="16dp"
-            android:text="luutienphat@gmail.com"
             android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue"
             android:textCursorDrawable="@drawable/custom_cursor"
@@ -69,9 +68,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintTextColor="@color/steel_blue"
+            app:hintTextColor="@color/space_cadet"
             app:passwordToggleEnabled="true"
-            tools:ignore="MissingConstraints">
+            tools:ignore="MissingContraints">
 
             <EditText
                 android:id="@+id/editTextPass"
@@ -86,7 +85,6 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="16dp"
-                android:text="123456"
                 android:textColor="@color/space_cadet"
                 android:textColorHint="@color/steel_blue"
                 android:textCursorDrawable="@drawable/custom_cursor"
