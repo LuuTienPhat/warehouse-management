@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.warehousemanagement.dao.ReceiptDao;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
@@ -16,17 +17,18 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-    public class ChartActivityReceipt extends AppCompatActivity {
+public class ChartActivityReceipt extends AppCompatActivity {
         PieChart pieChart2;
-
+        ReceiptDao receiptDao;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_chart_receipt);
 
             pieChart2 = findViewById(R.id.piechart2);
-
+            receiptDao = new ReceiptDao(DatabaseHelper.getInstance(this));
             setupPieChart2();
             loadPieChart2Data();
         }
@@ -50,12 +52,21 @@ import java.util.ArrayList;
         }
 
         private void loadPieChart2Data() {
+            HashMap<String, Integer> hashMap = receiptDao.getDataTKPN();
+            int sum = 0;
+            for(int quantity : hashMap.values()){
+                sum += quantity;
+            }
             ArrayList<PieEntry> entries = new ArrayList<>();
-            entries.add(new PieEntry(0.3f, "Phiếu nhập 1"));
-            entries.add(new PieEntry(0.1f, "Phiếu nhập 2"));
-            entries.add(new PieEntry(0.2f, "Phiếu nhập 3"));
-            entries.add(new PieEntry(0.2f, "Phiếu nhập 4"));
-            entries.add(new PieEntry(0.2f, "Phiếu nhập 5"));
+            for(String receiptID: hashMap.keySet()){
+                entries.add(new PieEntry(hashMap.get(receiptID)*1f/sum, receiptID));
+            }
+//            ArrayList<PieEntry> entries = new ArrayList<>();
+//            entries.add(new PieEntry(0.3f, "Phiếu nhập 1"));
+//            entries.add(new PieEntry(0.1f, "Phiếu nhập 2"));
+//            entries.add(new PieEntry(0.2f, "Phiếu nhập 3"));
+//            entries.add(new PieEntry(0.2f, "Phiếu nhập 4"));
+//            entries.add(new PieEntry(0.2f, "Phiếu nhập 5"));
 
             ArrayList<Integer> colors = new ArrayList<>();
             for (int color : ColorTemplate.MATERIAL_COLORS) {
