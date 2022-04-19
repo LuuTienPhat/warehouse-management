@@ -59,7 +59,6 @@
             android:hint="Email"
             android:inputType="text"
             android:padding="16dp"
-            android:text="1236@gmail.com"
             android:textColorHint="@color/steel_blue"
             android:textCursorDrawable="@drawable/custom_cursor"
             android:textSize="14sp" />
@@ -67,9 +66,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
             android:textColorHint="@color/steel_blue"
-            tools:ignore="MissingContraints">
+            app:passwordToggleEnabled="true"
+            tools:ignore="MissingConstraints">
 
             <EditText
                 android:id="@+id/editTextPass"
@@ -82,11 +81,11 @@
                 android:drawableEnd="@drawable/ic_visibility"
                 android:drawableRight="@drawable/ic_visibility"
                 android:drawablePadding="16dp"
-                android:hint="Password"
                 android:drawableTint="@color/space_cadet"
-                android:textCursorDrawable="@drawable/custom_cursor"
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="16dp"
+                android:textCursorDrawable="@drawable/custom_cursor"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/bg_space_cadet_radius_15"
-            android:text="Login"
+            android:text="Đăng nhập"
             android:textColor="@color/cultured"
             app:backgroundTint="@color/space_cadet" />
 
