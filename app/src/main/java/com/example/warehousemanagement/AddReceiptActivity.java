@@ -27,7 +27,7 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
     private FrameLayout frameLayout;
     private TextView tvTitle;
 
-    private ReceiptTopFragment receiptTopFragment;
+    private ReceiptInformationFragment receiptInformationFragment;
     private ReceiptDetailViewFragment receiptDetailViewFragment;
     private ReceiptViewFragment receiptViewFragment;
     private Fragment displayingFragment;
@@ -45,10 +45,10 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
         setEvent();
 
         tvTitle.setText("Tạo phiếu nhập");
-        receiptTopFragment = new ReceiptTopFragment();
+        receiptInformationFragment = new ReceiptInformationFragment();
         receiptDetailViewFragment = new ReceiptDetailViewFragment();
         receiptViewFragment = new ReceiptViewFragment();
-        replaceFragment(receiptTopFragment);
+        replaceFragment(receiptInformationFragment);
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -81,7 +81,7 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (displayingFragment == receiptTopFragment) {
+                if (displayingFragment == receiptInformationFragment) {
                     switchFragment(2);
                 } else if (displayingFragment == receiptDetailViewFragment) {
                     switchFragment(3);
@@ -111,10 +111,10 @@ public class AddReceiptActivity extends AppCompatActivity implements CustomDialo
         switch (no) {
             case 1:
                 tvTitle.setText("Tạo phiếu nhập");
-                replaceFragment(receiptTopFragment);
+                replaceFragment(receiptInformationFragment);
                 break;
             case 2:
-                if (receiptTopFragment.senDataToActivity()) {
+                if (receiptInformationFragment.senDataToActivity()) {
                     tvTitle.setText("Thêm vật tư");
                     replaceFragment(receiptDetailViewFragment);
                 } else {
