@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Theme.WarehouseManagement"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ThongTinTaikhoanActivity"
-    style="@style/Theme.WarehouseManagement"
 
     >
 
@@ -23,28 +23,31 @@
 
             android:padding="20dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_avatar"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_avatar_default"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_avatar_default"
+                >
 
-            >
+            </de.hdodenhof.circleimageview.CircleImageView>
 
-        </de.hdodenhof.circleimageview.CircleImageView>
             <TextView
                 android:id="@+id/textViewTen"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/imageViewProfile"
 
                 android:includeFontPadding="false"
-                android:text=""
-                android:textSize="20sp" />
+                android:text="TruongCoder"
+                android:textColor="@color/cultured"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
 
@@ -54,11 +57,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewTen"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/imageViewProfile"
                 android:includeFontPadding="false"
-                android:text=""
+                android:text="nguyenquangtruonghktcute@gmail.com"
+                android:textColor="@color/cultured"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -79,10 +83,10 @@
                     android:id="@+id/textIntEdtHoten"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+
                     android:drawableLeft="@drawable/ic_person"
-                    android:drawablePadding="10dp"
-                     />
+                    android:background="@drawable/bg_azureich_white_radius_15"
+                    android:drawablePadding="10dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,12 +100,14 @@
                     android:id="@+id/textIntEdtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@drawable/bg_azureich_white_radius_15"
+
                     android:drawableLeft="@drawable/ic_baseline_email_24"
                     android:drawablePadding="10dp"
                     android:text="" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,27 +118,28 @@
                     android:id="@+id/textIntEdtSdt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@drawable/bg_azureich_white_radius_15"
                     android:drawableLeft="@drawable/ic_baseline_phone_24"
                     android:drawablePadding="10dp"
                     android:text="" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                app:passwordToggleEnabled="true"
-                android:hint="UID">
+                android:hint="UID"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="textPassword"
                     android:id="@+id/textIntEdtUID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@drawable/bg_azureich_white_radius_15"
                     android:drawableLeft="@drawable/ic_lock"
                     android:drawablePadding="10dp"
+                    android:inputType="textPassword"
 
                     android:text="" />
 
@@ -142,9 +149,10 @@
                 android:id="@+id/buttonCapNhat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/purple_700"
+                android:background="@drawable/bg_space_cadet_radius_15"
                 android:text="Cập nhật"
-                android:textColor="@color/space_cadet" />
+                android:textColor="@color/cultured"
+                app:backgroundTint="@color/space_cadet" />
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

@@ -41,7 +41,7 @@
 //    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        mview = inflater.inflate(R.layout.fragment_my_profile,container,false);
 //        unitUi();
-//        mMainActivity = (MainActivity) getActivity();
+//        mMainActivity = (MainActivity) ChangePassword.this;
 //        setUserInformation();
 //        initListener();
 //        return mview;
@@ -83,7 +83,7 @@
 //                    @Override
 //                    public void onComplete(@NonNull Task<Void> task) {
 //                        if (task.isSuccessful()) {
-//                            Toast.makeText(getActivity(),"Update Success",Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(ChangePassword.this,"Update Success",Toast.LENGTH_SHORT).show();
 //                            mMainActivity.showUserInformation();
 //                        }
 //                    }
@@ -91,7 +91,7 @@
 //    }
 //
 //    private void onClickRequestPermission() {
-////        MainActivity mainActivity = (MainActivity) getActivity();
+////        MainActivity mainActivity = (MainActivity) ChangePassword.this;
 //        if(mMainActivity == null){
 //            return;
 //        }
@@ -99,11 +99,11 @@
 //            mMainActivity.openGallery();
 //            return;
 //        }
-//        if(getActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+//        if(ChangePassword.this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
 //            mMainActivity.openGallery();
 //        }else{
 //            String [] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-//            getActivity().requestPermissions(permissions,MY_REQUEST_CODE);
+//            ChangePassword.this.requestPermissions(permissions,MY_REQUEST_CODE);
 //        }
 //    }
 //
@@ -120,7 +120,7 @@
 //        edtFullName.setText(user.getDisplayName());
 //        //edtFullName.setText("123");
 //        edtEmail.setText(user.getEmail());
-//        Glide.with(getActivity()).load(user.getPhotoUrl()).error(R.drawable.ic_avatar_default).into(imageView);
+//        Glide.with(ChangePassword.this).load(user.getPhotoUrl()).error(R.drawable.ic_avatar_default).into(imageView);
 //
 //    }
 //    public void setBitmapImageView(Bitmap bitmapImageView){

@@ -23,11 +23,11 @@
                 />
             <item android:id="@+id/nav_supplies"
                 android:title="@string/nav_supplies"
-                android:icon="@drawable/ic_change_password"
+                android:icon="@drawable/ic_product_72"
                 />
             <item android:id="@+id/nav_coupon"
                 android:title="@string/nav_coupon"
-                android:icon="@drawable/ic_my_profile"
+                android:icon="@drawable/ic_receipt_72"
                 />
         </menu>
 
@@ -55,6 +55,10 @@
                 <item android:title="Thông tin tài khoản"
                     android:icon="@drawable/ic_person"
                     android:id="@+id/ThongTinTaiKhoan"
+                    ></item>
+                <item android:title="Đổi mật khẩu"
+                    android:icon="@drawable/ic_change_password"
+                    android:id="@+id/change_password"
                     ></item>
                 <item android:title="Đăng xuất"
                     android:icon="@drawable/ic_logout"

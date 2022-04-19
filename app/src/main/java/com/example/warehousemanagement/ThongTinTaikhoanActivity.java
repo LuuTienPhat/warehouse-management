@@ -43,13 +43,13 @@ public class ThongTinTaikhoanActivity extends AppCompatActivity {
     DatabaseAccess DB;
     SQLiteDatabase database;
     EditText tvHoten,tvEmail,tvSdt,tvUID;
-    TextView tvtaikhoan, tvTen,tvPoint;
+    TextView tvtaikhoan, tvTen;
     Button btnCapNhat;
     String iduser;
     User user;
     private MainActivity mMainActivity ;
     private  Uri mUri;
-
+    private boolean changeimage=false;
     private ImageView imageView;
     private static Context context;
     public void setUri(Uri mUri) {
@@ -90,6 +90,7 @@ public class ThongTinTaikhoanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onClickRequestPermission();
+
             }
         });
         btnCapNhat.setOnClickListener(new View.OnClickListener() {
@@ -102,16 +103,18 @@ public class ThongTinTaikhoanActivity extends AppCompatActivity {
 
     }
     private void onClickRequestPermission() {
-//        MainActivity mainActivity = (MainActivity) getActivity();
+//        MainActivity mainActivity = (MainActivity) ChangePassword.this;
         if(ThongTinTaikhoanActivity.this == null){
             return;
         }
         if(Build.VERSION.SDK_INT <Build.VERSION_CODES.M){
             openGallery();
+            changeimage = true;
             return;
         }
         if(ThongTinTaikhoanActivity.this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
             openGallery();
+            changeimage = true;
         }else{
             String [] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
             ThongTinTaikhoanActivity.this.requestPermissions(permissions,MY_REQUEST_CODE);
@@ -159,8 +162,12 @@ public class ThongTinTaikhoanActivity extends AppCompatActivity {
 
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                 .setDisplayName(strfullname)
-                .setPhotoUri(mUri)
                 .build();
+        if(changeimage == true){
+            profileUpdates = new UserProfileChangeRequest.Builder()
+                    .setPhotoUri(mUri)
+                    .build();
+        }
 
         user.updateProfile(profileUpdates)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
