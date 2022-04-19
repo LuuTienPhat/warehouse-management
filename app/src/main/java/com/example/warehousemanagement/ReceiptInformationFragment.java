@@ -27,7 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReceiptTopFragment extends Fragment {
+public class ReceiptInformationFragment extends Fragment {
     TextView tvProcess, tvWarehouseWarning, tvReceiptIdWarning, tvReceiptDateWarning;
     EditText etReceiptId;
     Button etReceiptDate;
@@ -56,7 +56,7 @@ public class ReceiptTopFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        convertView = inflater.inflate(R.layout.receipt_top_fragment, container, false);
+        convertView = inflater.inflate(R.layout.receipt_information_fragment, container, false);
 
         setControl();
 
