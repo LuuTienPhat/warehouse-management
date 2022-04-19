@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
 public class SignInActivity extends AppCompatActivity {
 
     Button btnDangnhap;
@@ -67,8 +68,7 @@ public class SignInActivity extends AppCompatActivity {
                                 new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(
-                                            @NonNull Task<AuthResult> task)
-                                    {
+                                            @NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(getApplicationContext(),
                                                     "Đăng nhập thành công!!",
@@ -84,8 +84,7 @@ public class SignInActivity extends AppCompatActivity {
                                                     = new Intent(SignInActivity.this,
                                                     MainActivity.class);
                                             startActivity(intent);
-                                        }
-                                        else {
+                                        } else {
                                             // sign-in failed
                                             Toast.makeText(getApplicationContext(),
                                                     "Sai Email hoặc mật khẩu!!",
@@ -94,7 +93,6 @@ public class SignInActivity extends AppCompatActivity {
                                         }
                                     }
                                 });
-
 
 
 //                if(taikhoan.equals("")||matkhau.equals(""))
@@ -127,7 +125,7 @@ public class SignInActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignInActivity.this,SignUpActivity.class);
+                Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
@@ -135,14 +133,14 @@ public class SignInActivity extends AppCompatActivity {
         tvforgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignInActivity.this,ForgotPasswordActivity.class);
+                Intent intent = new Intent(SignInActivity.this, ForgotPasswordActivity.class);
                 startActivity(intent);
             }
         });
     }
-    private void AnhXa()
-    {
-        btnDangnhap=(Button) findViewById(R.id.buttonDangnhap);
+
+    private void AnhXa() {
+        btnDangnhap = (Button) findViewById(R.id.buttonDangnhap);
         tvDangky = (TextView) findViewById(R.id.textView_register);
         tvforgotPassword = (TextView) findViewById(R.id.textView_forgotPassword);
         edttaikhoan = (EditText) findViewById(R.id.editTextUser);
