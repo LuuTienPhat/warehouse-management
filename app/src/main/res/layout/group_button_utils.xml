@@ -52,14 +52,15 @@
             android:layout_height="32dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/ic_sort_96"
-            android:backgroundTint="@color/space_cadet"/>
+            android:backgroundTint="@color/space_cadet" />
 
         <ImageButton
             android:id="@+id/btnFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/ic_filter_32" />
+            android:background="@drawable/ic_filter_32"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/btnMinimize"

@@ -128,6 +128,9 @@ public class ReceiptViewActivity extends AppCompatActivity implements CustomDial
             table.addCell(new Cell().add(new Paragraph("Ngày lập").setBold()).setBorder(Border.NO_BORDER));
             table.addCell(new Cell().add(new Paragraph(DateHandler.convertLocalDateToString(receipt.getDate()))).setBorder(Border.NO_BORDER));
 
+            document.add(table);
+            document.add(new Paragraph("\n"));
+
             float columnWidth2[] = {60, 110, 110, 110, 110, 110};
             Table table2 = new Table(columnWidth2);
 
@@ -164,14 +167,12 @@ public class ReceiptViewActivity extends AppCompatActivity implements CustomDial
             table2.addCell(new Cell().add(new Paragraph(Integer.toString(receipt.getReceiptDetails().size())).setBold()).setBorder(Border.NO_BORDER));
             table2.addCell(new Cell().add(new Paragraph("")).setBorder(Border.NO_BORDER));
 
-            document.add(table);
-            document.add(new Paragraph("\n"));
             document.add(table2);
-
             document.close();
 
             CustomDialog customDialog = new CustomDialog(CustomDialog.Type.NOTIFICATION, "Thành công", "Tạo file PDF thành công", "pdf-success");
             customDialog.show(getSupportFragmentManager(), "");
+
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.toString());
