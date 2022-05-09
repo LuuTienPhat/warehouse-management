@@ -164,7 +164,9 @@
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.317" />
         <entry key="..\:/Users/Phat/Documents/AndroidStudioProjects/WarehouseManagement/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3675" />
         <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_splash_login.xml" value="0.25" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_otp_verify.xml" value="0.33" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_sign_up.xml" value="0.10960144927536232" />
+        <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_splash_login.xml" value="0.2107843137254902" />
         <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/activity_thong_tin_taikhoan.xml" value="0.18" />
         <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/app_bar_main.xml" value="0.12" />
         <entry key="..\:/Users/nguye/Downloads/Android/warehouse-management/warehouse-management/app/src/main/res/layout/content_main.xml" value="0.22" />

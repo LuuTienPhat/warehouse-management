@@ -84,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this,ThongTinTaikhoanActivity.class);
                     startActivityForResult(intent, 2);
                     showUserInformation();
-                }else if(id==R.id.nav_ware){
+                }else if(id==R.id.nav_ware)
+                {
                     Intent intent = new Intent(MainActivity.this,WarehouseActivity.class);
                     startActivity(intent);
                 }else if(id==R.id.nav_supplies){
@@ -104,10 +105,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
-
             }
         });
 

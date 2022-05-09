@@ -54,6 +54,10 @@ public class OtpSendActivity extends AppCompatActivity {
         binding.btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Intent intent = new Intent(OtpSendActivity.this, ChangePassword.class);
+//                setResult(ChangePassword.RESULT_OK, intent);
+//                finish();
+
                 if (binding.etPhone.getText().toString().trim().isEmpty()) {
                     Toast.makeText(OtpSendActivity.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 }
@@ -62,9 +66,6 @@ public class OtpSendActivity extends AppCompatActivity {
 //                }
                 else {
                     otpSend();
-//                    Intent intent = new Intent(OtpSendActivity.this, ChangePassword.class);
-//                    setResult(ChangePassword.RESULT_OK, intent);
-//                    finish();
                     // Sử dụng kết quả result bằng cách hiện Toast
 
                 }
@@ -117,6 +118,10 @@ public class OtpSendActivity extends AppCompatActivity {
 //                intent.putExtra("strPassword",strNewPassword);
                 //startActivity(intent);
                 startActivityForResult(intent, 2);
+//                Intent intent = new Intent(OtpSendActivity.this, OtpVerifyActivity.class);
+//                intent.putExtra("phone", binding.etPhone.getText().toString().trim());
+//
+//                startActivityForResult(intent, 2);
             }
         };
 
@@ -146,7 +151,7 @@ public class OtpSendActivity extends AppCompatActivity {
                 setResult(ChangePassword.RESULT_OK, intent);
                 finish();
                 // Sử dụng kết quả result bằng cách hiện Toast
-                Toast.makeText(this, "Result222: " + result, Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "Result222: " + result, Toast.LENGTH_LONG).show();
             } else {
 //                Intent intent = new Intent(OtpSendActivity.this, ChangePassword.class);
 //                setResult(ChangePassword.RESULT_CANCELED, intent);

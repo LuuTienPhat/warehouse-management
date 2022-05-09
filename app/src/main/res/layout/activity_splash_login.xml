@@ -59,6 +59,7 @@
             android:drawableTint="@color/space_cadet"
             android:hint="Email"
             android:inputType="text"
+            android:text="2@gmail.com"
             android:padding="16dp"
             android:textColor="@color/space_cadet"
             android:textColorHint="@color/steel_blue"

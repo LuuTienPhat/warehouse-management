@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +31,7 @@ public class ChangePassword extends AppCompatActivity {
     private String strEmail="";
     private String strNewPassword="";
     private String strOldPassword="";
+    FirebaseUser user=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +42,8 @@ public class ChangePassword extends AppCompatActivity {
             public void onClick(View view) {
                 strOldPassword  = edtOldPassword.getText().toString().trim();
                 strNewPassword  = edtNewPassword.getText().toString().trim();
-//                String strEmail="";
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//                String strEmail="";FirebaseUser
+                user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
                     // Name, email address, and profile photo Url
                     // String name = user.getDisplayName();
@@ -56,12 +58,12 @@ public class ChangePassword extends AppCompatActivity {
  //       strNewPassword  = edtNewPassword.getText().toString().trim();
 
 //        progressDialog.show();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            // String name = user.getDisplayName();
-            strEmail = user.getEmail();
-        }
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if (user != null) {
+//            // Name, email address, and profile photo Url
+//            // String name = user.getDisplayName();
+//            strEmail = user.getEmail();
+//        }
 
         String finalStrEmail = strEmail;
         //reAuthentiate(finalStrEmail,strOldPassword);
@@ -70,7 +72,7 @@ public class ChangePassword extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(ChangePassword.this,"Change password successfully",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ChangePassword.this,"Change password successfully: "+strEmail+"  "+strOldPassword+"  "+strNewPassword,Toast.LENGTH_LONG).show();
 //                            progressDialog.dismiss();
 
                         }else{
@@ -121,14 +123,47 @@ public class ChangePassword extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
 //                            String text = "121212";
+                            Toast.makeText(ChangePassword.this,"Re auChange password successfully: "+strEmail+"  "+strOldPassword+"  "+strNewPassword,Toast.LENGTH_LONG).show();
                             onClickChangePassword();
                         }else{
-                            Toast.makeText(ChangePassword.this,"Cần xác thực lại",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ChangePassword.this,"Cần xác thực lại:" +email +  "  "+password,Toast.LENGTH_SHORT).show();
                             return;
                         }
 
                     }
                 });
+    }
+    private void signin(String email,String password){
+        FirebaseAuth mAuth= FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(
+                        new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(
+                                    @NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(),
+                                            "Đăng nhập thành công!!",
+                                            Toast.LENGTH_LONG)
+                                            .show();
+                                    onClickChangePassword();
+
+                                    // hide the progress bar
+                                    // if sign-in is successful
+                                    // intent to home activity
+//                                    Intent intent
+//                                            = new Intent(SignInActivity.this,
+//                                            MainActivity.class);
+//                                    startActivity(intent);
+                                } else {
+                                    // sign-in failed
+                                    Toast.makeText(getApplicationContext(),
+                                            "Sai Email hoặc mật khẩu!!",
+                                            Toast.LENGTH_LONG)
+                                            .show();
+                                }
+                            }
+                        });
     }
 
     private void initUi(){
@@ -149,10 +184,12 @@ public class ChangePassword extends AppCompatActivity {
             if(resultCode == ChangePassword.RESULT_OK) {
                 // Nhận dữ liệu từ Intent trả về
                 final String result = data.getStringExtra(OtpSendActivity.EXTRA_DATA);
-                onClickChangePassword();
+                signin(strEmail,strOldPassword);
+                //reAuthentiate1(strEmail,strOldPassword);
+                //onClickChangePassword();
                 // Sử dụng kết quả result bằng cách hiện Toast
                 Toast.makeText(this, "Result:111111111 " + result, Toast.LENGTH_LONG).show();
-                finish();
+                //finish();
             } else {
 
                 Toast.makeText(this, "Đổi mật khẩu thất bại", Toast.LENGTH_LONG).show();

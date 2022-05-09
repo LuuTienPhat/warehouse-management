@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.example.warehousemanagement.databinding.ActivityOtpVerifyBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -85,36 +86,19 @@ public class OtpVerifyActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            //Intent myIntent = new Intent(view.getContext(), Calculated.class);
 
-//                                            Bundle extras = getIntent().getExtras();
-//                                            if(extras == null) {
-//                                                strNewPassword= null;
-//                                                strEmail= null;
-//                                            } else {
-//                                                strNewPassword= getIntent().getStringExtra("strPassword");
-//                                                strEmail= getIntent().getStringExtra("strEmail");
-//                                            }
-                                            //onClickChangePassword(strEmail,strNewPassword);
                                             binding.progressBarVerify.setVisibility(View.VISIBLE);
                                             binding.btnVerify.setVisibility(View.INVISIBLE);
                                             //Toast.makeText(OtpVerifyActivity.this, "Welcome...", Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(OtpVerifyActivity.this, OtpSendActivity.class);
                                             intent.putExtra(EXTRA_DATA, "Some interesting data!");
                                             setResult(ChangePassword.RESULT_OK, intent);
-                                            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                             finish();
 
-                                            //startActivity(intent);
                                         } else {
                                             binding.progressBarVerify.setVisibility(View.GONE);
                                             binding.btnVerify.setVisibility(View.VISIBLE);
                                             Toast.makeText(OtpVerifyActivity.this, "OTP is not Valid!", Toast.LENGTH_SHORT).show();
-//                                            Intent intent = new Intent(OtpVerifyActivity.this, OtpSendActivity.class);
-//                                            intent.putExtra(EXTRA_DATA, "Some interesting data!");
-//                                            setResult(ChangePassword.RESULT_CANCELED, intent);
-                                            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            //finish();
                                         }
                                     }
                                 });
@@ -124,33 +108,7 @@ public class OtpVerifyActivity extends AppCompatActivity {
         });
 
     }
-    public void onClickChangePassword(String strEmail,String strNewPassword) {
 
-//        String strEmail="";
-        progressDialog.show();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            // String name = user.getDisplayName();
-            //strEmail = user.getEmail();
-        }
-
-        String finalStrEmail = strEmail;
-        //reAuthentiate(finalStrEmail,strOldPassword);
-        user.updatePassword(strNewPassword)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-//                            Toast.makeText(OtpVerifyActivity.this,"Change password successfully",Toast.LENGTH_SHORT).show();
-                            Toast.makeText(OtpVerifyActivity.this,strEmail+"==========",Toast.LENGTH_SHORT).show();
-                            //                           progressDialog.dismiss();
-                        }else{
-                            Toast.makeText(OtpVerifyActivity.this,"Fix đi",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
     @Override
     public void onBackPressed() {
 

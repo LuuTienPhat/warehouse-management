@@ -39,6 +39,7 @@ import java.io.IOException;
 
 public class ThongTinTaikhoanActivity extends AppCompatActivity {
 
+    private static final int MY_REQUEST_CODE = 0;
     final  String DATABASE_NAME = "warehouse.db";
     DatabaseAccess DB;
     SQLiteDatabase database;
