@@ -22,33 +22,22 @@
 
             <TextView
                 android:id="@+id/tvWarehouseId"
+                style="@style/TextViewOfEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="start"
-                android:text="Mã kho"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textSize="20sp" />
+                android:text="Mã kho" />
 
             <EditText
                 android:id="@+id/etWarehouseId"
+                style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/bg_azureich_white_radius_15"
                 android:clickable="false"
                 android:cursorVisible="false"
                 android:ems="10"
-                android:focusable="false"
-                android:fontFamily="@font/roboto_regular"
                 android:hint="Mã kho"
-                android:inputType="number"
-                android:paddingHorizontal="20dp"
-                android:text="K1"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textColorHint="@color/steel_blue" />
+                android:text="K1" />
         </LinearLayout>
 
         <LinearLayout
@@ -60,33 +49,22 @@
 
             <TextView
                 android:id="@+id/tvWarehouseName"
+                style="@style/TextViewOfEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="start"
-                android:text="Tên kho"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textSize="20sp" />
+                android:text="Tên kho" />
 
             <EditText
                 android:id="@+id/etWarehouseName"
+                style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/bg_azureich_white_radius_15"
                 android:clickable="false"
                 android:cursorVisible="false"
-                android:ems="10"
                 android:focusable="false"
-                android:fontFamily="@font/roboto_regular"
                 android:hint="Tên kho"
-                android:inputType="text"
-                android:paddingHorizontal="20dp"
-                android:text="Kho Bình Chánh"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textColorHint="@color/steel_blue" />
+                android:text="Kho Bình Chánh" />
         </LinearLayout>
 
     </LinearLayout>
@@ -107,33 +85,22 @@
 
             <TextView
                 android:id="@+id/tv1"
+                style="@style/TextViewOfEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="start"
-                android:text="Số phiếu"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textSize="20sp" />
+                android:text="Số phiếu" />
 
             <EditText
                 android:id="@+id/etReceiptId"
+                style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/bg_steel_blue_radius_15"
                 android:clickable="false"
                 android:cursorVisible="false"
-                android:ems="10"
                 android:focusable="false"
-                android:fontFamily="@font/roboto_regular"
                 android:hint="Số phiếu"
-                android:inputType="text"
-                android:paddingHorizontal="20dp"
-                android:text="1"
-                android:textAlignment="textStart"
-                android:textColor="@color/cultured"
-                android:textColorHint="@color/steel_blue" />
+                android:text="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -145,33 +112,24 @@
 
             <TextView
                 android:id="@+id/tv2"
+                style="@style/TextViewOfEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="start"
-                android:text="Ngày lập"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textSize="20sp" />
+                android:text="Ngày lập" />
 
             <EditText
                 android:id="@+id/etReceiptDate"
+                style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/bg_azureich_white_radius_15"
                 android:clickable="false"
                 android:cursorVisible="false"
                 android:ems="10"
                 android:focusable="false"
-                android:fontFamily="@font/roboto_regular"
                 android:hint="Ngày lập"
                 android:inputType="text"
-                android:paddingHorizontal="20dp"
-                android:text="19/03/2022"
-                android:textAlignment="textStart"
-                android:textColor="@color/space_cadet"
-                android:textColorHint="@color/steel_blue" />
+                android:text="19/03/2022" />
         </LinearLayout>
     </LinearLayout>
 
